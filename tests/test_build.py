@@ -24,12 +24,21 @@ class BuildTests(unittest.TestCase):
                 return SimpleNamespace(stdout='')
             with patch.object(convert.subprocess, 'run', side_effect=decoder):
                 manifest = convert.build(source, output, 'fake-decoder', ['google', 'netflix'], strict=True,
-                                         aliases={'geosite-google-alias': 'geosite-google'})
+                                         aliases={'geosite-google-alias': 'geosite-google'},
+                                         supplemental_sources=[{
+                                             'id': 'additional', 'url': 'https://example.org/geosite.dat', 'sha256': 'fixture',
+                                             'documents': {'google': {'version': 1, 'rules': [{'domain_suffix': ['new.example']}]},
+                                                           'netflix': {'version': 1, 'rules': [{'domain_suffix': ['netflix.com']}]}},
+                                             'category_map': {'google': 'google', 'netflix': 'netflix'}, 'missing_categories': []}])
             self.assertEqual(manifest['unsupported'], 0)
             self.assertEqual(manifest['complete'], 3)
             google = manifest['categories']['geosite-google']
             netflix = manifest['categories']['geosite-netflix']
             self.assertNotIn('script', netflix)
+            self.assertIn('DOMAIN-SUFFIX,new.example', (output / google['ruleset']).read_text())
+            self.assertEqual(google['contributions'][1]['added_entries'], 1)
+            self.assertEqual(len(manifest['geosite_sources']), 1)
+            self.assertNotIn('documents', manifest['geosite_sources'][0])
             self.assertEqual(google['requires_module'], 'regex-support.sgmodule')
             module = (output / 'regex-support.sgmodule').read_text()
             self.assertEqual(module.count(' = type=rule,'), 1)

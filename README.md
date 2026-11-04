@@ -1,6 +1,6 @@
 # sing-geosite → Surge
 
-将指定的 sing-box SRS 规则转换为 Surge RULE-SET / DOMAIN-SET，每天北京时间 **07:23** 通过 GitHub Actions 更新。使用 Python 标准库及官方 sing-box 1.14.4 反编译，不需要服务器。
+合并 SagerNet SRS、Loyalsoldier Geosite 和 MetaCubeX Geosite 中的指定分类，转换为 Surge RULE-SET / DOMAIN-SET，每天北京时间 **07:23** 通过 GitHub Actions 更新。使用 Python 标准库及官方 sing-box 1.14.4 反编译，不需要服务器。
 
 ## 使用规则
 
@@ -32,7 +32,7 @@ RULE-SET,https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules/ru
 
 ## 当前范围
 
-配置从提供的 sing-box 片段提取，包含 20 个域名来源及 2 个 IP 来源：
+目标范围从提供的 sing-box 片段提取，包含 20 个域名分类及 2 个 IP 来源；每个域名分类同时读取 SagerNet、Loyalsoldier 和 MetaCubeX 后合并：
 
 - 域名：geolocation-!cn、category-ai-!cn、geolocation-cn、reddit、microsoft、apple、microsoft@cn、apple@cn、telegram、netflix、hbo、disney、cn、paypal、paypal@cn、google、youtube、github、steam、steam@cn。
 - IP：Loyalsoldier/geoip 的 Telegram SRS，以及 SagerNet/sing-geoip 的 CN SRS，保留原下载地址。
@@ -74,7 +74,7 @@ status.json
 README.md                    # 转换报告及下载链接
 ```
 
-manifest 记录上游提交、SRS 的 SHA-256、来源 URL、规则数、脚本依赖及不支持原因。AI 别名指向同一个正则匹配脚本，避免重复注册。
+manifest 记录 SagerNet 上游提交、各源文件的 SHA-256、来源 URL、各分类贡献数量、规则数、脚本依赖及不支持原因。AI 别名指向同一个正则匹配脚本，避免重复注册。
 
 ## 本地构建与验证
 
@@ -102,3 +102,47 @@ python3 -m unittest discover -s tests -v
 测试覆盖根域名边界、Netflix 通配符、Disney 可选字符、数字重复反例、IP、发布回退，以及所选来源 159 条不同正则的差分验证。正则样本来自 SagerNet/sing-geosite 的 SRS 数据及其上游 domain-list-community，保留其原授权要求。本地完整构建及 Surge CLI 离线配置语法检查通过；该检查不会修改当前 Surge 配置，也不等同于实际流量验证。
 
 参考：[Surge 通配符](https://manual.nssurge.com/rules/domain.html)、[规则脚本](https://manual.nssurge.com/scripting/rule.html)、[模块](https://manual.nssurge.com/profile/module.html)、[脚本更新](https://manual.nssurge.com/scripting/overview.html)。数据来源：[sing-geosite](https://github.com/SagerNet/sing-geosite)、[domain-list-community](https://github.com/v2fly/domain-list-community)、[sing-geoip](https://github.com/SagerNet/sing-geoip)、[Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip)。
+
+
+## 多源架构与扩展
+
+构建分为四层：
+
+```text
+源适配器（SRS / v2ray-geosite.dat）
+  → 统一域名规则（精确域名、后缀、关键词、正则）
+  → 按目标分类合并去重
+  → Surge 输出器（每个分类一个最终 RULE-SET）
+```
+
+- `scripts/geosite_dat.py`：按官方 V2Ray routercommon protobuf schema 读取 DAT，仅解码指定分类。支持域名类型、属性过滤和独立的 `@cn` 分类，检测截断数据及未知类型。
+- `scripts/sources.py`：下载、格式适配器注册、分类映射、统一规则与合并。新格式在 `ADAPTERS` 注册读取函数，不需要改 Surge 输出逻辑。
+- `scripts/convert.py`：编排解码及合并，然后统一输出规则、脚本模块、manifest 和报告。
+- `scripts/regex_tools.py`：原生通配符和规则脚本的语义转换。
+
+增加同格式来源，只需在 `config.json` 的 `geosite_sources` 添加配置：
+
+```json
+{
+  "id": "another-source",
+  "format": "v2ray-geosite",
+  "url": "https://example.com/geosite.dat",
+  "category_map": {
+    "category-ai-!cn": "upstream-ai-category"
+  },
+  "on_missing": "error"
+}
+```
+
+默认按目标分类同名读取；`category_map` 只在上游分类名称不同时配置。`paypal@cn` 优先读取源文件里的独立同名分类，否则仅从 paypal 中筛选 cn 属性，绝不拿整个 paypal 替代。`on_missing` 默认 error，源缺少目标分类时停止构建；明确允许缺少的来源可设为 skip，缺失项仍进入报告。所有配置源下载或解析失败都会停止发布，避免某一天悄悄变成少源版本。
+
+当前两个补充源：
+
+- [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)，release/geosite.dat。
+- [MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat)，release/geosite.dat。
+
+不按来源创建最终规则文件。例如三个源的 Netflix 统一写入原来的 `ruleset/geosite-netflix.list`，订阅链接无需修改。DOMAIN-SET 仍只是能完整表达该目标分类时生成的可选格式。
+
+`manifest.json` 的 `geosite_sources` 保存每份 DAT 的地址和 SHA-256；分类下的 `contributions` 记录各来源条目数及去重后的新增数量。贡献按 SagerNet → 配置顺序计算，属于规范化规则条目统计，不等于新增覆盖域名数；不同目标分类间可重叠。属性分类不会跨目标自动归类，具体策略与优先级仍由 Surge 主配置决定。
+
+三源数据共享部分上游，不能保证每个来源都有新增，也不能自动填补所有遗漏。当前实测 PayPal、Netflix、AI 没有新增，较大增量集中在 cn。原始数据及测试样本保留各上游授权要求；protobuf 格式依据 [官方 schema](https://github.com/v2fly/v2ray-core/blob/master/app/router/routercommon/common.proto)。

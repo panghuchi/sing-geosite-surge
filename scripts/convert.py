@@ -10,9 +10,8 @@ import re
 import shutil
 import subprocess
 import tempfile
-import time
 from regex_tools import native_rules, script_source, RegexUnsupported
-from urllib.request import urlopen
+from sources import download, load_sources, merge_documents
 from urllib.parse import urlparse
 
 
@@ -115,7 +114,7 @@ def write_lines(path, lines):
     path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
 
-def build(source, output, binary, include=None, workers=4, revision='local', strict=False, extra_files=None, aliases=None, base_url="https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules"):
+def build(source, output, binary, include=None, workers=4, revision='local', strict=False, extra_files=None, aliases=None, base_url="https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules", supplemental_sources=None):
     base_url = base_url.rstrip("/")
     source, output = Path(source).resolve(), Path(output).resolve()
     if output == source or output in source.parents or source in output.parents:
@@ -143,6 +142,9 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
                            check=True, capture_output=True, text=True, timeout=120)
             entry = {'source_sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
                      'source_url': (extra_files or {}).get(path, 'https://raw.githubusercontent.com/SagerNet/sing-geosite/' + revision + '/' + path.name)}
+            document = json.loads(decoded.read_text(encoding='utf-8'))
+            if path.stem.startswith('geosite-'):
+                document, entry['contributions'] = merge_documents(document, path.stem.removeprefix('geosite-'), supplemental_sources or [])
             fallback_patterns = []
             script_name = 'srs-regex-' + hashlib.sha256(path.stem.encode()).hexdigest()[:16]
             def handle_regex(pattern):
@@ -153,7 +155,7 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
                 fallback_patterns.append(pattern)
                 return script_name
             try:
-                lines, domains = convert(json.loads(decoded.read_text(encoding='utf-8')), handle_regex)
+                lines, domains = convert(document, handle_regex)
             except Unsupported as error:
                 entry.update(status='unsupported', reason=str(error))
                 return path.stem, entry
@@ -200,7 +202,9 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
             write_lines(root / 'publish' / 'regex-support.sgmodule', module)
         manifest = {'upstream': 'https://github.com/SagerNet/sing-geosite/tree/rule-set',
                     'upstream_revision': revision, 'decoder': version,
-                    'complete': complete, 'unsupported': len(unsupported), 'categories': entries}
+                    'complete': complete, 'unsupported': len(unsupported),
+                    'geosite_sources': [{key: value for key, value in item.items() if key not in ('documents', 'category_map')} for item in (supplemental_sources or [])],
+                    'categories': entries}
         publish = root / 'publish'
         (publish / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
         report = ['# Conversion report', '', f'Upstream commit: {revision}', '',
@@ -212,6 +216,14 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
             if entry['status'] == 'complete':
                 domain_link = f"[Download]({entry['domainset']})" if 'domainset' in entry else '—'
                 report.append(f"| {name} | [Download]({entry['ruleset']}) | {domain_link} | {'SCRIPT' if entry.get('script') else 'No'} |")
+        report.extend(['', '## Source contributions', '',
+                       'Counts are deduplicated domain atoms, not guaranteed newly covered hostnames. Source order: SagerNet, then configured supplements.', '',
+                       '| Category | Source | Entries | Added entries |', '| --- | --- | --- | --- |'])
+        for name, entry in entries.items():
+            if entry.get('alias_of'):
+                continue
+            for item in entry.get('contributions', []):
+                report.append(f"| {name} | {item['id']} | {item.get('entries', 'missing')} | {item.get('added_entries', '—')} |")
         report.append('')
         for name, reason in unsupported.items():
             report.extend([f'## {name}', '', '```text', reason, '```', ''])
@@ -253,18 +265,11 @@ def main():
                 path = Path(temp) / (tag + '.srs')
                 if path in extra_files:
                     raise ValueError('duplicate extra source: ' + tag)
-                for attempt in range(3):
-                    try:
-                        with urlopen(url, timeout=60) as response:
-                            path.write_bytes(response.read())
-                        break
-                    except OSError:
-                        if attempt == 2:
-                            raise
-                        time.sleep(2)
+                path.write_bytes(download(url))
                 extra_files[path] = url
+            supplements = load_sources(config.get('geosite_sources', []), include or [p.stem.removeprefix('geosite-') for p in Path(args.source).glob('geosite-*.srs')])
             build(args.source, args.output, args.sing_box, include, args.workers, args.revision,
-                  args.strict or config.get('strict', False), extra_files, config.get('aliases'), config.get('publish_base_url', 'https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules'))
+                  args.strict or config.get('strict', False), extra_files, config.get('aliases'), config.get('publish_base_url', 'https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules'), supplements)
     except (ValueError, OSError, subprocess.SubprocessError) as error:
         parser.exit(1, f'Build failed (no publication): {error}\n')
 
