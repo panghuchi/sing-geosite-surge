@@ -34,5 +34,5 @@
   "aliases": {
     "geosite-ai-!cn": "geosite-category-ai-!cn"
   },
-  "strict": false
+  "strict": true
 }

@@ -11,6 +11,7 @@ import shutil
 import subprocess
 import tempfile
 import time
+from regex_tools import native_rules, script_source, RegexUnsupported
 from urllib.request import urlopen
 from urllib.parse import urlparse
 
@@ -36,7 +37,7 @@ def hostname(value):
     return value
 
 
-def convert(document):
+def convert(document, regex_handler=None):
     if document.get('version') not in (1, 2, 3, 4):
         raise Unsupported('unknown rule-set version')
     if set(document) - {'version', 'rules'}:
@@ -84,7 +85,13 @@ def convert(document):
                     lines.add('DOMAIN-KEYWORD,' + safe_value(value))
                     pure = False
                 else:
-                    errors.append(value)
+                    try:
+                        lines.update(native_rules(value))
+                    except RegexUnsupported:
+                        if regex_handler is None:
+                            errors.append(value)
+                        else:
+                            lines.add('SCRIPT,' + regex_handler(value))
     if errors:
         raise Unsupported('domain_regex has no general equivalent in Surge: ' + json.dumps(errors, ensure_ascii=False))
     # An explicit apex plus a dotted suffix is equivalent to Surge DOMAIN-SUFFIX.
@@ -108,7 +115,8 @@ def write_lines(path, lines):
     path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
 
-def build(source, output, binary, include=None, workers=4, revision='local', strict=False, extra_files=None, aliases=None):
+def build(source, output, binary, include=None, workers=4, revision='local', strict=False, extra_files=None, aliases=None, base_url="https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules"):
+    base_url = base_url.rstrip("/")
     source, output = Path(source).resolve(), Path(output).resolve()
     if output == source or output in source.parents or source in output.parents:
         raise ValueError('source and output must not contain each other')
@@ -135,14 +143,28 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
                            check=True, capture_output=True, text=True, timeout=120)
             entry = {'source_sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
                      'source_url': (extra_files or {}).get(path, 'https://raw.githubusercontent.com/SagerNet/sing-geosite/' + revision + '/' + path.name)}
+            fallback_patterns = []
+            script_name = 'srs-regex-' + hashlib.sha256(path.stem.encode()).hexdigest()[:16]
+            def handle_regex(pattern):
+                try:
+                    script_source([pattern])
+                except (RegexUnsupported, re.error) as error:
+                    raise Unsupported(str(error)) from error
+                fallback_patterns.append(pattern)
+                return script_name
             try:
-                lines, domains = convert(json.loads(decoded.read_text(encoding='utf-8')))
+                lines, domains = convert(json.loads(decoded.read_text(encoding='utf-8')), handle_regex)
             except Unsupported as error:
                 entry.update(status='unsupported', reason=str(error))
                 return path.stem, entry
             rulepath = 'ruleset/' + path.stem + '.list'
             write_lines(root / 'publish' / rulepath, lines)
             entry.update(status='complete', rules=len(lines), ruleset=rulepath)
+            if fallback_patterns:
+                scriptpath = 'scripts/' + script_name + '.js'
+                write_lines(root / 'publish' / scriptpath, [script_source(fallback_patterns).rstrip()])
+                entry.update(script=scriptpath, script_name=script_name,
+                             requires_module='regex-support.sgmodule', regex_patterns=sorted(set(fallback_patterns)))
             if domains is not None:
                 domainpath = 'domainset/' + path.stem + '.txt'
                 write_lines(root / 'publish' / domainpath, domains)
@@ -166,6 +188,16 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
         complete = len(entries) - len(unsupported)
         if not complete or (strict and unsupported):
             raise Unsupported(f'{len(unsupported)} unsupported categories; publication blocked: ' + json.dumps(unsupported, ensure_ascii=False))
+        module = ['#!name=Sing Geosite Regex Support',
+                  '#!desc=Registers hostname regex matchers used by SRS RULE-SETs. Enable scripting. No routing, DNS, or MITM settings.',
+                  '', '[Script]']
+        registered = set()
+        for entry in entries.values():
+            if entry.get('script_name') and entry['script_name'] not in registered:
+                registered.add(entry['script_name'])
+                module.append(entry['script_name'] + ' = type=rule,script-path=' + base_url + '/' + entry['script'] + ',script-update-interval=86400,engine=jsc')
+        if registered:
+            write_lines(root / 'publish' / 'regex-support.sgmodule', module)
         manifest = {'upstream': 'https://github.com/SagerNet/sing-geosite/tree/rule-set',
                     'upstream_revision': revision, 'decoder': version,
                     'complete': complete, 'unsupported': len(unsupported), 'categories': entries}
@@ -173,12 +205,13 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
         (publish / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
         report = ['# Conversion report', '', f'Upstream commit: {revision}', '',
                   f'Complete: {complete}; unsupported (not published): {len(unsupported)}.', '',
-                  'See manifest.json for category paths and reasons. Unsupported categories have no subscription file.', '']
-        report.extend(['## Available subscriptions', '', '| Category | RULE-SET | DOMAIN-SET |', '| --- | --- | --- |'])
+                  'See manifest.json for category paths and reasons. Unsupported categories have no subscription file.', '',
+                  '**For categories marked SCRIPT: install and enable [Regex Support](regex-support.sgmodule) and enable Surge scripting before using their RULE-SETs. Without the module these categories are incomplete.**' if registered else 'All published categories use native rules.', '']
+        report.extend(['## Available subscriptions', '', '| Category | RULE-SET | DOMAIN-SET | Requires module |', '| --- | --- | --- | --- |'])
         for name, entry in entries.items():
             if entry['status'] == 'complete':
                 domain_link = f"[Download]({entry['domainset']})" if 'domainset' in entry else '—'
-                report.append(f"| {name} | [Download]({entry['ruleset']}) | {domain_link} |")
+                report.append(f"| {name} | [Download]({entry['ruleset']}) | {domain_link} | {'SCRIPT' if entry.get('script') else 'No'} |")
         report.append('')
         for name, reason in unsupported.items():
             report.extend([f'## {name}', '', '```text', reason, '```', ''])
@@ -231,7 +264,7 @@ def main():
                         time.sleep(2)
                 extra_files[path] = url
             build(args.source, args.output, args.sing_box, include, args.workers, args.revision,
-                  args.strict or config.get('strict', False), extra_files, config.get('aliases'))
+                  args.strict or config.get('strict', False), extra_files, config.get('aliases'), config.get('publish_base_url', 'https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules'))
     except (ValueError, OSError, subprocess.SubprocessError) as error:
         parser.exit(1, f'Build failed (no publication): {error}\n')
 

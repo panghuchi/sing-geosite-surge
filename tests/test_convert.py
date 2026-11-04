@@ -1,6 +1,8 @@
 import importlib.util
 from pathlib import Path
 import tempfile
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import unittest
 
 spec = importlib.util.spec_from_file_location('convert', Path(__file__).resolve().parents[1] / 'scripts/convert.py')
