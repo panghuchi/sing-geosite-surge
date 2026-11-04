@@ -10,7 +10,9 @@
 .st.dl.pinyuncloud.com
 .steamchina.com
 .steampowered.com.8686c.com
+.steamserver.net
 .steamstatic.com.8686c.com
+.steamusercontent.com
 .wmsjsteam.com
 alibaba.cdn.steampipe.steamcontent.com
 lv.queniujq.cn

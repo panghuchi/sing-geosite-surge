@@ -21,6 +21,7 @@ DOMAIN,api-edge.apps.apple.com
 DOMAIN,app-site-association.cdn-apple.com
 DOMAIN,appldnld.apple.com
 DOMAIN,appldnld.g.aaplimg.com
+DOMAIN,apple-tv-plus-press.apple.com
 DOMAIN,apple.com.akadns.net
 DOMAIN,appleid.cdn-apple.com
 DOMAIN,appleworldwidedeveloper.hb-api.omtrdc.net
@@ -108,6 +109,8 @@ DOMAIN,gspe85-cn-ssl.ls.apple.com
 DOMAIN,guzzoni-apple-com.v.aaplimg.com
 DOMAIN,guzzoni.apple.com
 DOMAIN,guzzoni.smoot.apple.com
+DOMAIN,hls-amt.itunes.apple.com
+DOMAIN,hls.itunes.apple.com
 DOMAIN,images.apple.com.edgekey.net.globalredir.akadns.net
 DOMAIN,inappcheck-cn.itunes-apple.com.akadns.net
 DOMAIN,inappcheck-lb.itunes-apple.com.akadns.net
@@ -139,6 +142,7 @@ DOMAIN,is4-ssl.mzstatic.com
 DOMAIN,is4.mzstatic.com
 DOMAIN,is5-ssl.mzstatic.com
 DOMAIN,is5.mzstatic.com
+DOMAIN,itunes-apple.com.akadns.net
 DOMAIN,itunes.apple.com
 DOMAIN,itunesconnect.apple.com
 DOMAIN,js-cdn.music.apple.com
@@ -226,11 +230,13 @@ DOMAIN,tf-feedback.itunes.apple.com
 DOMAIN,tj-pod1-smp-device.apple.com
 DOMAIN,tj-pod2-smp-device.apple.com
 DOMAIN,tj-pod3-smp-device.apple.com
+DOMAIN,tv.applemusic.com
 DOMAIN,universal-activity-service.itunes.apple.com
 DOMAIN,updates-http.cdn-apple.com
 DOMAIN,updates-http.cdn-apple.com.akadns.net
 DOMAIN,updates.cdn-apple.com
 DOMAIN,upp.itunes.apple.com
+DOMAIN,uts-api.itunes.apple.com
 DOMAIN,valid.apple.com
 DOMAIN,valid.origin-apple.com.akadns.net
 DOMAIN,weather-data.apple.com
@@ -313,6 +319,7 @@ DOMAIN-SUFFIX,appl-e.com
 DOMAIN-SUFFIX,appl.com
 DOMAIN-SUFFIX,appl4e.com
 DOMAIN-SUFFIX,appla.com
+DOMAIN-SUFFIX,apple
 DOMAIN-SUFFIX,apple-appstore.cn
 DOMAIN-SUFFIX,apple-cloudkit.com
 DOMAIN-SUFFIX,apple-darwin.com

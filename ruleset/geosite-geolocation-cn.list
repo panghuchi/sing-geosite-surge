@@ -205,6 +205,7 @@ DOMAIN,g0.gstatic.com
 DOMAIN,g1.gstatic.com
 DOMAIN,g2.gstatic.com
 DOMAIN,g3.gstatic.com
+DOMAIN,geetest.datasink.sensorsdata.cn
 DOMAIN,gog.qtlglb.com
 DOMAIN,gonglchuangl.net
 DOMAIN,gongyichuangyi.net
@@ -255,6 +256,8 @@ DOMAIN,guzzoni-apple-com.v.aaplimg.com
 DOMAIN,guzzoni.apple.com
 DOMAIN,guzzoni.smoot.apple.com
 DOMAIN,hap.10010.com
+DOMAIN,hellofontpreview.oss-cn-beijing.aliyuncs.com
+DOMAIN,hellowebfonts.oss-cn-beijing.aliyuncs.com
 DOMAIN,hospital.pku.edu.cn
 DOMAIN,hs.wosms.cn
 DOMAIN,i.pki.goog
@@ -1460,6 +1463,7 @@ DOMAIN-SUFFIX,ankerwork.cn
 DOMAIN-SUFFIX,anlaiye.com
 DOMAIN-SUFFIX,anlaiye.com.cn
 DOMAIN-SUFFIX,anmo.com
+DOMAIN-SUFFIX,anquan
 DOMAIN-SUFFIX,anquan.org
 DOMAIN-SUFFIX,anquanke.com
 DOMAIN-SUFFIX,anruan.com
@@ -1684,6 +1688,7 @@ DOMAIN-SUFFIX,baichuan-ai.com
 DOMAIN-SUFFIX,baichuan-sdk.alicdn.com
 DOMAIN-SUFFIX,baicizhan.com
 DOMAIN-SUFFIX,baicizhan.org
+DOMAIN-SUFFIX,baidu
 DOMAIN-SUFFIX,baidu-cdn.cn
 DOMAIN-SUFFIX,baidu-cdn.com
 DOMAIN-SUFFIX,baidu-cdn.net
@@ -7166,6 +7171,7 @@ DOMAIN-SUFFIX,shopoppo.cn
 DOMAIN-SUFFIX,shopoppo.com.cn
 DOMAIN-SUFFIX,shoppingads.cn
 DOMAIN-SUFFIX,shopss.com
+DOMAIN-SUFFIX,shouji
 DOMAIN-SUFFIX,shoujihuifu.com
 DOMAIN-SUFFIX,shouqianba.com
 DOMAIN-SUFFIX,shoutanjjj.com
@@ -7279,6 +7285,7 @@ DOMAIN-SUFFIX,sogou.net
 DOMAIN-SUFFIX,sogoucdn.com
 DOMAIN-SUFFIX,sogoucdndl.com
 DOMAIN-SUFFIX,sogouimecdn.com
+DOMAIN-SUFFIX,sohu
 DOMAIN-SUFFIX,sohu.com
 DOMAIN-SUFFIX,sohucs.com
 DOMAIN-SUFFIX,sojson.com
@@ -8735,6 +8742,7 @@ DOMAIN-SUFFIX,xiguashipin.cn
 DOMAIN-SUFFIX,xiguashipin.net
 DOMAIN-SUFFIX,xiguavideo.cn
 DOMAIN-SUFFIX,xiguavideo.net
+DOMAIN-SUFFIX,xihuan
 DOMAIN-SUFFIX,xilu.com
 DOMAIN-SUFFIX,ximalaya.com
 DOMAIN-SUFFIX,xin.xin
@@ -9061,6 +9069,7 @@ DOMAIN-SUFFIX,yufuid.com.cn
 DOMAIN-SUFFIX,yufuid.net
 DOMAIN-SUFFIX,yuketang.cn
 DOMAIN-SUFFIX,yumchina.com
+DOMAIN-SUFFIX,yun
 DOMAIN-SUFFIX,yun.139.com
 DOMAIN-SUFFIX,yunaq.com
 DOMAIN-SUFFIX,yunba.io
