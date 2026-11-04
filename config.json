@@ -1,3 +1,38 @@
 {
-  "categories": []
+  "categories": [
+    "geolocation-!cn",
+    "category-ai-!cn",
+    "geolocation-cn",
+    "reddit",
+    "microsoft",
+    "apple",
+    "microsoft@cn",
+    "apple@cn",
+    "telegram",
+    "netflix",
+    "hbo",
+    "disney",
+    "cn",
+    "paypal",
+    "paypal@cn",
+    "google",
+    "youtube",
+    "github",
+    "steam",
+    "steam@cn"
+  ],
+  "extra_sources": [
+    {
+      "tag": "geoip-telegram",
+      "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/srs/telegram.srs"
+    },
+    {
+      "tag": "geoip-cn",
+      "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
+    }
+  ],
+  "aliases": {
+    "geosite-ai-!cn": "geosite-category-ai-!cn"
+  },
+  "strict": false
 }

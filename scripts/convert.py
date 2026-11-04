@@ -3,12 +3,16 @@
 import argparse
 from concurrent.futures import ThreadPoolExecutor
 import hashlib
+import ipaddress
 import json
 from pathlib import Path
 import re
 import shutil
 import subprocess
 import tempfile
+import time
+from urllib.request import urlopen
+from urllib.parse import urlparse
 
 
 class Unsupported(ValueError):
@@ -45,11 +49,21 @@ def convert(document):
     for rule in rules:
         if not isinstance(rule, dict):
             raise Unsupported('invalid rule object')
-        unknown = set(rule) - {'type', 'invert', 'domain', 'domain_suffix', 'domain_keyword', 'domain_regex'}
+        unknown = set(rule) - {'type', 'invert', 'domain', 'domain_suffix', 'domain_keyword', 'domain_regex', 'ip_cidr'}
         if unknown or rule.get('type', 'default') != 'default' or rule.get('invert', False) is not False:
             raise Unsupported('unsupported conditions: ' + repr(rule))
-        if not any(rule.get(k) for k in ('domain', 'domain_suffix', 'domain_keyword', 'domain_regex')):
+        if not any(rule.get(k) for k in ('domain', 'domain_suffix', 'domain_keyword', 'domain_regex', 'ip_cidr')):
             raise Unsupported('empty rule would match all traffic')
+        if rule.get('ip_cidr'):
+            if any(rule.get(k) for k in ('domain', 'domain_suffix', 'domain_keyword', 'domain_regex')):
+                raise Unsupported('mixed IP/domain conditions need explicit logical conversion')
+            for cidr in values(rule['ip_cidr']):
+                try:
+                    network = ipaddress.ip_network(cidr, strict=False)
+                except (ValueError, TypeError) as error:
+                    raise Unsupported('invalid IP prefix: ' + repr(cidr)) from error
+                kind = 'IP-CIDR' if network.version == 4 else 'IP-CIDR6'
+                lines.add(f'{kind},{network},no-resolve')
         for key in ('domain', 'domain_suffix', 'domain_keyword', 'domain_regex'):
             for value in values(rule.get(key, [])):
                 if key == 'domain':
@@ -94,7 +108,7 @@ def write_lines(path, lines):
     path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
 
-def build(source, output, binary, include=None, workers=4, revision='local', strict=False):
+def build(source, output, binary, include=None, workers=4, revision='local', strict=False, extra_files=None, aliases=None):
     source, output = Path(source).resolve(), Path(output).resolve()
     if output == source or output in source.parents or source in output.parents:
         raise ValueError('source and output must not contain each other')
@@ -107,6 +121,9 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
         if missing:
             raise ValueError('missing categories: ' + ', '.join(sorted(missing)))
         files = [p for p in files if p.name in requested]
+    files.extend(Path(p) for p in (extra_files or {}))
+    if len({p.stem for p in files}) != len(files):
+        raise ValueError('duplicate source names')
     if not files:
         raise ValueError('no SRS files found')
     version = subprocess.run([binary, 'version'], check=True, capture_output=True, text=True).stdout.splitlines()[0]
@@ -116,7 +133,8 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
             decoded = root / (path.stem + '.json')
             subprocess.run([binary, 'rule-set', 'decompile', str(path), '-o', str(decoded)],
                            check=True, capture_output=True, text=True, timeout=120)
-            entry = {'source_sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
+            entry = {'source_sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
+                     'source_url': (extra_files or {}).get(path, 'https://raw.githubusercontent.com/SagerNet/sing-geosite/' + revision + '/' + path.name)}
             try:
                 lines, domains = convert(json.loads(decoded.read_text(encoding='utf-8')))
             except Unsupported as error:
@@ -132,6 +150,18 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
             return path.stem, entry
         with ThreadPoolExecutor(max_workers=workers) as pool:
             entries = dict(pool.map(one, files))
+        for alias, original in (aliases or {}).items():
+            if not re.fullmatch(r'geosite-[a-z0-9@!_-]+', alias) or original not in entries or alias in entries:
+                raise ValueError('invalid category alias: ' + alias)
+            entry = dict(entries[original], alias_of=original)
+            if entry['status'] == 'complete':
+                for key in ('ruleset', 'domainset'):
+                    if key in entry:
+                        old = entry[key]
+                        new = old.replace(original, alias)
+                        shutil.copyfile(root / 'publish' / old, root / 'publish' / new)
+                        entry[key] = new
+            entries[alias] = entry
         unsupported = {k: v['reason'] for k, v in entries.items() if v['status'] == 'unsupported'}
         complete = len(entries) - len(unsupported)
         if not complete or (strict and unsupported):
@@ -144,6 +174,12 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
         report = ['# Conversion report', '', f'Upstream commit: {revision}', '',
                   f'Complete: {complete}; unsupported (not published): {len(unsupported)}.', '',
                   'See manifest.json for category paths and reasons. Unsupported categories have no subscription file.', '']
+        report.extend(['## Available subscriptions', '', '| Category | RULE-SET | DOMAIN-SET |', '| --- | --- | --- |'])
+        for name, entry in entries.items():
+            if entry['status'] == 'complete':
+                domain_link = f"[Download]({entry['domainset']})" if 'domainset' in entry else '—'
+                report.append(f"| {name} | [Download]({entry['ruleset']}) | {domain_link} |")
+        report.append('')
         for name, reason in unsupported.items():
             report.extend([f'## {name}', '', '```text', reason, '```', ''])
         (publish / 'README.md').write_text('\n'.join(report), encoding='utf-8')
@@ -169,11 +205,33 @@ def main():
         if sum(bool(x) for x in (args.include, args.config, args.all)) != 1:
             raise ValueError('choose exactly one of --include, --config, or --all')
         include = args.include
+        config = {}
         if args.config:
-            include = json.loads(Path(args.config).read_text(encoding='utf-8')).get('categories')
+            config = json.loads(Path(args.config).read_text(encoding='utf-8'))
+            include = config.get('categories')
             if not isinstance(include, list) or not include or not all(isinstance(x, str) and x for x in include):
                 raise ValueError('categories is empty or invalid; configure the requested scope first')
-        build(args.source, args.output, args.sing_box, include, args.workers, args.revision, args.strict)
+        with tempfile.TemporaryDirectory(prefix='surge-extra-') as temp:
+            extra_files = {}
+            for entry in config.get('extra_sources', []):
+                tag, url = entry['tag'], entry['url']
+                if not re.fullmatch(r'geoip-[a-z0-9_-]+', tag) or urlparse(url).scheme != 'https':
+                    raise ValueError('invalid extra source')
+                path = Path(temp) / (tag + '.srs')
+                if path in extra_files:
+                    raise ValueError('duplicate extra source: ' + tag)
+                for attempt in range(3):
+                    try:
+                        with urlopen(url, timeout=60) as response:
+                            path.write_bytes(response.read())
+                        break
+                    except OSError:
+                        if attempt == 2:
+                            raise
+                        time.sleep(2)
+                extra_files[path] = url
+            build(args.source, args.output, args.sing_box, include, args.workers, args.revision,
+                  args.strict or config.get('strict', False), extra_files, config.get('aliases'))
     except (ValueError, OSError, subprocess.SubprocessError) as error:
         parser.exit(1, f'Build failed (no publication): {error}\n')
 

@@ -12,7 +12,7 @@
 }
 ```
 
-目前清单留空，等待确定范围；空清单时 GitHub 工作流会跳过构建和发布，本地命令会明确报错，不会自动转换全仓库。分类可使用 `telegram`、`geosite-telegram` 或 `geosite-telegram.srs`。缺失分类会让构建失败。
+当前清单已按提供的 sing-box 配置填入 20 个域名分类，另配置 2 个 GeoIP 来源。空清单时 GitHub 工作流会跳过构建和发布，本地命令会明确报错，不会自动转换全仓库。分类可使用 `telegram`、`geosite-telegram` 或 `geosite-telegram.srs`。缺失分类会让构建失败。
 
 ## GitHub 启用
 
@@ -23,7 +23,7 @@
 
 每天北京时间 **07:23**（UTC 23:23）执行，也支持手动执行和修改配置后触发。GitHub 调度可能延迟，不保证准点。使用仓库自带 `GITHUB_TOKEN`，无需个人令牌；若组织策略限制写入，需允许工作流写入仓库。
 
-工作流采用严格模式：选中分类中任何一个不能完整转换，整次更新停止，保留上一版。下载、解码、解析失败同样不会发布。请检查 Actions 失败日志。
+当前配置 `strict: false`：完整分类正常发布，不支持的整个分类会在报告中列出，不发布残缺文件。设为 `true` 则任一分类不支持都会阻止整次发布。下载、解码、解析失败仍阻止整次发布并保留上一版。请检查 Actions 日志及 rules 分支的转换报告。
 
 ## 输出与订阅
 
@@ -51,7 +51,7 @@ DOMAIN-SET,https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules/
 
 ## 转换语义与限制
 
-支持精确域名、域名后缀和关键词。sing-box 前导点后缀只匹配子域名，不含根域名，因此转换为 `DOMAIN-WILDCARD,*.example.com`；若也有精确根域名，则合并为 `DOMAIN-SUFFIX`。DOMAIN-SET 只有在能完整表示分类时生成，不会删掉其他规则凑成域名集。请使用支持 DOMAIN-WILDCARD 的 Surge 版本。
+支持精确域名、域名后缀、关键词，以及纯 IP 规则集中的 IPv4/IPv6 CIDR。IP 规则输出 `IP-CIDR` / `IP-CIDR6` 并添加 `no-resolve`，不会为未解析的域名触发 DNS 查询。sing-box 前导点后缀只匹配子域名，不含根域名，因此转换为 `DOMAIN-WILDCARD,*.example.com`；若也有精确根域名，则合并为 `DOMAIN-SUFFIX`。DOMAIN-SET 只有在能完整表示分类时生成，不会删掉其他规则凑成域名集。请使用支持 DOMAIN-WILDCARD 的 Surge 版本。
 
 当前不支持域名正则、逻辑条件、取反和未知字段，遇到这些内容会拒绝整个分类。域名正则不能直接换成 URL-REGEX，两者匹配对象不同。2026-11-04 的兼容性扫描中，OpenAI、Netflix、Google、CN 等分类包含域名正则；范围确认后，可进一步评估其中正则的等价转换。第一版不承诺这些分类可用。
 
@@ -65,7 +65,7 @@ DOMAIN-SET,https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules/
 
 ```sh
 git clone --depth 1 --branch rule-set https://github.com/SagerNet/sing-geosite.git upstream
-python3 scripts/convert.py --source upstream --output dist --config config.json --strict --revision "$(git -C upstream rev-parse HEAD)"
+python3 scripts/convert.py --source upstream --output dist --config config.json --revision "$(git -C upstream rev-parse HEAD)"
 ```
 
 也可直接指定范围和二进制位置：
@@ -85,3 +85,16 @@ python3 -m unittest discover -s tests -v
 覆盖精确匹配、前导点后缀与根域名语义、关键词、去重、正则及未知条件拒绝、发布回退保护。官方工具已成功反编译实测的 1,995 个 SRS；其中 1,936 个完整转换为 RULE-SET、1,866 个同时可生成 DOMAIN-SET，59 个因正则未转换。该全量产物未保留，正式范围由配置决定。Surge 客户端加载及 GitHub Actions 远程执行仍需在相应环境验证。
 
 生成数据保留其上游授权要求，参见 [sing-geosite](https://github.com/SagerNet/sing-geosite) 及 [domain-list-community](https://github.com/v2fly/domain-list-community)。格式依据：[Surge RULE-SET](https://manual.nssurge.com/rules/ruleset.html)、[Surge DOMAIN-SET](https://manual.nssurge.com/rules/domain.html)。
+
+## 本次配置范围
+
+`config.json` 中的分类按上游文件名填写，不按 tag 猜测。例如你的 `geosite-ai-!cn` 实际来源为 `geosite-category-ai-!cn.srs`；配置保留此映射，后续可转换时同时提供原 tag 的别名文件。
+
+额外来源按你给的地址保留：
+
+- `geoip-telegram`：Loyalsoldier/geoip 的 release/srs/telegram.srs（通过你原来的 jsDelivr 地址下载）。
+- `geoip-cn`：SagerNet/sing-geoip 的 rule-set/geoip-cn.srs。
+
+本次实测 22 个源：15 个完整可转换，7 个包含域名正则，暂不发布：`geolocation-!cn`、`category-ai-!cn`、`geolocation-cn`、`netflix`、`disney`、`cn`、`google`。报告还会列出 AI 别名，因此统计条目总数为 23，其中不支持条目为 8。
+
+你的片段只包含规则集来源，没有路由优先级及各分类实际使用的策略；因此这里配置订阅范围，不推断这些分类应该直连还是代理。sing-box 中的 detour 是下载规则时使用的出站，不代表分类的路由策略。`update_interval: 10m` 也不会直接照搬：GitHub 仍每天生成，Surge 建议每天更新。

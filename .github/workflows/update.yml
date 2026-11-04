@@ -58,7 +58,7 @@ jobs:
           persist-credentials: false
       - name: Convert selected categories
         if: steps.scope.outputs.enabled == 'true'
-        run: python scripts/convert.py --source upstream --output dist --config config.json --strict --revision "$(git -C upstream rev-parse HEAD)"
+        run: python scripts/convert.py --source upstream --output dist --config config.json --revision "$(git -C upstream rev-parse HEAD)"
       - name: Attach report
         if: steps.scope.outputs.enabled == 'true'
         run: cat dist/README.md >> "$GITHUB_STEP_SUMMARY"

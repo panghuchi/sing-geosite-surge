@@ -25,6 +25,16 @@ class ConversionTests(unittest.TestCase):
         self.assertEqual(m.convert(doc(domain='example.com', domain_suffix='.example.com')),
                          (['DOMAIN-SUFFIX,example.com'], ['.example.com']))
 
+    def test_ipv4_ipv6_and_host_addresses(self):
+        lines, domains = m.convert(doc(ip_cidr=['1.2.3.4/24', '2001:db8::/32', '8.8.8.8']))
+        self.assertEqual(lines, ['IP-CIDR,1.2.3.0/24,no-resolve', 'IP-CIDR,8.8.8.8/32,no-resolve', 'IP-CIDR6,2001:db8::/32,no-resolve'])
+        self.assertIsNone(domains)
+
+    def test_invalid_ip_and_mixed_conditions_are_rejected(self):
+        for rule in ({'ip_cidr': 'invalid'}, {'ip_cidr': '10.0.0.0/8', 'domain': 'a.com'}):
+            with self.subTest(rule=rule), self.assertRaises(m.Unsupported):
+                m.convert(doc(**rule))
+
     def test_keyword_requires_ruleset(self):
         self.assertEqual(m.convert(doc(domain_keyword='google')), (['DOMAIN-KEYWORD,google'], None))
 
