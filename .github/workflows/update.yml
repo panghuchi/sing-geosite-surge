@@ -1,0 +1,82 @@
+name: Update Surge rules
+on:
+  schedule:
+    - cron: '23 23 * * *' # 北京时间每天 07:23
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['scripts/**', 'tests/**', 'config.json', '.github/workflows/update.yml']
+permissions:
+  contents: write
+concurrency:
+  group: surge-rules-update
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SING_BOX_VERSION: '1.14.4'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test converter
+        run: python -m unittest discover -s tests -v
+      - name: Check configured scope
+        id: scope
+        run: |
+          python - <<'PYTHON'
+          import json, os
+          categories = json.load(open('config.json'))['categories']
+          if not isinstance(categories, list):
+              raise ValueError('categories must be an array')
+          enabled = bool(categories)
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'enabled={str(enabled).lower()}\n')
+          if not enabled:
+              with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+                  summary.write('分类清单为空，已跳过构建和发布；请先填写 config.json。\n')
+          PYTHON
+      - name: Install official decoder
+        if: steps.scope.outputs.enabled == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p .tools
+          gh release download "v${SING_BOX_VERSION}" --repo SagerNet/sing-box --pattern "sing-box-${SING_BOX_VERSION}-linux-amd64.tar.gz" --dir .tools
+          tar -xzf ".tools/sing-box-${SING_BOX_VERSION}-linux-amd64.tar.gz" -C .tools
+          echo "$GITHUB_WORKSPACE/.tools/sing-box-${SING_BOX_VERSION}-linux-amd64" >> "$GITHUB_PATH"
+      - name: Fetch upstream snapshot
+        if: steps.scope.outputs.enabled == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: SagerNet/sing-geosite
+          ref: rule-set
+          path: upstream
+          persist-credentials: false
+      - name: Convert selected categories
+        if: steps.scope.outputs.enabled == 'true'
+        run: python scripts/convert.py --source upstream --output dist --config config.json --strict --revision "$(git -C upstream rev-parse HEAD)"
+      - name: Attach report
+        if: steps.scope.outputs.enabled == 'true'
+        run: cat dist/README.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Publish rules branch
+        if: steps.scope.outputs.enabled == 'true'
+        run: |
+          if git ls-remote --exit-code --heads origin rules; then
+            git fetch origin rules
+            git worktree add --detach ../surge-publish FETCH_HEAD
+          else
+            git worktree add --detach ../surge-publish HEAD
+            git -C ../surge-publish switch --orphan rules
+          fi
+          python scripts/publish.py --source dist --target ../surge-publish
+          git -C ../surge-publish config user.name 'github-actions[bot]'
+          git -C ../surge-publish config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C ../surge-publish add --all
+          if ! git -C ../surge-publish diff --cached --quiet; then
+            git -C ../surge-publish commit -m 'Update Surge rules and upstream check status'
+            git -C ../surge-publish push origin HEAD:rules
+          fi
