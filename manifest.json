@@ -2,8 +2,8 @@
   "upstream": "https://github.com/SagerNet/sing-geosite/tree/rule-set",
   "upstream_revision": "5f1ea8a78bb6836c4aafefe1166148cd9f686f04",
   "decoder": "sing-box version 1.14.4",
-  "complete": 15,
-  "unsupported": 8,
+  "complete": 23,
+  "unsupported": 0,
   "categories": {
     "geosite-apple": {
       "source_sha256": "f6465748701e64c03cf23be86c09a877f82dea235f059194bd89b8a4d00b98bc",
@@ -23,32 +23,74 @@
     "geosite-category-ai-!cn": {
       "source_sha256": "e1ad68e7a7c10ba700bcf780a051496ff51bdd109aec0c70d3eb0b038549bfe3",
       "source_url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/5f1ea8a78bb6836c4aafefe1166148cd9f686f04/geosite-category-ai-!cn.srs",
-      "status": "unsupported",
-      "reason": "domain_regex has no general equivalent in Surge: [\"^chatgpt-async-webps-prod-\\\\S+-\\\\d+\\\\.webpubsub\\\\.azure\\\\.com$\"]"
+      "status": "complete",
+      "rules": 214,
+      "ruleset": "ruleset/geosite-category-ai-!cn.list",
+      "script": "scripts/srs-regex-5c16223b7bda31c8.js",
+      "script_name": "srs-regex-5c16223b7bda31c8",
+      "requires_module": "regex-support.sgmodule",
+      "regex_patterns": [
+        "^chatgpt-async-webps-prod-\\S+-\\d+\\.webpubsub\\.azure\\.com$"
+      ]
     },
     "geosite-cn": {
       "source_sha256": "40dba4f3d6a019c7ee0b4889e6482bf820b24534a2a2476a086124787411e210",
       "source_url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/5f1ea8a78bb6836c4aafefe1166148cd9f686f04/geosite-cn.srs",
-      "status": "unsupported",
-      "reason": "domain_regex has no general equivalent in Surge: [\".+\\\\.awsdns-cn-[0-9][a-e0-9]\\\\.cn$\", \".+\\\\.awsdns-cn-[0-9][0-9]\\\\.(biz|com|net|top)$\", \"^r+[0-9]+(---|\\\\.)sn-(2x3|ni5|j5o)\\\\w{5}\\\\.googlevideo\\\\.com$\", \"^cdn\\\\d-epicgames-\\\\d+\\\\.file\\\\.myqcloud\\\\.com$\", \"^nis.+\\\\.10010\\\\.com$\", \"^.+-mihayo\\\\.akamaized\\\\.net$\", \"^r+[0-9]+(---|\\\\.)sn-(2x3|ni5|j5o)\\\\w{5}\\\\.xn--ngstr-lra8j\\\\.com$\", \"^epicgames-download\\\\d-\\\\d+\\\\.file\\\\.myqcloud\\\\.com$\"]"
+      "status": "complete",
+      "rules": 9402,
+      "ruleset": "ruleset/geosite-cn.list",
+      "script": "scripts/srs-regex-37d00eb58f97e30b.js",
+      "script_name": "srs-regex-37d00eb58f97e30b",
+      "requires_module": "regex-support.sgmodule",
+      "regex_patterns": [
+        "^cdn\\d-epicgames-\\d+\\.file\\.myqcloud\\.com$",
+        "^epicgames-download\\d-\\d+\\.file\\.myqcloud\\.com$",
+        "^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.googlevideo\\.com$",
+        "^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.xn--ngstr-lra8j\\.com$"
+      ]
     },
     "geosite-disney": {
       "source_sha256": "4320bb412187c690662d23ae20fad699d495acd9f9a5c205a04a3528ecdc6f71",
       "source_url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/5f1ea8a78bb6836c4aafefe1166148cd9f686f04/geosite-disney.srs",
-      "status": "unsupported",
-      "reason": "domain_regex has no general equivalent in Surge: [\"^hses[1-7]?\\\\.akamaized\\\\.net$\"]"
+      "status": "complete",
+      "rules": 224,
+      "ruleset": "ruleset/geosite-disney.list"
     },
     "geosite-geolocation-!cn": {
       "source_sha256": "508ddc83b2768d36f3ad1dd65056ef5f05ffefbb29f5ea75e2356d5a1f833810",
       "source_url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/5f1ea8a78bb6836c4aafefe1166148cd9f686f04/geosite-geolocation-!cn.srs",
-      "status": "unsupported",
-      "reason": "domain_regex has no general equivalent in Surge: [\"(^|\\\\.)mmtv[1-5]\\\\.life$\", \"(^|\\\\.)byyum([3589]|2[235689]|3[34]|4[1-9]|5[1-79]|6[0134679])?\\\\.com$\", \"(^|\\\\.)kpkuang\\\\.(bond|fun|info|one|us)$\", \"(^|\\\\.)gaogediao\\\\.(com|me|net|org)$\", \"(^|\\\\.)wyfuli[1-9]\\\\.net$\", \"(^|\\\\.)zzz[1-9][0-9]\\\\.top$\", \"(^|\\\\.)avcc1[0-9]\\\\.com$\", \"(^|\\\\.)qqbs([0-9]{2})?\\\\.vip$\", \"(^|\\\\.)uu[a-z][1-9][0-9]?\\\\.com$\", \"(^|\\\\.)[1-9]00caocao\\\\.com$\", \"(^|\\\\.)69bag[0-1][1-9]?\\\\.com$\", \"(^|\\\\.)hhmen[1-3]\\\\.xyz$\", \"^chatgpt-async-webps-prod-\\\\S+-\\\\d+\\\\.webpubsub\\\\.azure\\\\.com$\", \"(^|\\\\.)maa18[0-2][0-9]\\\\.com$\", \"(^|\\\\.)mitao[1-3]\\\\.tv$\", \"(^|\\\\.)989[a-z]?\\\\.tv$\", \"(^|\\\\.)gossipfuli[0-9]{3,4}\\\\.xyz$\", \"(^|\\\\.)91porna[1-7]?\\\\.com$\", \"(^|\\\\.)91sew1[1-6]\\\\.buzz$\", \"(^|\\\\.)xingdh([0-9]{3})?\\\\.xyz$\", \"(^|\\\\.)3[0-9]{2}\\\\.icu$\", \"(^|\\\\.)twseb([1-9][0-9]?)?\\\\.com$\", \"(^|\\\\.)tttv([1-9][0-9]?|100)\\\\.com$\", \"(^|\\\\.)banyinjia[0-9]?\\\\.com$\", \"(^|\\\\.)supxxx[0-9]{0,2}\\\\.com$\", \"(^|\\\\.)doufuru[0-9]?\\\\.cc$\", \"(^|\\\\.)91porn[fvxy]\\\\.com$\", \"(^|\\\\.)shuangmawei[0-9]{2}\\\\.buzz$\", \"(^|\\\\.)91porn[0-9]{3}\\\\.me$\", \"(^|\\\\.)llyysp[0-9]{4}\\\\.top$\", \"(^|\\\\.)guifw3[1-3]\\\\.cc$\", \"(^|\\\\.)momotk([1-9][0-9]?)?\\\\.uno$\", \"(^|\\\\.)h5ccav[1-5]\\\\.com$\", \"(^|\\\\.)jstv[0-9]{2}\\\\.com$\", \"(^|\\\\.)sycf[0-9]?\\\\.xyz$\", \"(^|\\\\.)lianren[1-7]\\\\.cc$\", \"(^|\\\\.)twav[1-9]\\\\.xyz$\", \"(^|\\\\.)syjc1[1-6]\\\\.xyz$\", \"(^|\\\\.)bhzyk[1-9]?\\\\.xyz$\", \"(^|\\\\.)avstar0[1-9]\\\\.(com|me)$\", \"(^|\\\\.)qqsp0[1-3]\\\\.com$\", \"(^|\\\\.)nnbw[0-2]\\\\.xyz$\", \"(^|\\\\.)ttghg[1-9][0-9]\\\\.xyz$\", \"(^|\\\\.)xaa[0-9]?\\\\.one$\", \"(^|\\\\.)mdyy[0-9][0-9]\\\\.cc$\", \"(^|\\\\.)bibeidh1[6-8]\\\\.cc$\", \"(^|\\\\.)[1-5]gaoap\\\\.com$\", \"(^|\\\\.)hkfg[1-7]\\\\.xyz$\", \".+\\\\.awsdns-[0-9][0-9]\\\\.(co\\\\.uk|com|net|org)$\", \"^hses[1-7]?\\\\.akamaized\\\\.net$\", \"(^|\\\\.)18j[efg]\\\\.life$\", \"(^|\\\\.)hs[1-9]{2}\\\\.vip$\", \"(^|\\\\.)yrrj[1-9]?\\\\.buzz$\", \"(^|\\\\.)[1-9]+aipai\\\\.(com|net)$\", \"(^|\\\\.)cosaa[a-z]\\\\.cyou$\", \"(^|\\\\.)8dgo[1-57-9]\\\\.com$\", \"(^|\\\\.)zayy([0-9]{0,3})?\\\\.xyz$\", \"(^|\\\\.)1[0-9]{2}\\\\.one$\", \"(^|\\\\.)shdd[0-9]{2}\\\\.buzz$\", \"(^|\\\\.)chuzs[1-9]{0,2}\\\\.buzz$\", \"(^|\\\\.)mdyy[0-1][0-9]\\\\.com$\", \"(^|\\\\.)tt[1-2][0-9]\\\\.tv$\", \"(^|\\\\.)fby[1-9]?[0-9]\\\\.icu$\", \"(^|\\\\.)yygc[0-9]?\\\\.xyz$\", \"(^|\\\\.)fiftymvapi\\\\..+$\", \"^ewcdn[0-9]+\\\\.nowe\\\\.com$\", \"(^|\\\\.)jdyy[1-9]?\\\\.me$\", \"(^|\\\\.)bilibili3(0[1-9]|1[0-2])\\\\.xyz$\", \"(^|\\\\.)jav777\\\\.(cc|tv|work)$\", \"(^|\\\\.)whtdh0[1-3]\\\\.cc$\", \"(^|\\\\.)awwcn[1-9]?\\\\.top$\", \"(^|\\\\.)[1-9]+zipai\\\\.(com|net)$\", \"(^|\\\\.)cav1(0[2-9]|1[0-9])\\\\.com$\", \"(^|\\\\.)awjd[1-9]?\\\\.tv$\", \"(^|\\\\.)91cg([1-9]|[0-9][1-9])?.com$\", \"(^|\\\\.)2024(3[0-9]|4[0-9]|6[0-9]|7[0-9])\\\\.xyz$\", \"(^|\\\\.)cgbb([1-9]|1[0-9]|20)\\\\.com$\", \"(^|\\\\.)forduck[0-1][0-9]\\\\.com$\", \"(^|\\\\.)xaxy[0-9]{2}\\\\.one$\", \"(^|\\\\.)doufuru[0-9]{2}?\\\\.xyz$\", \"(^|\\\\.)bjini[0-9]{2}\\\\.buzz$\", \"(^|\\\\.)mimi\\\\.(cfd|lol|onl|sbs|so|vc)$\", \"(^|\\\\.)aipa(111|222|333|444|555|666|777|888|999)\\\\.life$\", \"(^|\\\\.)loibus\\\\.(cc|com|link)$\", \"(^|\\\\.)sbyjs2[6-9]\\\\.buzz$\", \"(^|\\\\.)wmm33[0-5]\\\\.com$\", \"(^|\\\\.)rbyh[1-9]\\\\.buzz$\", \"(^|\\\\.)9cha[0-9]{2}\\\\.cc$\", \"(^|\\\\.)zh9[0-7]\\\\.net$\", \"(^|\\\\.)jmtt\\\\.(app|live|tv|vip)$\", \"^epicgames-download\\\\d\\\\.akamaized\\\\.net$\", \"(^|\\\\.)jb[1-9][0-9]\\\\.lol$\", \"(^|\\\\.)mimi[0-9]{3}\\\\.com$\", \"(^|\\\\.)91porn[0-9]?\\\\.store$\", \"(^|\\\\.)youyuapi\\\\..+$\", \"(^|\\\\.)fi11sm([0-9]+)?\\\\.com$\", \"(^|\\\\.)783([a-z][a-z]?)?\\\\.tv$\", \"(^|\\\\.)91wang[1-9]\\\\.com$\", \"(^|\\\\.)loibus(100|101|202|505|606)\\\\.top$\", \"(^|\\\\.)jbk0([0-1][0-9]?)?\\\\.com$\", \"(^|\\\\.)[a-z]?fulibl\\\\.(cc|com|org|net|xyz)$\", \"(^|\\\\.)[3-9]0000sao\\\\.com$\", \"(^|\\\\.)91porn\\\\.(best|com|cool|fun|group|party|plus|site|tw|work)$\", \"(^|\\\\.)madouqu[0-9]{2}\\\\.cc$\", \"(^|\\\\.)xxxyaom[0-9]{2}\\\\.buzz$\", \"(^|\\\\.)91p[0-9][0-9]?\\\\.com$\", \"(^|\\\\.)18jmttios[0-9]{2}\\\\.com$\", \"(^|\\\\.)yiren[1-9][0-9]\\\\.com$\", \"(^|\\\\.)spankwire[1-9]\\\\.com$\", \"(^|\\\\.)ssphb[0-9]{2}\\\\.xyz$\", \"(^|\\\\.)apiproxy-website-nlb-prod-.+\\\\.amazonaws\\\\.com$\", \"(^|\\\\.)dualstack\\\\.ichnaea-web-.+\\\\.amazonaws\\\\.com$\", \"(^|\\\\.)13mei[5-7]\\\\.buzz$\", \"(^|\\\\.)kdfl[0-9]{2}\\\\.xyz$\", \"(^|\\\\.)sg11[3-9]\\\\.me$\", \"(^|\\\\.)tianbiav([1-9]|1[0-6])?\\\\.com$\", \"(^|\\\\.)fby[1-9]?[0-9]\\\\.one$\", \"(^|\\\\.)aisejushi(2|3|5|6)\\\\.com$\", \"(^|\\\\.)luchuxue([0-9]{0,5})\\\\.buzz$\", \"(^|\\\\.)smgsp[0-2]?\\\\.buzz$\", \"(^|\\\\.)xlywz[1-9]?\\\\.cc$\", \"(^|\\\\.)douyintt[0-9]\\\\.me$\", \"(^|\\\\.)99pp[1-9][0-9]\\\\.com$\", \"(^|\\\\.)zy[0-9]{4}\\\\.top$\", \"(^|\\\\.)[a-z][1-9][0-9][a-z]\\\\.com$\", \"(^|\\\\.)putaozy([1-9][0-9]?)?\\\\.com$\", \"(^|\\\\.)kimoav([1-9][0-9]?)?\\\\.com$\", \"(^|\\\\.)18tv[1-5]\\\\.com$\", \"(^|\\\\.)zztt[1-6][0-9]\\\\.com$\", \"(^|\\\\.)mmwz\\\\.(fun|in|la|me|one|pro|pw|run|tv|ws)$\", \"(^|\\\\.)byy[0-9][0-9]?\\\\.icu$\", \"(^|\\\\.)7mm0([0-1][0-9]?)?\\\\.com$\", \"(^|\\\\.)ksyp0[1-9]\\\\.com$\", \"javdb\\\\d+\\\\.com$\", \"(^|\\\\.)rule34\\\\.(asia|us|world|xxx|xyz)$\", \".+\\\\.dkr\\\\.ecr\\\\.[^\\\\.]+\\\\.amazonaws\\\\.com$\", \"(^|\\\\.)xv[0-9]{4}\\\\.top$\", \"(^|\\\\.)xomfsp[1-9]?\\\\.buzz$\", \"(^|\\\\.)apiproxy-device-prod-nlb-.+\\\\.amazonaws\\\\.com$\", \"(^|\\\\.)rbp[1-9][0-9]\\\\.com$\", \"(^|\\\\.)sao[1-6]0000\\\\.com$\", \"(^|\\\\.)tqav[1-9][0-9]\\\\.com$\", \"(^|\\\\.)xgyy([0-9]{2})?\\\\.vip$\", \"^[0-9]+vod-adaptive\\\\.akamaized\\\\.net$\", \"(^|\\\\.)aqdk[0-9]{3}\\\\.com$\", \"(^|\\\\.)jiuse[0-9]{1,3}\\\\.com$\", \"(^|\\\\.)3[0-9]{2}\\\\.one$\", \"(^|\\\\.)flsq[0-9]{2}\\\\.com$\", \"(^|\\\\.)aiwei[1-9]{2}\\\\.buzz$\", \"(^|\\\\.)dualstack\\\\.apiproxy-.+\\\\.amazonaws\\\\.com$\", \"(^|\\\\.)xg[0-9]{2}\\\\.vip$\"]"
+      "status": "complete",
+      "rules": 24488,
+      "ruleset": "ruleset/geosite-geolocation-!cn.list",
+      "script": "scripts/srs-regex-e8071294e76010b8.js",
+      "script_name": "srs-regex-e8071294e76010b8",
+      "requires_module": "regex-support.sgmodule",
+      "regex_patterns": [
+        "(^|\\.)[1-9]+aipai\\.(com|net)$",
+        "(^|\\.)[1-9]+zipai\\.(com|net)$",
+        "(^|\\.)fi11sm([0-9]+)?\\.com$",
+        ".+\\.dkr\\.ecr\\.[^\\.]+\\.amazonaws\\.com$",
+        "^[0-9]+vod-adaptive\\.akamaized\\.net$",
+        "^chatgpt-async-webps-prod-\\S+-\\d+\\.webpubsub\\.azure\\.com$",
+        "^ewcdn[0-9]+\\.nowe\\.com$",
+        "javdb\\d+\\.com$"
+      ]
     },
     "geosite-geolocation-cn": {
       "source_sha256": "bdd8c14377cc69a3d969bf9583b047fa1b0b3a7ffe1c317aefbb2fbb074d1938",
       "source_url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/5f1ea8a78bb6836c4aafefe1166148cd9f686f04/geosite-geolocation-cn.srs",
-      "status": "unsupported",
-      "reason": "domain_regex has no general equivalent in Surge: [\".+\\\\.awsdns-cn-[0-9][a-e0-9]\\\\.cn$\", \".+\\\\.awsdns-cn-[0-9][0-9]\\\\.(biz|com|net|top)$\", \"^r+[0-9]+(---|\\\\.)sn-(2x3|ni5|j5o)\\\\w{5}\\\\.googlevideo\\\\.com$\", \"^cdn\\\\d-epicgames-\\\\d+\\\\.file\\\\.myqcloud\\\\.com$\", \"^nis.+\\\\.10010\\\\.com$\", \"^.+-mihayo\\\\.akamaized\\\\.net$\", \"^r+[0-9]+(---|\\\\.)sn-(2x3|ni5|j5o)\\\\w{5}\\\\.xn--ngstr-lra8j\\\\.com$\", \"^epicgames-download\\\\d-\\\\d+\\\\.file\\\\.myqcloud\\\\.com$\"]"
+      "status": "complete",
+      "rules": 9401,
+      "ruleset": "ruleset/geosite-geolocation-cn.list",
+      "script": "scripts/srs-regex-7bdbc02ad7a4e3a2.js",
+      "script_name": "srs-regex-7bdbc02ad7a4e3a2",
+      "requires_module": "regex-support.sgmodule",
+      "regex_patterns": [
+        "^cdn\\d-epicgames-\\d+\\.file\\.myqcloud\\.com$",
+        "^epicgames-download\\d-\\d+\\.file\\.myqcloud\\.com$",
+        "^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.googlevideo\\.com$",
+        "^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.xn--ngstr-lra8j\\.com$"
+      ]
     },
     "geosite-github": {
       "source_sha256": "f727731c48cc98f6056de4a39c6a925ba6bb4d5baef66f8efb4392a20ba1c55a",
@@ -61,8 +103,16 @@
     "geosite-google": {
       "source_sha256": "992d7ba91ce9c6e1c248d9ef0d58b2a17281415526b6a560dce6368e4f72e1f2",
       "source_url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/5f1ea8a78bb6836c4aafefe1166148cd9f686f04/geosite-google.srs",
-      "status": "unsupported",
-      "reason": "domain_regex has no general equivalent in Surge: [\"^r+[0-9]+(---|\\\\.)sn-(2x3|ni5|j5o)\\\\w{5}\\\\.googlevideo\\\\.com$\", \"^r+[0-9]+(---|\\\\.)sn-(2x3|ni5|j5o)\\\\w{5}\\\\.xn--ngstr-lra8j\\\\.com$\"]"
+      "status": "complete",
+      "rules": 939,
+      "ruleset": "ruleset/geosite-google.list",
+      "script": "scripts/srs-regex-c655c4ba98a68fbf.js",
+      "script_name": "srs-regex-c655c4ba98a68fbf",
+      "requires_module": "regex-support.sgmodule",
+      "regex_patterns": [
+        "^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.googlevideo\\.com$",
+        "^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.xn--ngstr-lra8j\\.com$"
+      ]
     },
     "geosite-hbo": {
       "source_sha256": "116101423791d014f6c2640d146043723ed60daec94874f1e4f26273116bc86c",
@@ -89,8 +139,9 @@
     "geosite-netflix": {
       "source_sha256": "ee8d29d6231e70ad809923494b206012bfbb8ffa0befa828dbb99ea1eb725995",
       "source_url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/5f1ea8a78bb6836c4aafefe1166148cd9f686f04/geosite-netflix.srs",
-      "status": "unsupported",
-      "reason": "domain_regex has no general equivalent in Surge: [\"(^|\\\\.)apiproxy-device-prod-nlb-.+\\\\.amazonaws\\\\.com$\", \"(^|\\\\.)apiproxy-website-nlb-prod-.+\\\\.amazonaws\\\\.com$\", \"(^|\\\\.)dualstack\\\\.apiproxy-.+\\\\.amazonaws\\\\.com$\", \"(^|\\\\.)dualstack\\\\.ichnaea-web-.+\\\\.amazonaws\\\\.com$\"]"
+      "status": "complete",
+      "rules": 32,
+      "ruleset": "ruleset/geosite-netflix.list"
     },
     "geosite-paypal": {
       "source_sha256": "9bf0331b219c6209a226edc95d44862f2ad96c2ebe21e2a4a45d110422e371e1",
@@ -164,8 +215,15 @@
     "geosite-ai-!cn": {
       "source_sha256": "e1ad68e7a7c10ba700bcf780a051496ff51bdd109aec0c70d3eb0b038549bfe3",
       "source_url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/5f1ea8a78bb6836c4aafefe1166148cd9f686f04/geosite-category-ai-!cn.srs",
-      "status": "unsupported",
-      "reason": "domain_regex has no general equivalent in Surge: [\"^chatgpt-async-webps-prod-\\\\S+-\\\\d+\\\\.webpubsub\\\\.azure\\\\.com$\"]",
+      "status": "complete",
+      "rules": 214,
+      "ruleset": "ruleset/geosite-ai-!cn.list",
+      "script": "scripts/srs-regex-5c16223b7bda31c8.js",
+      "script_name": "srs-regex-5c16223b7bda31c8",
+      "requires_module": "regex-support.sgmodule",
+      "regex_patterns": [
+        "^chatgpt-async-webps-prod-\\S+-\\d+\\.webpubsub\\.azure\\.com$"
+      ],
       "alias_of": "geosite-category-ai-!cn"
     }
   }
