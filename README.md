@@ -105,7 +105,7 @@ config.json
 {
   "id": "telegram-ip",
   "format": "sing-box-srs",
-  "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/srs/telegram.srs",
+  "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/srs/telegram.srs",
   "targets": {"geoip-telegram": "telegram"}
 }
 ```
