@@ -1,6 +1,6 @@
 {
   "upstream": "config.json",
-  "upstream_revision": "f9b2510f18b143abd56b552f445c002283a9f7ffa944b5137e203377d511a9d3",
+  "upstream_revision": "cebd14da4429447d966e4c1a4509a5c761179dcc2fa678e08bcf5c981ce6c69b",
   "decoder": "sing-box version 1.14.4",
   "complete": 23,
   "unsupported": 0,
@@ -109,7 +109,7 @@
       "url_template": null,
       "files": {
         "telegram": {
-          "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/srs/telegram.srs",
+          "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/srs/telegram.srs",
           "sha256": "124b6decbcd871517927c15857b26c6898fe614cb2ef5e711d83835e9c700c2b"
         }
       },
@@ -302,7 +302,7 @@
           "category": "telegram",
           "entries": 12,
           "added_entries": 12,
-          "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/srs/telegram.srs",
+          "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/srs/telegram.srs",
           "sha256": "124b6decbcd871517927c15857b26c6898fe614cb2ef5e711d83835e9c700c2b"
         }
       ],
