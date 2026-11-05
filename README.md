@@ -1,6 +1,6 @@
 # Conversion report
 
-Upstream commit: 91a34585bbd5e7025ee0eecaceb770616fac3c00
+Source fingerprint: f9b2510f18b143abd56b552f445c002283a9f7ffa944b5137e203377d511a9d3
 
 Complete: 23; unsupported (not published): 0.
 
@@ -17,6 +17,8 @@ See manifest.json for category paths and reasons. Unsupported categories have no
 | geosite-category-ai-!cn | [Download](ruleset/geosite-category-ai-!cn.list) | — | SCRIPT |
 | geosite-cn | [Download](ruleset/geosite-cn.list) | — | SCRIPT |
 | geosite-disney | [Download](ruleset/geosite-disney.list) | — | No |
+| geoip-cn | [Download](ruleset/geoip-cn.list) | — | No |
+| geoip-telegram | [Download](ruleset/geoip-telegram.list) | — | No |
 | geosite-geolocation-!cn | [Download](ruleset/geosite-geolocation-!cn.list) | — | SCRIPT |
 | geosite-geolocation-cn | [Download](ruleset/geosite-geolocation-cn.list) | — | SCRIPT |
 | geosite-github | [Download](ruleset/geosite-github.list) | [Download](domainset/geosite-github.txt) | No |
@@ -32,13 +34,11 @@ See manifest.json for category paths and reasons. Unsupported categories have no
 | geosite-steam@cn | [Download](ruleset/geosite-steam@cn.list) | [Download](domainset/geosite-steam@cn.txt) | No |
 | geosite-telegram | [Download](ruleset/geosite-telegram.list) | [Download](domainset/geosite-telegram.txt) | No |
 | geosite-youtube | [Download](ruleset/geosite-youtube.list) | — | No |
-| geoip-telegram | [Download](ruleset/geoip-telegram.list) | — | No |
-| geoip-cn | [Download](ruleset/geoip-cn.list) | — | No |
 | geosite-ai-!cn | [Download](ruleset/geosite-ai-!cn.list) | — | SCRIPT |
 
 ## Source contributions
 
-Counts are deduplicated domain atoms, not guaranteed newly covered hostnames. Source order: SagerNet, then configured supplements.
+Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sources are processed in configuration order.
 
 | Category | Source | Entries | Added entries |
 | --- | --- | --- | --- |
@@ -57,6 +57,8 @@ Counts are deduplicated domain atoms, not guaranteed newly covered hostnames. So
 | geosite-disney | sagernet | 223 | 223 |
 | geosite-disney | loyalsoldier | 225 | 2 |
 | geosite-disney | metacubex | 225 | 0 |
+| geoip-cn | geoip-cn | 8113 | 8113 |
+| geoip-telegram | geoip-telegram | 12 | 12 |
 | geosite-geolocation-!cn | sagernet | 24080 | 24080 |
 | geosite-geolocation-!cn | loyalsoldier | 27492 | 3793 |
 | geosite-geolocation-!cn | metacubex | 27444 | 3 |
