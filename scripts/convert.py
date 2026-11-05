@@ -13,6 +13,7 @@ import tempfile
 from regex_tools import native_rules, script_source, RegexUnsupported
 from sources import load_sources
 from merging import merge_category
+from aggregation import project_sources
 
 
 class Unsupported(ValueError):
@@ -23,8 +24,8 @@ def values(value):
     return value if isinstance(value, list) else [value]
 
 
-def safe_value(value):
-    if not isinstance(value, str) or not value or any(c.isspace() or c in ',#;' for c in value):
+def safe_value(value, spaces=False):
+    if not isinstance(value, str) or not value or any((c.isspace() and not (spaces and c == ' ')) or c in ',#;' for c in value):
         raise Unsupported('invalid rule value: ' + repr(value))
     return value
 
@@ -49,11 +50,17 @@ def convert(document, regex_handler=None):
     for rule in rules:
         if not isinstance(rule, dict):
             raise Unsupported('invalid rule object')
-        unknown = set(rule) - {'type', 'invert', 'domain', 'domain_suffix', 'domain_keyword', 'domain_regex', 'ip_cidr'}
+        unknown = set(rule) - {'type', 'invert', 'domain', 'domain_suffix', 'domain_keyword', 'domain_regex', 'ip_cidr', 'process_name', 'ip_asn'}
         if unknown or rule.get('type', 'default') != 'default' or rule.get('invert', False) is not False:
             raise Unsupported('unsupported conditions: ' + repr(rule))
-        if not any(rule.get(k) for k in ('domain', 'domain_suffix', 'domain_keyword', 'domain_regex', 'ip_cidr')):
+        if not any(rule.get(k) for k in ('domain', 'domain_suffix', 'domain_keyword', 'domain_regex', 'ip_cidr', 'process_name', 'ip_asn')):
             raise Unsupported('empty rule would match all traffic')
+        for process in values(rule.get('process_name', [])):
+            lines.add('PROCESS-NAME,' + safe_value(process, spaces=True))
+        for asn in values(rule.get('ip_asn', [])):
+            if not str(asn).isdigit() or not 0 < int(asn) <= 4294967295:
+                raise Unsupported('invalid ASN')
+            lines.add('IP-ASN,' + str(int(asn)) + ',no-resolve')
         if rule.get('ip_cidr'):
             if any(rule.get(k) for k in ('domain', 'domain_suffix', 'domain_keyword', 'domain_regex')):
                 raise Unsupported('mixed IP/domain conditions need explicit logical conversion')
@@ -115,9 +122,14 @@ def write_lines(path, lines):
 
 
 def build(loaded_sources, output, binary='sing-box', workers=4, strict=True, aliases=None,
-          base_url='https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules'):
+          base_url='https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules', output_paths=None):
     """Merge normalized sources, then assemble exactly one output per target."""
     base_url = base_url.rstrip('/')
+    output_paths = output_paths or {}
+    if any(not re.fullmatch(r'[a-z0-9@!_-]+(?:/[a-z0-9@!_-]+)*', path) for path in output_paths.values()):
+        raise ValueError('invalid output path')
+    if len(set(output_paths.values())) != len(output_paths):
+        raise ValueError('duplicate output paths')
     output = Path(output).resolve()
     if output.exists():
         raise ValueError('output must be a new directory; existing output is never overwritten')
@@ -131,7 +143,7 @@ def build(loaded_sources, output, binary='sing-box', workers=4, strict=True, ali
     with tempfile.TemporaryDirectory(prefix='surge-build-') as temp:
         root = Path(temp)
         def one(target):
-            tag = target if target.startswith(('geosite-', 'geoip-')) else 'geosite-' + target
+            tag = target if target in output_paths or target.startswith(('geosite-', 'geoip-')) else 'geosite-' + target
             document, contributions = merge_category(target, [source for source in loaded_sources if target in source['category_map']])
             entry = {'contributions': contributions}
             fallback_patterns = []
@@ -148,7 +160,7 @@ def build(loaded_sources, output, binary='sing-box', workers=4, strict=True, ali
             except Unsupported as error:
                 entry.update(status='unsupported', reason=str(error))
                 return tag, entry
-            rulepath = 'ruleset/' + tag + '.list'
+            rulepath = 'ruleset/' + output_paths.get(target, tag) + '.list'
             write_lines(root / 'publish' / rulepath, lines)
             entry.update(status='complete', rules=len(lines), ruleset=rulepath)
             if fallback_patterns:
@@ -157,7 +169,7 @@ def build(loaded_sources, output, binary='sing-box', workers=4, strict=True, ali
                 entry.update(script=scriptpath, script_name=script_name,
                              requires_module='regex-support.sgmodule', regex_patterns=sorted(set(fallback_patterns)))
             if domains is not None:
-                domainpath = 'domainset/' + tag + '.txt'
+                domainpath = 'domainset/' + output_paths.get(target, tag) + '.txt'
                 write_lines(root / 'publish' / domainpath, domains)
                 entry['domainset'] = domainpath
             return tag, entry
@@ -195,6 +207,10 @@ def build(loaded_sources, output, binary='sing-box', workers=4, strict=True, ali
                     'sources': [{key: value for key, value in item.items() if key not in ('documents', 'category_map')} for item in loaded_sources],
                     'categories': entries}
         publish = root / 'publish'
+        for source in loaded_sources:
+            for name, content in source.get('notices', {}).items():
+                notice = publish / 'licenses' / source['id'] / Path(name).name
+                write_lines(notice, [content.rstrip()])
         (publish / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
         report = ['# Conversion report', '', f'Source fingerprint: {revision}', '',
                   f'Complete: {complete}; unsupported (not published): {len(unsupported)}.', '',
@@ -237,9 +253,10 @@ def main():
         if not isinstance(categories, list) or not categories or not all(isinstance(name, str) for name in categories):
             raise ValueError('configure a nonempty categories array')
         sources = load_sources(config['sources'], categories, binary=args.sing_box)
+        sources = project_sources(sources, config.get('aggregations', []))
         build(sources, args.output, args.sing_box, args.workers,
               args.strict or config.get('strict', True), config.get('aliases'),
-              config.get('publish_base_url', 'https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules'))
+              config.get('publish_base_url', 'https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules'), config.get('output_paths'))
     except (ValueError, KeyError, OSError, subprocess.SubprocessError) as error:
         parser.exit(1, f'Build failed (no publication): {error}\n')
 

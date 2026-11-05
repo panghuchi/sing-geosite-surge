@@ -21,9 +21,6 @@
     "steam",
     "steam@cn"
   ],
-  "aliases": {
-    "geosite-ai-!cn": "geosite-category-ai-!cn"
-  },
   "strict": true,
   "sources": [
     {
@@ -56,6 +53,320 @@
       "targets": {
         "geoip-cn": "cn"
       }
+    },
+    {
+      "id": "vpsdance-ai",
+      "format": "provider-yaml-archive",
+      "url": "https://codeload.github.com/VPSDance/ai-proxy-rules/tar.gz/refs/heads/main",
+      "catalog": true,
+      "publish": false,
+      "members_glob": "data/providers/*.yaml",
+      "notice_paths": [
+        "LICENSE"
+      ]
     }
-  ]
+  ],
+  "aggregations": [
+    {
+      "target": "ai-all",
+      "select": [
+        {
+          "source": "vpsdance-ai"
+        },
+        {
+          "source": "*",
+          "categories": [
+            "category-ai-!cn"
+          ]
+        }
+      ]
+    },
+    {
+      "target": "ai-cn",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "scope": "cn"
+          }
+        }
+      ]
+    },
+    {
+      "target": "category-ai-!cn",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "scope": "global"
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-openai",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "openai"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-anthropic",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "anthropic"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-google",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "google-ai"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-microsoft",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "copilot"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-bytedance",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "bytedance-ai",
+              "bytedance-ai-cn"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-alibaba",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "alibaba-ai"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-amazon",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "amazon-q",
+              "kiro"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-meta",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "meta-ai"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-mistral",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "mistral-ai"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-deepseek",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "deepseek"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-moonshot",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "moonshot-ai"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-zhipu",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "zhipu-ai"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-minimax",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "minimax"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-tencent",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "tencent-ai"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-baidu",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "baidu-ai"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-xiaomi",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "xiaomi-ai"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-cursor",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "cursor"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-perplexity",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "perplexity"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-midjourney",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "midjourney"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "target": "ai-windsurf",
+      "select": [
+        {
+          "source": "vpsdance-ai",
+          "where": {
+            "provider": [
+              "windsurf"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "aliases": {
+    "geosite-ai-!cn": "geosite-category-ai-!cn"
+  }
 }

@@ -11,6 +11,7 @@ from urllib.parse import urlparse, quote
 from urllib.request import urlopen
 from urllib.error import HTTPError
 from geosite_dat import extract
+from provider_yaml import load_provider_archive
 
 
 def download(url, max_bytes=128 * 1024 * 1024):
@@ -63,7 +64,7 @@ def load_srs(config, categories, fetch, binary):
 
 
 # New formats register a reader here. Readers only need to produce the same IR.
-ADAPTERS = {'v2ray-geosite': load_dat, 'sing-box-srs': load_srs}
+ADAPTERS = {'v2ray-geosite': load_dat, 'sing-box-srs': load_srs, 'provider-yaml-archive': load_provider_archive}
 
 
 def category_name(name):
@@ -88,6 +89,7 @@ def load_sources(configs, categories, fetch=download, binary="sing-box"):
         policy = config.get('on_missing', 'error')
         if policy not in ('error', 'skip'):
             raise ValueError('on_missing must be error or skip')
+        catalog = config.get('catalog', False)
         selected = config.get('targets', {target: mapping.get(target, target) for target in categories})
         if not isinstance(selected, dict) or not selected or any(not re.fullmatch(r'[a-z0-9@!_-]+', target) for target in selected):
             raise ValueError('source targets must be a nonempty mapping')
@@ -98,11 +100,13 @@ def load_sources(configs, categories, fetch=download, binary="sing-box"):
         if any(not isinstance(name, str) or not name for name in selected.values()):
             raise ValueError('invalid source category mapping')
         decoded, metadata = adapter(config, selected.values(), fetch, binary)
+        if catalog:
+            selected = {name: name for name in decoded}
         missing = sorted(target for target, name in selected.items() if name not in decoded)
         if missing and policy == 'error':
             raise ValueError(identity + ': missing categories: ' + ', '.join(missing))
         result.append({'id': identity, **metadata,
                        'documents': {target: decoded[name] for target, name in selected.items() if name in decoded},
                        'category_map': selected,
-                       'missing_categories': missing})
+                       'missing_categories': missing, 'publish': config.get('publish', True)})
     return result

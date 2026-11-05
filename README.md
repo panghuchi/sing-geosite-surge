@@ -17,7 +17,7 @@ config.json
                                           ↓
                                     统一规则模型
                                           ↓
-                                按目标分类合并、规范化、去重
+                                标签筛选与配置聚合 → 合并、规范化、去重
                                           ↓
                                     Surge 装配输出
                                           ↓
@@ -31,6 +31,7 @@ config.json
 | --- | --- | --- |
 | 配置 | 声明源地址、格式、目标分类、分类映射和失败策略 | `config.json` |
 | 源适配 | 下载并解析特定格式，输出统一规则；不生成 Surge 文件 | `scripts/sources.py`、`scripts/geosite_dat.py` |
+| 聚合 | 按标签或成员选择组成总集和厂商集，不写厂商专属分支 | `scripts/aggregation.py` |
 | 合并 | 对同一目标分类的统一规则做规范化、合并去重，并记录贡献 | `scripts/merging.py` |
 | 装配 | 将合并后的规则生成 RULE-SET、DOMAIN-SET、脚本模块和报告 | `scripts/convert.py`、`scripts/regex_tools.py` |
 | 发布 | 检查覆盖范围是否回退，再更新 rules 分支 | `scripts/publish.py` |
@@ -39,13 +40,14 @@ config.json
 
 ## 源配置
 
-所有源统一声明在 `config.json` 的 `sources` 数组中。当前有三个 Geosite 源和两个 GeoIP 源：
+所有源统一声明在 `config.json` 的 `sources` 数组中。当前包括三个 Geosite 源、两个 GeoIP 源，以及一个 AI 服务目录源：
 
 - SagerNet/sing-geosite：SRS 模板地址。
 - Loyalsoldier/v2ray-rules-dat：geosite.dat。
 - MetaCubeX/meta-rules-dat：geosite.dat。
 - Telegram GeoIP：Loyalsoldier SRS。
 - CN GeoIP：SagerNet SRS。
+- AI 服务目录：[VPSDance/ai-proxy-rules](https://github.com/VPSDance/ai-proxy-rules)，读取原始厂商 YAML，保留正则、进程、IP、ASN 和地区元数据。
 
 ### 同一批分类的多个源
 
@@ -76,7 +78,7 @@ config.json
 ```
 
 - `id`：唯一来源标识，用于报告和追踪，不参与转换逻辑判断。
-- `format`：选择已注册的格式适配器，目前支持 `sing-box-srs`、`v2ray-geosite`。
+- `format`：选择已注册的格式适配器，目前支持 `sing-box-srs`、`v2ray-geosite`、`provider-yaml-archive`。
 - `url_template`：SRS 模板，`{category}` 替换为上游分类名，只下载选中的分类。
 - `url`：DAT 整库地址，或单个 SRS 文件地址。
 - `categories`：默认的 Geosite 目标分类；输出时统一命名为 `geosite-分类`。
@@ -118,8 +120,8 @@ config.json
 
 - `documents`：上游分类名到统一规则文档的映射。
 - `metadata`：来源 URL、文件 SHA-256 等追踪信息。
-- 文档为 `{"version": 1, "rules": [...]}`；规则字段采用 `domain`、`domain_suffix`、`domain_keyword`、`domain_regex`、`ip_cidr`。
-- 域名与 IP 条件分开为独立规则，保留原匹配语义。适配器不得自行输出 Surge 语法。
+- 文档为 `{"version": 1, "rules": [...]}`；规则字段采用 `domain`、`domain_suffix`、`domain_keyword`、`domain_regex`、`ip_cidr`、`process_name`、`ip_asn`。
+- 域名、IP、进程和 ASN 条件分开为独立规则，保留原匹配语义。适配器不得自行输出 Surge 语法。
 
 适配器完成后，配置中指定新 `format` 即可接入同一合并和装配流程。不要在主流程增加按仓库名字判断的分支。
 
@@ -150,13 +152,69 @@ DOMAIN-SET 仅在整个分类可完整表示为精确域名和后缀时生成。
 
 IP 规则带 `no-resolve`。本项目不推断分类的策略和优先级，需在 Surge 主配置中自行指定。现有 20 个 Geosite 目标、2 个 GeoIP 目标及 1 个 AI 别名的订阅路径保持不变。
 
+## AI 总集与厂商集
+
+仅输出三种范围总集和配置中选择的厂商集，不生成用途分类，也不把上游每个服务都输出成文件：
+
+```text
+ruleset/
+├── geosite-ai-all.list           # 全部 AI
+├── geosite-ai-!cn.list           # 海外 AI，沿用原订阅链接
+├── geosite-ai-cn.list            # 国内 AI
+├── geosite-ai-openai.list
+├── geosite-ai-anthropic.list
+├── geosite-ai-google.list
+├── geosite-ai-microsoft.list
+├── geosite-ai-bytedance.list
+└── …配置中选中的厂商
+```
+
+厂商文件合并旗下国内和海外服务，不按地区拆文件。例如字节文件同时包含 `bytedance-ai` 和 `bytedance-ai-cn`。国内/海外标签只用于两个范围总集，遵循上游元数据，不根据域名后缀或公司所在地猜测。
+
+当前选择 20 个常用厂商/品牌：OpenAI、Anthropic、Google、Microsoft、字节、阿里、Amazon、Meta、Mistral、DeepSeek、Moonshot、智谱、MiniMax、腾讯、百度、小米、Cursor、Perplexity、Midjourney、Windsurf。其他上游服务也全部进入相应范围总集，但不生成单独文件；新增厂商输出只需要加聚合配置。
+
+新增目录格式适配器 `provider-yaml-archive` 读取压缩包中的 YAML，并产生规则及 `provider`、`scope` 标签。配置使用 `catalog: true` 发现全部服务，`publish: false` 隐藏原始逐服务输出，再通过通用 `aggregations` 投影目标：
+
+```json
+{
+  "id": "vpsdance-ai",
+  "format": "provider-yaml-archive",
+  "url": "https://codeload.github.com/VPSDance/ai-proxy-rules/tar.gz/refs/heads/main",
+  "catalog": true,
+  "publish": false,
+  "members_glob": "data/providers/*.yaml",
+  "notice_paths": ["LICENSE"]
+}
+```
+
+聚合配置示例：
+
+```json
+{
+  "aggregations": [
+    {"target": "ai-all", "select": [{"source": "vpsdance-ai"}]},
+    {"target": "ai-cn", "select": [{"source": "vpsdance-ai", "where": {"scope": "cn"}}]},
+    {"target": "ai-bytedance", "select": [{"source": "vpsdance-ai", "where": {"provider": ["bytedance-ai", "bytedance-ai-cn"]}}]}
+  ]
+}
+```
+
+实际配置还会将旧三源的海外 AI 规则纳入全部总集，并将目录中的海外服务补入原来的 `category-ai-!cn` 目标；原有 `geosite-ai-!cn.list` 别名继续生效。上述片段仅演示字段，不替代完整配置。
+
+`select` 支持来源通配符、显式 `categories` 和标签 `where`（值可以是字符串或列表），多个选择器取并集。聚合读取原始源快照，彼此不形成隐式依赖；选择结果为空时停止发布。新增上游服务自动进入全部及对应地区总集，厂商输出组合通过配置维护。
+
+规则模型同时保留上游进程与 ASN 条目；进程名区分大小写，不按域名方式小写化。某些进程规则只对相应客户端平台有效。目录源默认包含其共享第三方依赖，例如支付或统计服务；如果不需要，可在该源配置 `exclude_groups: ["Third-Party"]`，不要把这些域名误认为厂商独占域名。许可证随产物保留在 `licenses/vpsdance-ai/LICENSE`。
+
+将厂商规则放在 AI 总集前面，以允许单独指定策略。包含正则的 AI 分类仍需启用前述 Regex Support 模块；添加新分类后应更新模块。
+
 ## 执行与验证
 
 GitHub 每天北京时间 **07:23** 自动运行，可能延迟。也可在 Actions → Update Surge rules → Run workflow 手动执行。规则发布到 `rules` 分支，`status.json` 记录检查时间。
 
-本地需要 Python 3.9+ 和 [官方 sing-box 1.14.4](https://github.com/SagerNet/sing-box/releases/tag/v1.14.4)：
+本地需要 Python 3.9+、`requirements.txt` 中的依赖和 [官方 sing-box 1.14.4](https://github.com/SagerNet/sing-box/releases/tag/v1.14.4)：
 
 ```sh
+python3 -m pip install -r requirements.txt
 python3 scripts/convert.py --config config.json --output dist --sing-box /path/to/sing-box
 python3 -m unittest discover -s tests -v
 ```

@@ -37,6 +37,11 @@ class ConversionTests(unittest.TestCase):
             with self.subTest(rule=rule), self.assertRaises(m.Unsupported):
                 m.convert(doc(**rule))
 
+    def test_process_and_asn_are_preserved(self):
+        lines, domains = m.convert({'version':1, 'rules':[{'process_name':['Example AI']}, {'ip_asn':['1234']}]})
+        self.assertEqual(lines, ['IP-ASN,1234,no-resolve','PROCESS-NAME,Example AI'])
+        self.assertIsNone(domains)
+
     def test_keyword_requires_ruleset(self):
         self.assertEqual(m.convert(doc(domain_keyword='google')), (['DOMAIN-KEYWORD,google'], None))
 
