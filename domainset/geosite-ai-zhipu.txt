@@ -1,0 +1,5 @@
+.bigmodel.cn
+.chatglm.cn
+.z.ai
+.zhipuai.cn
+.zhipucn.com

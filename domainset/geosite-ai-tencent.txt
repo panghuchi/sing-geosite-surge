@@ -1,0 +1,5 @@
+.hunyuan.tencent.com
+.yuanbao.tencent.com
+.yuanqi.tencent.com
+api.hunyuan.cloud.tencent.com
+hunyuan.tencentcloudapi.com

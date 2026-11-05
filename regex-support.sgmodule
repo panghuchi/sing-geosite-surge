@@ -2,6 +2,8 @@
 #!desc=Registers hostname regex matchers used by SRS RULE-SETs. Enable scripting. No routing, DNS, or MITM settings.
 
 [Script]
+srs-regex-4755eea1712abbf7 = type=rule,script-path=https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules/scripts/srs-regex-4755eea1712abbf7.js,script-update-interval=86400,engine=jsc
+srs-regex-245c8575054aa1d4 = type=rule,script-path=https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules/scripts/srs-regex-245c8575054aa1d4.js,script-update-interval=86400,engine=jsc
 srs-regex-5c16223b7bda31c8 = type=rule,script-path=https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules/scripts/srs-regex-5c16223b7bda31c8.js,script-update-interval=86400,engine=jsc
 srs-regex-37d00eb58f97e30b = type=rule,script-path=https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules/scripts/srs-regex-37d00eb58f97e30b.js,script-update-interval=86400,engine=jsc
 srs-regex-e8071294e76010b8 = type=rule,script-path=https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules/scripts/srs-regex-e8071294e76010b8.js,script-update-interval=86400,engine=jsc

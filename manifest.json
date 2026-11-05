@@ -1,8 +1,8 @@
 {
   "upstream": "config.json",
-  "upstream_revision": "cebd14da4429447d966e4c1a4509a5c761179dcc2fa678e08bcf5c981ce6c69b",
+  "upstream_revision": "ac39b34a94cc0bf10b22f08773f6a9bae58cc72c54f46ef55958f96ccceffde8",
   "decoder": "sing-box version 1.14.4",
-  "complete": 23,
+  "complete": 45,
   "unsupported": 0,
   "sources": [
     {
@@ -90,19 +90,37 @@
           "sha256": "8817814137ae7174f378ad9b2dd67222cdb281017b0bb4117df6b9be46f1761e"
         }
       },
-      "missing_categories": []
+      "missing_categories": [],
+      "publish": true,
+      "members": {
+        "ai-all": [
+          "category-ai-!cn"
+        ]
+      }
     },
     {
       "id": "loyalsoldier",
       "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat",
       "sha256": "916fea0cea925cc47f09001dfac652d5e8edb6db69ff13ad68e2b4ac9e8ecc1b",
-      "missing_categories": []
+      "missing_categories": [],
+      "publish": true,
+      "members": {
+        "ai-all": [
+          "category-ai-!cn"
+        ]
+      }
     },
     {
       "id": "metacubex",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat",
       "sha256": "da89d85fa3b6fc28f3878432f28e78c1e5bb9f603449fa2f0ec2deaddbb0b733",
-      "missing_categories": []
+      "missing_categories": [],
+      "publish": true,
+      "members": {
+        "ai-all": [
+          "category-ai-!cn"
+        ]
+      }
     },
     {
       "id": "geoip-telegram",
@@ -113,7 +131,9 @@
           "sha256": "124b6decbcd871517927c15857b26c6898fe614cb2ef5e711d83835e9c700c2b"
         }
       },
-      "missing_categories": []
+      "missing_categories": [],
+      "publish": true,
+      "members": {}
     },
     {
       "id": "geoip-cn",
@@ -124,10 +144,1740 @@
           "sha256": "81ada5cafd9d831adc48776f29cdfe55c9713d9287caeef9de925ef30f66cce4"
         }
       },
-      "missing_categories": []
+      "missing_categories": [],
+      "publish": true,
+      "members": {}
+    },
+    {
+      "id": "vpsdance-ai",
+      "url": "https://codeload.github.com/VPSDance/ai-proxy-rules/tar.gz/refs/heads/main",
+      "sha256": "de9cf84ed3cbaaa086df0fafac07c73eda39daeae57879c137651e0525d97a24",
+      "labels": {
+        "adobe-firefly": {
+          "provider": "adobe-firefly",
+          "scope": "global",
+          "name": "Adobe Firefly"
+        },
+        "alibaba-ai": {
+          "provider": "alibaba-ai",
+          "scope": "cn",
+          "name": "Alibaba AI"
+        },
+        "amazon-q": {
+          "provider": "amazon-q",
+          "scope": "global",
+          "name": "Amazon Q Developer"
+        },
+        "anthropic": {
+          "provider": "anthropic",
+          "scope": "global",
+          "name": "Anthropic"
+        },
+        "augment-code": {
+          "provider": "augment-code",
+          "scope": "global",
+          "name": "Augment Code"
+        },
+        "baidu-ai": {
+          "provider": "baidu-ai",
+          "scope": "cn",
+          "name": "Baidu AI"
+        },
+        "black-forest-labs": {
+          "provider": "black-forest-labs",
+          "scope": "global",
+          "name": "Black Forest Labs"
+        },
+        "bolt": {
+          "provider": "bolt",
+          "scope": "global",
+          "name": "Bolt.new"
+        },
+        "bytedance-ai-cn": {
+          "provider": "bytedance-ai-cn",
+          "scope": "cn",
+          "name": "ByteDance AI (China)"
+        },
+        "bytedance-ai": {
+          "provider": "bytedance-ai",
+          "scope": "global",
+          "name": "ByteDance AI"
+        },
+        "cerebras": {
+          "provider": "cerebras",
+          "scope": "global",
+          "name": "Cerebras"
+        },
+        "character-ai": {
+          "provider": "character-ai",
+          "scope": "global",
+          "name": "Character.AI"
+        },
+        "chutes": {
+          "provider": "chutes",
+          "scope": "global",
+          "name": "Chutes"
+        },
+        "civitai": {
+          "provider": "civitai",
+          "scope": "global",
+          "name": "Civitai"
+        },
+        "cline": {
+          "provider": "cline",
+          "scope": "global",
+          "name": "Cline"
+        },
+        "clipdrop": {
+          "provider": "clipdrop",
+          "scope": "global",
+          "name": "ClipDrop"
+        },
+        "cloudflare-ai": {
+          "provider": "cloudflare-ai",
+          "scope": "global",
+          "name": "Cloudflare AI"
+        },
+        "coderabbit": {
+          "provider": "coderabbit",
+          "scope": "global",
+          "name": "CodeRabbit"
+        },
+        "cohere": {
+          "provider": "cohere",
+          "scope": "global",
+          "name": "Cohere"
+        },
+        "comfyui": {
+          "provider": "comfyui",
+          "scope": "global",
+          "name": "ComfyUI"
+        },
+        "command-code": {
+          "provider": "command-code",
+          "scope": "global",
+          "name": "Command Code"
+        },
+        "continue": {
+          "provider": "continue",
+          "scope": "global",
+          "name": "Continue"
+        },
+        "copilot": {
+          "provider": "copilot",
+          "scope": "global",
+          "name": "Copilot"
+        },
+        "crewai": {
+          "provider": "crewai",
+          "scope": "global",
+          "name": "CrewAI"
+        },
+        "cursor": {
+          "provider": "cursor",
+          "scope": "global",
+          "name": "Cursor"
+        },
+        "deepinfra": {
+          "provider": "deepinfra",
+          "scope": "global",
+          "name": "DeepInfra"
+        },
+        "deepseek": {
+          "provider": "deepseek",
+          "scope": "cn",
+          "name": "DeepSeek"
+        },
+        "descript": {
+          "provider": "descript",
+          "scope": "global",
+          "name": "Descript"
+        },
+        "devin": {
+          "provider": "devin",
+          "scope": "global",
+          "name": "Devin"
+        },
+        "dia-browser": {
+          "provider": "dia-browser",
+          "scope": "global",
+          "name": "Dia Browser"
+        },
+        "dify": {
+          "provider": "dify",
+          "scope": "global",
+          "name": "Dify"
+        },
+        "duck-ai": {
+          "provider": "duck-ai",
+          "scope": "global",
+          "name": "DuckDuckGo AI"
+        },
+        "eigent": {
+          "provider": "eigent",
+          "scope": "global",
+          "name": "Eigent"
+        },
+        "elevenlabs": {
+          "provider": "elevenlabs",
+          "scope": "global",
+          "name": "ElevenLabs"
+        },
+        "factory": {
+          "provider": "factory",
+          "scope": "global",
+          "name": "Factory"
+        },
+        "fireworks-ai": {
+          "provider": "fireworks-ai",
+          "scope": "global",
+          "name": "Fireworks AI"
+        },
+        "gamma": {
+          "provider": "gamma",
+          "scope": "global",
+          "name": "Gamma"
+        },
+        "genspark": {
+          "provider": "genspark",
+          "scope": "global",
+          "name": "Genspark"
+        },
+        "google-ai": {
+          "provider": "google-ai",
+          "scope": "global",
+          "name": "Google AI"
+        },
+        "grammarly": {
+          "provider": "grammarly",
+          "scope": "global",
+          "name": "Grammarly"
+        },
+        "groq": {
+          "provider": "groq",
+          "scope": "global",
+          "name": "Groq"
+        },
+        "h2o-ai": {
+          "provider": "h2o-ai",
+          "scope": "global",
+          "name": "H2O.ai"
+        },
+        "hermes-agent": {
+          "provider": "hermes-agent",
+          "scope": "global",
+          "name": "Hermes Agent"
+        },
+        "heygen": {
+          "provider": "heygen",
+          "scope": "global",
+          "name": "HeyGen"
+        },
+        "huggingface": {
+          "provider": "huggingface",
+          "scope": "global",
+          "name": "Hugging Face"
+        },
+        "ideogram": {
+          "provider": "ideogram",
+          "scope": "global",
+          "name": "Ideogram"
+        },
+        "inflection": {
+          "provider": "inflection",
+          "scope": "global",
+          "name": "Inflection / Pi"
+        },
+        "jasper": {
+          "provider": "jasper",
+          "scope": "global",
+          "name": "Jasper"
+        },
+        "jetbrains-ai": {
+          "provider": "jetbrains-ai",
+          "scope": "global",
+          "name": "JetBrains AI"
+        },
+        "kilo": {
+          "provider": "kilo",
+          "scope": "global",
+          "name": "Kilo"
+        },
+        "kiro": {
+          "provider": "kiro",
+          "scope": "global",
+          "name": "Kiro"
+        },
+        "langchain": {
+          "provider": "langchain",
+          "scope": "global",
+          "name": "LangChain"
+        },
+        "leonardo-ai": {
+          "provider": "leonardo-ai",
+          "scope": "global",
+          "name": "Leonardo AI"
+        },
+        "lmarena": {
+          "provider": "lmarena",
+          "scope": "global",
+          "name": "LMArena"
+        },
+        "lmstudio": {
+          "provider": "lmstudio",
+          "scope": "global",
+          "name": "LM Studio"
+        },
+        "lovable": {
+          "provider": "lovable",
+          "scope": "global",
+          "name": "Lovable"
+        },
+        "lovart": {
+          "provider": "lovart",
+          "scope": "global",
+          "name": "Lovart"
+        },
+        "luma-ai": {
+          "provider": "luma-ai",
+          "scope": "global",
+          "name": "Luma AI"
+        },
+        "manus": {
+          "provider": "manus",
+          "scope": "global",
+          "name": "Manus"
+        },
+        "meta-ai": {
+          "provider": "meta-ai",
+          "scope": "global",
+          "name": "Meta AI"
+        },
+        "midjourney": {
+          "provider": "midjourney",
+          "scope": "global",
+          "name": "Midjourney"
+        },
+        "minimax": {
+          "provider": "minimax",
+          "scope": "cn",
+          "name": "MiniMax"
+        },
+        "mistral-ai": {
+          "provider": "mistral-ai",
+          "scope": "global",
+          "name": "Mistral AI"
+        },
+        "modelscope": {
+          "provider": "modelscope",
+          "scope": "cn",
+          "name": "ModelScope"
+        },
+        "moonshot-ai": {
+          "provider": "moonshot-ai",
+          "scope": "cn",
+          "name": "Moonshot AI"
+        },
+        "novita-ai": {
+          "provider": "novita-ai",
+          "scope": "global",
+          "name": "Novita AI"
+        },
+        "ollama": {
+          "provider": "ollama",
+          "scope": "global",
+          "name": "Ollama"
+        },
+        "openai": {
+          "provider": "openai",
+          "scope": "global",
+          "name": "OpenAI"
+        },
+        "openart": {
+          "provider": "openart",
+          "scope": "global",
+          "name": "OpenArt"
+        },
+        "openclaw": {
+          "provider": "openclaw",
+          "scope": "global",
+          "name": "OpenClaw"
+        },
+        "opencode": {
+          "provider": "opencode",
+          "scope": "global",
+          "name": "OpenCode"
+        },
+        "openrouter": {
+          "provider": "openrouter",
+          "scope": "global",
+          "name": "OpenRouter"
+        },
+        "otter-ai": {
+          "provider": "otter-ai",
+          "scope": "global",
+          "name": "Otter.ai"
+        },
+        "perplexity": {
+          "provider": "perplexity",
+          "scope": "global",
+          "name": "Perplexity"
+        },
+        "phind": {
+          "provider": "phind",
+          "scope": "global",
+          "name": "Phind"
+        },
+        "pika": {
+          "provider": "pika",
+          "scope": "global",
+          "name": "Pika"
+        },
+        "poe": {
+          "provider": "poe",
+          "scope": "global",
+          "name": "Poe"
+        },
+        "ppio": {
+          "provider": "ppio",
+          "scope": "cn",
+          "name": "PPIO"
+        },
+        "qoder": {
+          "provider": "qoder",
+          "scope": "global",
+          "name": "Qoder"
+        },
+        "recraft": {
+          "provider": "recraft",
+          "scope": "global",
+          "name": "Recraft"
+        },
+        "replicate": {
+          "provider": "replicate",
+          "scope": "global",
+          "name": "Replicate"
+        },
+        "replit": {
+          "provider": "replit",
+          "scope": "global",
+          "name": "Replit"
+        },
+        "runway": {
+          "provider": "runway",
+          "scope": "global",
+          "name": "Runway"
+        },
+        "siliconflow": {
+          "provider": "siliconflow",
+          "scope": "cn",
+          "name": "SiliconFlow"
+        },
+        "sourcegraph": {
+          "provider": "sourcegraph",
+          "scope": "global",
+          "name": "Sourcegraph"
+        },
+        "stability-ai": {
+          "provider": "stability-ai",
+          "scope": "global",
+          "name": "Stability AI"
+        },
+        "stepfun": {
+          "provider": "stepfun",
+          "scope": "cn",
+          "name": "StepFun"
+        },
+        "suno": {
+          "provider": "suno",
+          "scope": "global",
+          "name": "Suno"
+        },
+        "synthesia": {
+          "provider": "synthesia",
+          "scope": "global",
+          "name": "Synthesia"
+        },
+        "tabnine": {
+          "provider": "tabnine",
+          "scope": "global",
+          "name": "Tabnine"
+        },
+        "tencent-ai": {
+          "provider": "tencent-ai",
+          "scope": "cn",
+          "name": "Tencent AI"
+        },
+        "together-ai": {
+          "provider": "together-ai",
+          "scope": "global",
+          "name": "Together AI"
+        },
+        "udio": {
+          "provider": "udio",
+          "scope": "global",
+          "name": "Udio"
+        },
+        "v0": {
+          "provider": "v0",
+          "scope": "global",
+          "name": "v0"
+        },
+        "volcengine-ai": {
+          "provider": "volcengine-ai",
+          "scope": "cn",
+          "name": "Volcengine AI"
+        },
+        "windsurf": {
+          "provider": "windsurf",
+          "scope": "global",
+          "name": "Windsurf"
+        },
+        "x-ai": {
+          "provider": "x-ai",
+          "scope": "global",
+          "name": "xAI"
+        },
+        "xiaomi-ai": {
+          "provider": "xiaomi-ai",
+          "scope": "cn",
+          "name": "Xiaomi AI"
+        },
+        "you": {
+          "provider": "you",
+          "scope": "global",
+          "name": "You.com"
+        },
+        "youmind": {
+          "provider": "youmind",
+          "scope": "global",
+          "name": "YouMind"
+        },
+        "zed": {
+          "provider": "zed",
+          "scope": "global",
+          "name": "Zed"
+        },
+        "zhipu-ai": {
+          "provider": "zhipu-ai",
+          "scope": "cn",
+          "name": "Zhipu AI"
+        }
+      },
+      "files": {
+        "adobe-firefly": {
+          "archive_member": "data/providers/adobe-firefly.yaml",
+          "sha256": "187d63edf3f4703bfbdc62ae1c0d3aacb7a038f67f6dce91e182f0c8c67067c3"
+        },
+        "alibaba-ai": {
+          "archive_member": "data/providers/alibaba-ai.yaml",
+          "sha256": "1fab2f71c35197fca56a5fc1bd3350e42b1378f344e38f9055b3677d25bb259d"
+        },
+        "amazon-q": {
+          "archive_member": "data/providers/amazon-q.yaml",
+          "sha256": "6e396269e3784569a19eacffd8918de6ffd38ed242ef8d62cabaf5370f936a1d"
+        },
+        "anthropic": {
+          "archive_member": "data/providers/anthropic.yaml",
+          "sha256": "9fce598bb503358a2b42b469eb472c253c2f088d3421812e1d7459755f1e9a0c"
+        },
+        "augment-code": {
+          "archive_member": "data/providers/augment-code.yaml",
+          "sha256": "40e9ccd84bd3b6d5043bcf75020c8731d18ecb7d391a5b2e2759742ab1729ff5"
+        },
+        "baidu-ai": {
+          "archive_member": "data/providers/baidu-ai.yaml",
+          "sha256": "6fcacc44993611c742cd6ff9fff0537f88ccb7ccadc083d0a46973f530d8ebd2"
+        },
+        "black-forest-labs": {
+          "archive_member": "data/providers/black-forest-labs.yaml",
+          "sha256": "8c1f617ebf3d2fc60e26a432f34b21c1fc2a92333d9240787147d78b453277a5"
+        },
+        "bolt": {
+          "archive_member": "data/providers/bolt.yaml",
+          "sha256": "f1d308a10b4d72d9e5870c89a37dcf7cf644c3cb773beedf00f5e8a0e46c988f"
+        },
+        "bytedance-ai-cn": {
+          "archive_member": "data/providers/bytedance-ai-cn.yaml",
+          "sha256": "f2b57cd9ccb72575caba73efca92f071b153965a615270afc7fa2876b645cf92"
+        },
+        "bytedance-ai": {
+          "archive_member": "data/providers/bytedance-ai.yaml",
+          "sha256": "c55f6b97e344775ecabf64483f1ad4c1de7ce6285e0b4a615af8efb41cc6c5cb"
+        },
+        "cerebras": {
+          "archive_member": "data/providers/cerebras.yaml",
+          "sha256": "0fdf166e697737189088a327c29e903101b7a7f3cd3100ecc578e0c90b56bbfe"
+        },
+        "character-ai": {
+          "archive_member": "data/providers/character-ai.yaml",
+          "sha256": "dd3981721297c259fd3687302b971bef5f80e2039bf3b0fc25a6be41c8689d74"
+        },
+        "chutes": {
+          "archive_member": "data/providers/chutes.yaml",
+          "sha256": "75abb15c34f2aaafbad8e8f5c4a1fe6fbe668e1d4a340a92fe0d4acbf8435d42"
+        },
+        "civitai": {
+          "archive_member": "data/providers/civitai.yaml",
+          "sha256": "f83f167d3b3648ed5e6641a26c667a33944b9fcf2643502502a03a8a470bea29"
+        },
+        "cline": {
+          "archive_member": "data/providers/cline.yaml",
+          "sha256": "e402272d017ac76d42e7888ef5a597191535239faf66c745ec761ac68802ebc7"
+        },
+        "clipdrop": {
+          "archive_member": "data/providers/clipdrop.yaml",
+          "sha256": "5263e21c62092b3e7f27df40bcdbda41e95753001ffaad3da1ac0a8261986a2d"
+        },
+        "cloudflare-ai": {
+          "archive_member": "data/providers/cloudflare-ai.yaml",
+          "sha256": "4b3b05ecb936c9c4a905463235e69c9e1b4ec15b07484aa11fdb9c45d09f62f1"
+        },
+        "coderabbit": {
+          "archive_member": "data/providers/coderabbit.yaml",
+          "sha256": "804286c5218ee961390a06f536b23dfdd50e542b6cf2a4b5f9983c5350a6f1fd"
+        },
+        "cohere": {
+          "archive_member": "data/providers/cohere.yaml",
+          "sha256": "5b87bbaecb9d83fbf0b3a2f90057e8f3872afebf4296ad80c12e21f41ffa2e7e"
+        },
+        "comfyui": {
+          "archive_member": "data/providers/comfyui.yaml",
+          "sha256": "88ac1f95db713505975dc969cd80db7633724b10153668282b838c6f302e970c"
+        },
+        "command-code": {
+          "archive_member": "data/providers/command-code.yaml",
+          "sha256": "a1028449844fd5bea9ca0d36320e2a4c77005275e09135d1f71718ab63fee411"
+        },
+        "continue": {
+          "archive_member": "data/providers/continue.yaml",
+          "sha256": "b3d83aa3463a5c02b52f46251faa4e62cb61f4d4afe410a897dcc640de7f3da6"
+        },
+        "copilot": {
+          "archive_member": "data/providers/copilot.yaml",
+          "sha256": "ff9232707d77b81648d9a1d166f52efe5818f279048dc2289e735cd7aef80606"
+        },
+        "crewai": {
+          "archive_member": "data/providers/crewai.yaml",
+          "sha256": "9af1fb926d256f473a1d4d55a0d9fbcdcb48bb2368a4b0df5a6dc2f91c947382"
+        },
+        "cursor": {
+          "archive_member": "data/providers/cursor.yaml",
+          "sha256": "bfeffcea05fe559d224f6272235417d1df8e3bd6f21a1ea1788a4ef1b52eb522"
+        },
+        "deepinfra": {
+          "archive_member": "data/providers/deepinfra.yaml",
+          "sha256": "cc150d5a0762572b7c3884eb87730d3b97090274b98d4500dd3746cf0ecdb696"
+        },
+        "deepseek": {
+          "archive_member": "data/providers/deepseek.yaml",
+          "sha256": "cae26c96fa997c0ecc9c423bf23622fd0d3611830c0a5ffc8bed04fa9e2255ae"
+        },
+        "descript": {
+          "archive_member": "data/providers/descript.yaml",
+          "sha256": "9e9d18654409fd96e65534f6c7bae47dac6d5a68ecd671a186541dc5786f9e43"
+        },
+        "devin": {
+          "archive_member": "data/providers/devin.yaml",
+          "sha256": "37135b7465f492b26c59290742e05251a4677196d222c94e6fc494331e694268"
+        },
+        "dia-browser": {
+          "archive_member": "data/providers/dia-browser.yaml",
+          "sha256": "872521635bde04b528e4660f2219aa30c7f3b6c4bddc8b54b1c4f23f8902ac28"
+        },
+        "dify": {
+          "archive_member": "data/providers/dify.yaml",
+          "sha256": "2a9b70438cc73f4c448e0d4f8ef3a971108a6a54827cb2ffe9379a41081912c9"
+        },
+        "duck-ai": {
+          "archive_member": "data/providers/duck-ai.yaml",
+          "sha256": "9f6c0647b80d512008b585b3ad4ae2e188d7a5ab321bc362b54bbc02567af4c4"
+        },
+        "eigent": {
+          "archive_member": "data/providers/eigent.yaml",
+          "sha256": "333a1d00a2e6953a0d944eba135dcf112dd606c25077bd43d2c9ecfff1ea890d"
+        },
+        "elevenlabs": {
+          "archive_member": "data/providers/elevenlabs.yaml",
+          "sha256": "dbf118bacd8b1d154289474fca414244f7ced91fd52cf9d65b0acd202d502c29"
+        },
+        "factory": {
+          "archive_member": "data/providers/factory.yaml",
+          "sha256": "9c8694675d8c730d7dd52547ff8d6158cf7d337e6710af751b6963200cb661a2"
+        },
+        "fireworks-ai": {
+          "archive_member": "data/providers/fireworks-ai.yaml",
+          "sha256": "86c629a1c69d8cd733cd8db8c5f251a2efa044b554af9471bccd6bb7fae99f83"
+        },
+        "gamma": {
+          "archive_member": "data/providers/gamma.yaml",
+          "sha256": "8c1f1790ef37be9cdf6c7686bf07d082f2dcfc78af9f7735fa11a87bec577198"
+        },
+        "genspark": {
+          "archive_member": "data/providers/genspark.yaml",
+          "sha256": "ceb863bd46043c61ae70ca7490547a39e38df78c0e89883d3797f385948d3d12"
+        },
+        "google-ai": {
+          "archive_member": "data/providers/google-ai.yaml",
+          "sha256": "bc5458d83df45f43ddf7ab6e9ff19f24790f3e8858c388458e7e2653deafb15d"
+        },
+        "grammarly": {
+          "archive_member": "data/providers/grammarly.yaml",
+          "sha256": "f361c8d21cb5a6f69ed7fc80a8f4ca596efb2c8c57f0daf9a53c0fe3dba9a8a6"
+        },
+        "groq": {
+          "archive_member": "data/providers/groq.yaml",
+          "sha256": "e126f311ee333845ad6e9b68eb1f672bc3adcc1a9ff4c73f37667adca1739dfe"
+        },
+        "h2o-ai": {
+          "archive_member": "data/providers/h2o-ai.yaml",
+          "sha256": "c3bf6de74dd09850c211c56e7bd9402aa858a29a9e0ca9cb684c367b3868ac57"
+        },
+        "hermes-agent": {
+          "archive_member": "data/providers/hermes-agent.yaml",
+          "sha256": "f10cea6041f3ae9df4bcdccf483e77a745ae4edebd605c51fd231cb767d769bf"
+        },
+        "heygen": {
+          "archive_member": "data/providers/heygen.yaml",
+          "sha256": "4aaafc6adff5a29a1128608ffc69cc1d4056448204e4ce7ce3aac82cba069d63"
+        },
+        "huggingface": {
+          "archive_member": "data/providers/huggingface.yaml",
+          "sha256": "de64b6802748545c5e9d16d53c264c92ee2d4da6b952f75d8ed1a4622db31a29"
+        },
+        "ideogram": {
+          "archive_member": "data/providers/ideogram.yaml",
+          "sha256": "1b3e9de4b2afb1a8e14374904b6f7c0c781c228b6ae41c9e1993f59b23430cf4"
+        },
+        "inflection": {
+          "archive_member": "data/providers/inflection.yaml",
+          "sha256": "a3609937e8c0be6efefb9fd79da5acbcc0ac5da78737df708328f473a9d83a0b"
+        },
+        "jasper": {
+          "archive_member": "data/providers/jasper.yaml",
+          "sha256": "396ec66907db007cc05a4dab227143f2d987d961f356c1f34e32cc88082846cb"
+        },
+        "jetbrains-ai": {
+          "archive_member": "data/providers/jetbrains-ai.yaml",
+          "sha256": "584965c9b69790d93230e36fc849a3bf92d67a21d53fe066e08621c5b9cad9a5"
+        },
+        "kilo": {
+          "archive_member": "data/providers/kilo.yaml",
+          "sha256": "fc60c30a8781ae5441c4c9a2a8bcb7761e5933f5bcdc407b65b8b3e8253eecbe"
+        },
+        "kiro": {
+          "archive_member": "data/providers/kiro.yaml",
+          "sha256": "d16fc018d92a4fbe0e5f8cf8c34d6be65ce8ebfba06015cadb89088b488f895f"
+        },
+        "langchain": {
+          "archive_member": "data/providers/langchain.yaml",
+          "sha256": "cdb3530d88c2e9bcd97b3d65d3d991ad3be100ccee57cbcd822ae841ac5080bb"
+        },
+        "leonardo-ai": {
+          "archive_member": "data/providers/leonardo-ai.yaml",
+          "sha256": "56a926d31f6b5c8ccc82eaa9309fa952001ad6e68bf99e44a6f5a9d732082b1f"
+        },
+        "lmarena": {
+          "archive_member": "data/providers/lmarena.yaml",
+          "sha256": "812e4f3757b650e1c49d55dfa0aa99adeb6d641e98ba171697909e9a5993a907"
+        },
+        "lmstudio": {
+          "archive_member": "data/providers/lmstudio.yaml",
+          "sha256": "2e5c906a270d3120303597ff2cb6c957cdd10c4ad454865ea6e26d7ab5def709"
+        },
+        "lovable": {
+          "archive_member": "data/providers/lovable.yaml",
+          "sha256": "b92ed9f33ce778285deaff037dc6a4be757bcbcfe93ccea8478c102a624b720f"
+        },
+        "lovart": {
+          "archive_member": "data/providers/lovart.yaml",
+          "sha256": "507d8a53899b82cf9636fba713d1cf278de4be59e3afa128475bf0e38d7310f2"
+        },
+        "luma-ai": {
+          "archive_member": "data/providers/luma-ai.yaml",
+          "sha256": "4a138f13d6f36bcb4bad7b122c710b0279b80f605e961a77933eb58c043913bb"
+        },
+        "manus": {
+          "archive_member": "data/providers/manus.yaml",
+          "sha256": "8c7dd211fccd5adffa7d88c24fa1b63fbbcce282c3fce1c6e6c13bb8a32aeff9"
+        },
+        "meta-ai": {
+          "archive_member": "data/providers/meta-ai.yaml",
+          "sha256": "40b71c996956664c92a5af9e45399a23b545c615fab3d3bdbd7854fb1b670b04"
+        },
+        "midjourney": {
+          "archive_member": "data/providers/midjourney.yaml",
+          "sha256": "45ab4fc939a98b322c1b9e80cc50e885d0574e8149d0688db5a2b9643cda9286"
+        },
+        "minimax": {
+          "archive_member": "data/providers/minimax.yaml",
+          "sha256": "c6f268901e802e838df3518fa14e67c8e6ad3a8e4aa0fc391889df3557940fbe"
+        },
+        "mistral-ai": {
+          "archive_member": "data/providers/mistral-ai.yaml",
+          "sha256": "72a9d1efb4f7603901d21788311968fa6ef88970fc92b2bccced014a03748c1f"
+        },
+        "modelscope": {
+          "archive_member": "data/providers/modelscope.yaml",
+          "sha256": "5db8d45abe45833c0c3981a3bfa12512cc7b092c1690f60927b850b054b58c6c"
+        },
+        "moonshot-ai": {
+          "archive_member": "data/providers/moonshot-ai.yaml",
+          "sha256": "3e073b0ef8892de083ef13ac9ea8d36e079ee27234b81401f582b623e9b16b7a"
+        },
+        "novita-ai": {
+          "archive_member": "data/providers/novita-ai.yaml",
+          "sha256": "c46d9585271ea3557ad34ec34415944e195914866e46eb135f117c3f8a095c37"
+        },
+        "ollama": {
+          "archive_member": "data/providers/ollama.yaml",
+          "sha256": "e22448ed7808e30972fc84cb003f43da8b35766cce374d0ce972389476b97dc3"
+        },
+        "openai": {
+          "archive_member": "data/providers/openai.yaml",
+          "sha256": "a5237a01ac2a84b9878c64f9d9038c08a200bfdc4ee483a46b60a7eb79491750"
+        },
+        "openart": {
+          "archive_member": "data/providers/openart.yaml",
+          "sha256": "46dbda8e27ae9f49cdc6c17e568c0a3671f0bb1bc3fbbd9f1fee6da49aa02189"
+        },
+        "openclaw": {
+          "archive_member": "data/providers/openclaw.yaml",
+          "sha256": "83be5a74b56909c745f273574561d3d303d5f3d7151618efd462bf08ef5c9c33"
+        },
+        "opencode": {
+          "archive_member": "data/providers/opencode.yaml",
+          "sha256": "ee4d45060e1a399d9a7bf8c0c0cbdf99a99b0732253689d14e29f28409be2cf5"
+        },
+        "openrouter": {
+          "archive_member": "data/providers/openrouter.yaml",
+          "sha256": "784372a11afce6f373d6ff6d92bd7a2dc76bee13de320c3aaaae623ba55a6d5a"
+        },
+        "otter-ai": {
+          "archive_member": "data/providers/otter-ai.yaml",
+          "sha256": "f99b1bc3289c02f1bcde498834f44ef5742d0905c5ad077153ad80ec32280c8a"
+        },
+        "perplexity": {
+          "archive_member": "data/providers/perplexity.yaml",
+          "sha256": "4906d77b261c8c490bad835c44e434142152db6892f53e0df7a1a5708c283e0c"
+        },
+        "phind": {
+          "archive_member": "data/providers/phind.yaml",
+          "sha256": "766ad5f29b3823b63788108a10e26f535f89570c987dd5fe449c8fd1915b2336"
+        },
+        "pika": {
+          "archive_member": "data/providers/pika.yaml",
+          "sha256": "def71720f0a9b8f61b9c56bfa571e35725959ca80a9ed3712faafabf41ce6e5a"
+        },
+        "poe": {
+          "archive_member": "data/providers/poe.yaml",
+          "sha256": "ae30ee353399c5ded2204bc566c769dd65f603f843abd3831cd70f2fba027e37"
+        },
+        "ppio": {
+          "archive_member": "data/providers/ppio.yaml",
+          "sha256": "fdcb5fc2e0721be78505cc672af0a4d06505dfaaacc8e22a6b7a71c53bc72e5e"
+        },
+        "qoder": {
+          "archive_member": "data/providers/qoder.yaml",
+          "sha256": "7acd974568bd885bb80a366f236edd1a7d44d85494aa16913104614250767b90"
+        },
+        "recraft": {
+          "archive_member": "data/providers/recraft.yaml",
+          "sha256": "e2dcb66c5711bab493ed8f3ae876c4c5000a7d3a3ba5567575fa049e60a6a479"
+        },
+        "replicate": {
+          "archive_member": "data/providers/replicate.yaml",
+          "sha256": "25103f6b8090518bbf33586115a2baa2bf601016b81714210258e48f354c4953"
+        },
+        "replit": {
+          "archive_member": "data/providers/replit.yaml",
+          "sha256": "f3082262f79c8de9ce42a6a2962bcd31b237dcffeb8ace5f9572157d0d42373e"
+        },
+        "runway": {
+          "archive_member": "data/providers/runway.yaml",
+          "sha256": "c191527612ba57ab270fdcb80dc2c4ab2c8baddd3c575f95a90e3f3e76225acc"
+        },
+        "siliconflow": {
+          "archive_member": "data/providers/siliconflow.yaml",
+          "sha256": "c01c55a44d8670ec76b6d22c814e52686b5b33c2d6a9e5602f6fafe8f6172bc0"
+        },
+        "sourcegraph": {
+          "archive_member": "data/providers/sourcegraph.yaml",
+          "sha256": "16361f097deabd9043cb4216283f4706234e5500a2838d494e7c667be303a53e"
+        },
+        "stability-ai": {
+          "archive_member": "data/providers/stability-ai.yaml",
+          "sha256": "1fc8d5385eea14bbe6f56e109b6591b23be1b7bf9475cb1aabe6b40d3dec59ce"
+        },
+        "stepfun": {
+          "archive_member": "data/providers/stepfun.yaml",
+          "sha256": "96dc366dcb388621adebd4a9ef2eaa66d09c61d8c39f5ac092de8fc1f703d73a"
+        },
+        "suno": {
+          "archive_member": "data/providers/suno.yaml",
+          "sha256": "2c450b0af14bd414512c507159fd7cc2b0ce088469d7c3e2378b0ecca0e611bc"
+        },
+        "synthesia": {
+          "archive_member": "data/providers/synthesia.yaml",
+          "sha256": "9331af9942d6eb68f28cd59dc7085e9f09a5ef37a0d36b31fd5f36733e14e6e8"
+        },
+        "tabnine": {
+          "archive_member": "data/providers/tabnine.yaml",
+          "sha256": "6d1621eb29bf93cadd3e6a57a4ba25bc294dc8e69be0fa1cf956f0c91f062e62"
+        },
+        "tencent-ai": {
+          "archive_member": "data/providers/tencent-ai.yaml",
+          "sha256": "dfeb104a4919af90edfd3d8ef667828c5ae2e5c8e8ad10fdfb3be8ede0ca35bd"
+        },
+        "together-ai": {
+          "archive_member": "data/providers/together-ai.yaml",
+          "sha256": "b90dfa64809d15fd987db4b69c46a65d4bf4dedfad6777ddf257acc06594c661"
+        },
+        "udio": {
+          "archive_member": "data/providers/udio.yaml",
+          "sha256": "e560f90c030db4542404ae58afa37f77c89900cb1888de06782e997bf9982dae"
+        },
+        "v0": {
+          "archive_member": "data/providers/v0.yaml",
+          "sha256": "fe9b8e3bc0a11318628c79e4d9f961a18c23b592432bcd953066d7868dca04b4"
+        },
+        "volcengine-ai": {
+          "archive_member": "data/providers/volcengine-ai.yaml",
+          "sha256": "dcc28cc2d5d7cebe7a0ee90da2d970dc5c496d2b87d8f899dd259e2ddeceb04a"
+        },
+        "windsurf": {
+          "archive_member": "data/providers/windsurf.yaml",
+          "sha256": "5306eb37f3797c09e4f470060fc4e07ba04075fa847302dba4276b7d3071a077"
+        },
+        "x-ai": {
+          "archive_member": "data/providers/x-ai.yaml",
+          "sha256": "09cc2462b6f223ba751fc30ed485ac6c23ae0740ed4b951d887d5b73821eb959"
+        },
+        "xiaomi-ai": {
+          "archive_member": "data/providers/xiaomi-ai.yaml",
+          "sha256": "9acceeec91d66a6fb6c27be68393e0bcf4f06c828e0aa3a674e7c61c420d8ad0"
+        },
+        "you": {
+          "archive_member": "data/providers/you.yaml",
+          "sha256": "66ab857fa6b99db4dcabf6db1d4bd1ec34eace49ee6c50e354c32ef54af4ea96"
+        },
+        "youmind": {
+          "archive_member": "data/providers/youmind.yaml",
+          "sha256": "d4065e3266ad055a7df2964ba7e850153f7f090a46a0c71213aec7ffb4217f7b"
+        },
+        "zed": {
+          "archive_member": "data/providers/zed.yaml",
+          "sha256": "69343ad9d6b68438c98c9582cd753f67514a7498d3853d113b6e01902d7e714b"
+        },
+        "zhipu-ai": {
+          "archive_member": "data/providers/zhipu-ai.yaml",
+          "sha256": "70dd7d2f30d47e52b39ff0eeaa81f54abea3a8cc2c7179f95d4fa8157a6a13da"
+        }
+      },
+      "notices": {
+        "LICENSE": "MIT License\n\nCopyright (c) 2026 VPSDance\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+      },
+      "missing_categories": [],
+      "publish": false,
+      "members": {
+        "ai-all": [
+          "adobe-firefly",
+          "alibaba-ai",
+          "amazon-q",
+          "anthropic",
+          "augment-code",
+          "baidu-ai",
+          "black-forest-labs",
+          "bolt",
+          "bytedance-ai",
+          "bytedance-ai-cn",
+          "cerebras",
+          "character-ai",
+          "chutes",
+          "civitai",
+          "cline",
+          "clipdrop",
+          "cloudflare-ai",
+          "coderabbit",
+          "cohere",
+          "comfyui",
+          "command-code",
+          "continue",
+          "copilot",
+          "crewai",
+          "cursor",
+          "deepinfra",
+          "deepseek",
+          "descript",
+          "devin",
+          "dia-browser",
+          "dify",
+          "duck-ai",
+          "eigent",
+          "elevenlabs",
+          "factory",
+          "fireworks-ai",
+          "gamma",
+          "genspark",
+          "google-ai",
+          "grammarly",
+          "groq",
+          "h2o-ai",
+          "hermes-agent",
+          "heygen",
+          "huggingface",
+          "ideogram",
+          "inflection",
+          "jasper",
+          "jetbrains-ai",
+          "kilo",
+          "kiro",
+          "langchain",
+          "leonardo-ai",
+          "lmarena",
+          "lmstudio",
+          "lovable",
+          "lovart",
+          "luma-ai",
+          "manus",
+          "meta-ai",
+          "midjourney",
+          "minimax",
+          "mistral-ai",
+          "modelscope",
+          "moonshot-ai",
+          "novita-ai",
+          "ollama",
+          "openai",
+          "openart",
+          "openclaw",
+          "opencode",
+          "openrouter",
+          "otter-ai",
+          "perplexity",
+          "phind",
+          "pika",
+          "poe",
+          "ppio",
+          "qoder",
+          "recraft",
+          "replicate",
+          "replit",
+          "runway",
+          "siliconflow",
+          "sourcegraph",
+          "stability-ai",
+          "stepfun",
+          "suno",
+          "synthesia",
+          "tabnine",
+          "tencent-ai",
+          "together-ai",
+          "udio",
+          "v0",
+          "volcengine-ai",
+          "windsurf",
+          "x-ai",
+          "xiaomi-ai",
+          "you",
+          "youmind",
+          "zed",
+          "zhipu-ai"
+        ],
+        "ai-cn": [
+          "alibaba-ai",
+          "baidu-ai",
+          "bytedance-ai-cn",
+          "deepseek",
+          "minimax",
+          "modelscope",
+          "moonshot-ai",
+          "ppio",
+          "siliconflow",
+          "stepfun",
+          "tencent-ai",
+          "volcengine-ai",
+          "xiaomi-ai",
+          "zhipu-ai"
+        ],
+        "category-ai-!cn": [
+          "adobe-firefly",
+          "amazon-q",
+          "anthropic",
+          "augment-code",
+          "black-forest-labs",
+          "bolt",
+          "bytedance-ai",
+          "cerebras",
+          "character-ai",
+          "chutes",
+          "civitai",
+          "cline",
+          "clipdrop",
+          "cloudflare-ai",
+          "coderabbit",
+          "cohere",
+          "comfyui",
+          "command-code",
+          "continue",
+          "copilot",
+          "crewai",
+          "cursor",
+          "deepinfra",
+          "descript",
+          "devin",
+          "dia-browser",
+          "dify",
+          "duck-ai",
+          "eigent",
+          "elevenlabs",
+          "factory",
+          "fireworks-ai",
+          "gamma",
+          "genspark",
+          "google-ai",
+          "grammarly",
+          "groq",
+          "h2o-ai",
+          "hermes-agent",
+          "heygen",
+          "huggingface",
+          "ideogram",
+          "inflection",
+          "jasper",
+          "jetbrains-ai",
+          "kilo",
+          "kiro",
+          "langchain",
+          "leonardo-ai",
+          "lmarena",
+          "lmstudio",
+          "lovable",
+          "lovart",
+          "luma-ai",
+          "manus",
+          "meta-ai",
+          "midjourney",
+          "mistral-ai",
+          "novita-ai",
+          "ollama",
+          "openai",
+          "openart",
+          "openclaw",
+          "opencode",
+          "openrouter",
+          "otter-ai",
+          "perplexity",
+          "phind",
+          "pika",
+          "poe",
+          "qoder",
+          "recraft",
+          "replicate",
+          "replit",
+          "runway",
+          "sourcegraph",
+          "stability-ai",
+          "suno",
+          "synthesia",
+          "tabnine",
+          "together-ai",
+          "udio",
+          "v0",
+          "windsurf",
+          "x-ai",
+          "you",
+          "youmind",
+          "zed"
+        ],
+        "ai-openai": [
+          "openai"
+        ],
+        "ai-anthropic": [
+          "anthropic"
+        ],
+        "ai-google": [
+          "google-ai"
+        ],
+        "ai-microsoft": [
+          "copilot"
+        ],
+        "ai-bytedance": [
+          "bytedance-ai",
+          "bytedance-ai-cn"
+        ],
+        "ai-alibaba": [
+          "alibaba-ai"
+        ],
+        "ai-amazon": [
+          "amazon-q",
+          "kiro"
+        ],
+        "ai-meta": [
+          "meta-ai"
+        ],
+        "ai-mistral": [
+          "mistral-ai"
+        ],
+        "ai-deepseek": [
+          "deepseek"
+        ],
+        "ai-moonshot": [
+          "moonshot-ai"
+        ],
+        "ai-zhipu": [
+          "zhipu-ai"
+        ],
+        "ai-minimax": [
+          "minimax"
+        ],
+        "ai-tencent": [
+          "tencent-ai"
+        ],
+        "ai-baidu": [
+          "baidu-ai"
+        ],
+        "ai-xiaomi": [
+          "xiaomi-ai"
+        ],
+        "ai-cursor": [
+          "cursor"
+        ],
+        "ai-perplexity": [
+          "perplexity"
+        ],
+        "ai-midjourney": [
+          "midjourney"
+        ],
+        "ai-windsurf": [
+          "windsurf"
+        ]
+      }
     }
   ],
   "categories": {
+    "geosite-ai-alibaba": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-alibaba",
+          "entries": 11,
+          "added_entries": 11,
+          "members": [
+            "alibaba-ai"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 11,
+      "ruleset": "ruleset/geosite-ai-alibaba.list",
+      "domainset": "domainset/geosite-ai-alibaba.txt"
+    },
+    "geosite-ai-all": {
+      "contributions": [
+        {
+          "id": "sagernet",
+          "category": "ai-all",
+          "entries": 214,
+          "added_entries": 214,
+          "members": [
+            "category-ai-!cn"
+          ]
+        },
+        {
+          "id": "loyalsoldier",
+          "category": "ai-all",
+          "entries": 214,
+          "added_entries": 0,
+          "members": [
+            "category-ai-!cn"
+          ]
+        },
+        {
+          "id": "metacubex",
+          "category": "ai-all",
+          "entries": 214,
+          "added_entries": 0,
+          "members": [
+            "category-ai-!cn"
+          ]
+        },
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-all",
+          "entries": 414,
+          "added_entries": 247,
+          "members": [
+            "adobe-firefly",
+            "alibaba-ai",
+            "amazon-q",
+            "anthropic",
+            "augment-code",
+            "baidu-ai",
+            "black-forest-labs",
+            "bolt",
+            "bytedance-ai",
+            "bytedance-ai-cn",
+            "cerebras",
+            "character-ai",
+            "chutes",
+            "civitai",
+            "cline",
+            "clipdrop",
+            "cloudflare-ai",
+            "coderabbit",
+            "cohere",
+            "comfyui",
+            "command-code",
+            "continue",
+            "copilot",
+            "crewai",
+            "cursor",
+            "deepinfra",
+            "deepseek",
+            "descript",
+            "devin",
+            "dia-browser",
+            "dify",
+            "duck-ai",
+            "eigent",
+            "elevenlabs",
+            "factory",
+            "fireworks-ai",
+            "gamma",
+            "genspark",
+            "google-ai",
+            "grammarly",
+            "groq",
+            "h2o-ai",
+            "hermes-agent",
+            "heygen",
+            "huggingface",
+            "ideogram",
+            "inflection",
+            "jasper",
+            "jetbrains-ai",
+            "kilo",
+            "kiro",
+            "langchain",
+            "leonardo-ai",
+            "lmarena",
+            "lmstudio",
+            "lovable",
+            "lovart",
+            "luma-ai",
+            "manus",
+            "meta-ai",
+            "midjourney",
+            "minimax",
+            "mistral-ai",
+            "modelscope",
+            "moonshot-ai",
+            "novita-ai",
+            "ollama",
+            "openai",
+            "openart",
+            "openclaw",
+            "opencode",
+            "openrouter",
+            "otter-ai",
+            "perplexity",
+            "phind",
+            "pika",
+            "poe",
+            "ppio",
+            "qoder",
+            "recraft",
+            "replicate",
+            "replit",
+            "runway",
+            "siliconflow",
+            "sourcegraph",
+            "stability-ai",
+            "stepfun",
+            "suno",
+            "synthesia",
+            "tabnine",
+            "tencent-ai",
+            "together-ai",
+            "udio",
+            "v0",
+            "volcengine-ai",
+            "windsurf",
+            "x-ai",
+            "xiaomi-ai",
+            "you",
+            "youmind",
+            "zed",
+            "zhipu-ai"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 461,
+      "ruleset": "ruleset/geosite-ai-all.list",
+      "script": "scripts/srs-regex-4755eea1712abbf7.js",
+      "script_name": "srs-regex-4755eea1712abbf7",
+      "requires_module": "regex-support.sgmodule",
+      "regex_patterns": [
+        "^chatgpt-async-webps-prod-\\S+-\\d+\\.webpubsub\\.azure\\.com$"
+      ]
+    },
+    "geosite-ai-amazon": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-amazon",
+          "entries": 16,
+          "added_entries": 16,
+          "members": [
+            "amazon-q",
+            "kiro"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 16,
+      "ruleset": "ruleset/geosite-ai-amazon.list",
+      "domainset": "domainset/geosite-ai-amazon.txt"
+    },
+    "geosite-ai-anthropic": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-anthropic",
+          "entries": 52,
+          "added_entries": 52,
+          "members": [
+            "anthropic"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 52,
+      "ruleset": "ruleset/geosite-ai-anthropic.list"
+    },
+    "geosite-ai-baidu": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-baidu",
+          "entries": 3,
+          "added_entries": 3,
+          "members": [
+            "baidu-ai"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 3,
+      "ruleset": "ruleset/geosite-ai-baidu.list",
+      "domainset": "domainset/geosite-ai-baidu.txt"
+    },
+    "geosite-ai-bytedance": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-bytedance",
+          "entries": 35,
+          "added_entries": 35,
+          "members": [
+            "bytedance-ai",
+            "bytedance-ai-cn"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 35,
+      "ruleset": "ruleset/geosite-ai-bytedance.list",
+      "domainset": "domainset/geosite-ai-bytedance.txt"
+    },
+    "geosite-ai-cn": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-cn",
+          "entries": 67,
+          "added_entries": 67,
+          "members": [
+            "alibaba-ai",
+            "baidu-ai",
+            "bytedance-ai-cn",
+            "deepseek",
+            "minimax",
+            "modelscope",
+            "moonshot-ai",
+            "ppio",
+            "siliconflow",
+            "stepfun",
+            "tencent-ai",
+            "volcengine-ai",
+            "xiaomi-ai",
+            "zhipu-ai"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 67,
+      "ruleset": "ruleset/geosite-ai-cn.list",
+      "domainset": "domainset/geosite-ai-cn.txt"
+    },
+    "geosite-ai-cursor": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-cursor",
+          "entries": 8,
+          "added_entries": 8,
+          "members": [
+            "cursor"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 8,
+      "ruleset": "ruleset/geosite-ai-cursor.list"
+    },
+    "geosite-ai-deepseek": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-deepseek",
+          "entries": 2,
+          "added_entries": 2,
+          "members": [
+            "deepseek"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 2,
+      "ruleset": "ruleset/geosite-ai-deepseek.list",
+      "domainset": "domainset/geosite-ai-deepseek.txt"
+    },
+    "geosite-ai-google": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-google",
+          "entries": 53,
+          "added_entries": 53,
+          "members": [
+            "google-ai"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 53,
+      "ruleset": "ruleset/geosite-ai-google.list"
+    },
+    "geosite-ai-meta": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-meta",
+          "entries": 12,
+          "added_entries": 12,
+          "members": [
+            "meta-ai"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 12,
+      "ruleset": "ruleset/geosite-ai-meta.list",
+      "domainset": "domainset/geosite-ai-meta.txt"
+    },
+    "geosite-ai-microsoft": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-microsoft",
+          "entries": 35,
+          "added_entries": 35,
+          "members": [
+            "copilot"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 35,
+      "ruleset": "ruleset/geosite-ai-microsoft.list"
+    },
+    "geosite-ai-midjourney": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-midjourney",
+          "entries": 1,
+          "added_entries": 1,
+          "members": [
+            "midjourney"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 1,
+      "ruleset": "ruleset/geosite-ai-midjourney.list",
+      "domainset": "domainset/geosite-ai-midjourney.txt"
+    },
+    "geosite-ai-minimax": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-minimax",
+          "entries": 4,
+          "added_entries": 4,
+          "members": [
+            "minimax"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 4,
+      "ruleset": "ruleset/geosite-ai-minimax.list",
+      "domainset": "domainset/geosite-ai-minimax.txt"
+    },
+    "geosite-ai-mistral": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-mistral",
+          "entries": 1,
+          "added_entries": 1,
+          "members": [
+            "mistral-ai"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 1,
+      "ruleset": "ruleset/geosite-ai-mistral.list",
+      "domainset": "domainset/geosite-ai-mistral.txt"
+    },
+    "geosite-ai-moonshot": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-moonshot",
+          "entries": 3,
+          "added_entries": 3,
+          "members": [
+            "moonshot-ai"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 3,
+      "ruleset": "ruleset/geosite-ai-moonshot.list",
+      "domainset": "domainset/geosite-ai-moonshot.txt"
+    },
+    "geosite-ai-openai": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-openai",
+          "entries": 53,
+          "added_entries": 53,
+          "members": [
+            "openai"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 53,
+      "ruleset": "ruleset/geosite-ai-openai.list",
+      "script": "scripts/srs-regex-245c8575054aa1d4.js",
+      "script_name": "srs-regex-245c8575054aa1d4",
+      "requires_module": "regex-support.sgmodule",
+      "regex_patterns": [
+        "^chatgpt-async-webps-prod-\\S+-\\d+\\.webpubsub\\.azure\\.com$"
+      ]
+    },
+    "geosite-ai-perplexity": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-perplexity",
+          "entries": 5,
+          "added_entries": 5,
+          "members": [
+            "perplexity"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 5,
+      "ruleset": "ruleset/geosite-ai-perplexity.list",
+      "domainset": "domainset/geosite-ai-perplexity.txt"
+    },
+    "geosite-ai-tencent": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-tencent",
+          "entries": 5,
+          "added_entries": 5,
+          "members": [
+            "tencent-ai"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 5,
+      "ruleset": "ruleset/geosite-ai-tencent.list",
+      "domainset": "domainset/geosite-ai-tencent.txt"
+    },
+    "geosite-ai-windsurf": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-windsurf",
+          "entries": 7,
+          "added_entries": 7,
+          "members": [
+            "windsurf"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 7,
+      "ruleset": "ruleset/geosite-ai-windsurf.list"
+    },
+    "geosite-ai-xiaomi": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-xiaomi",
+          "entries": 3,
+          "added_entries": 3,
+          "members": [
+            "xiaomi-ai"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 3,
+      "ruleset": "ruleset/geosite-ai-xiaomi.list",
+      "domainset": "domainset/geosite-ai-xiaomi.txt"
+    },
+    "geosite-ai-zhipu": {
+      "contributions": [
+        {
+          "id": "vpsdance-ai",
+          "category": "ai-zhipu",
+          "entries": 5,
+          "added_entries": 5,
+          "members": [
+            "zhipu-ai"
+          ]
+        }
+      ],
+      "status": "complete",
+      "rules": 5,
+      "ruleset": "ruleset/geosite-ai-zhipu.list",
+      "domainset": "domainset/geosite-ai-zhipu.txt"
+    },
     "geosite-apple": {
       "contributions": [
         {
@@ -204,10 +1954,106 @@
           "category": "category-ai-!cn",
           "entries": 214,
           "added_entries": 0
+        },
+        {
+          "id": "vpsdance-ai",
+          "category": "category-ai-!cn",
+          "entries": 347,
+          "added_entries": 181,
+          "members": [
+            "adobe-firefly",
+            "amazon-q",
+            "anthropic",
+            "augment-code",
+            "black-forest-labs",
+            "bolt",
+            "bytedance-ai",
+            "cerebras",
+            "character-ai",
+            "chutes",
+            "civitai",
+            "cline",
+            "clipdrop",
+            "cloudflare-ai",
+            "coderabbit",
+            "cohere",
+            "comfyui",
+            "command-code",
+            "continue",
+            "copilot",
+            "crewai",
+            "cursor",
+            "deepinfra",
+            "descript",
+            "devin",
+            "dia-browser",
+            "dify",
+            "duck-ai",
+            "eigent",
+            "elevenlabs",
+            "factory",
+            "fireworks-ai",
+            "gamma",
+            "genspark",
+            "google-ai",
+            "grammarly",
+            "groq",
+            "h2o-ai",
+            "hermes-agent",
+            "heygen",
+            "huggingface",
+            "ideogram",
+            "inflection",
+            "jasper",
+            "jetbrains-ai",
+            "kilo",
+            "kiro",
+            "langchain",
+            "leonardo-ai",
+            "lmarena",
+            "lmstudio",
+            "lovable",
+            "lovart",
+            "luma-ai",
+            "manus",
+            "meta-ai",
+            "midjourney",
+            "mistral-ai",
+            "novita-ai",
+            "ollama",
+            "openai",
+            "openart",
+            "openclaw",
+            "opencode",
+            "openrouter",
+            "otter-ai",
+            "perplexity",
+            "phind",
+            "pika",
+            "poe",
+            "qoder",
+            "recraft",
+            "replicate",
+            "replit",
+            "runway",
+            "sourcegraph",
+            "stability-ai",
+            "suno",
+            "synthesia",
+            "tabnine",
+            "together-ai",
+            "udio",
+            "v0",
+            "windsurf",
+            "x-ai",
+            "you",
+            "youmind",
+            "zed"
+          ]
         }
       ],
       "status": "complete",
-      "rules": 214,
+      "rules": 395,
       "ruleset": "ruleset/geosite-category-ai-!cn.list",
       "script": "scripts/srs-regex-5c16223b7bda31c8.js",
       "script_name": "srs-regex-5c16223b7bda31c8",
@@ -773,10 +2619,106 @@
           "category": "category-ai-!cn",
           "entries": 214,
           "added_entries": 0
+        },
+        {
+          "id": "vpsdance-ai",
+          "category": "category-ai-!cn",
+          "entries": 347,
+          "added_entries": 181,
+          "members": [
+            "adobe-firefly",
+            "amazon-q",
+            "anthropic",
+            "augment-code",
+            "black-forest-labs",
+            "bolt",
+            "bytedance-ai",
+            "cerebras",
+            "character-ai",
+            "chutes",
+            "civitai",
+            "cline",
+            "clipdrop",
+            "cloudflare-ai",
+            "coderabbit",
+            "cohere",
+            "comfyui",
+            "command-code",
+            "continue",
+            "copilot",
+            "crewai",
+            "cursor",
+            "deepinfra",
+            "descript",
+            "devin",
+            "dia-browser",
+            "dify",
+            "duck-ai",
+            "eigent",
+            "elevenlabs",
+            "factory",
+            "fireworks-ai",
+            "gamma",
+            "genspark",
+            "google-ai",
+            "grammarly",
+            "groq",
+            "h2o-ai",
+            "hermes-agent",
+            "heygen",
+            "huggingface",
+            "ideogram",
+            "inflection",
+            "jasper",
+            "jetbrains-ai",
+            "kilo",
+            "kiro",
+            "langchain",
+            "leonardo-ai",
+            "lmarena",
+            "lmstudio",
+            "lovable",
+            "lovart",
+            "luma-ai",
+            "manus",
+            "meta-ai",
+            "midjourney",
+            "mistral-ai",
+            "novita-ai",
+            "ollama",
+            "openai",
+            "openart",
+            "openclaw",
+            "opencode",
+            "openrouter",
+            "otter-ai",
+            "perplexity",
+            "phind",
+            "pika",
+            "poe",
+            "qoder",
+            "recraft",
+            "replicate",
+            "replit",
+            "runway",
+            "sourcegraph",
+            "stability-ai",
+            "suno",
+            "synthesia",
+            "tabnine",
+            "together-ai",
+            "udio",
+            "v0",
+            "windsurf",
+            "x-ai",
+            "you",
+            "youmind",
+            "zed"
+          ]
         }
       ],
       "status": "complete",
-      "rules": 214,
+      "rules": 395,
       "ruleset": "ruleset/geosite-ai-!cn.list",
       "script": "scripts/srs-regex-5c16223b7bda31c8.js",
       "script_name": "srs-regex-5c16223b7bda31c8",

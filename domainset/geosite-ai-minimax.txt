@@ -1,0 +1,4 @@
+.hailuoai.com
+.xingyeai.com
+api.minimax.io
+api.minimaxi.com

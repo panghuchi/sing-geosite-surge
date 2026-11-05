@@ -1,8 +1,8 @@
 # Conversion report
 
-Source fingerprint: cebd14da4429447d966e4c1a4509a5c761179dcc2fa678e08bcf5c981ce6c69b
+Source fingerprint: ac39b34a94cc0bf10b22f08773f6a9bae58cc72c54f46ef55958f96ccceffde8
 
-Complete: 23; unsupported (not published): 0.
+Complete: 45; unsupported (not published): 0.
 
 See manifest.json for category paths and reasons. Unsupported categories have no subscription file.
 
@@ -12,6 +12,28 @@ See manifest.json for category paths and reasons. Unsupported categories have no
 
 | Category | RULE-SET | DOMAIN-SET | Requires module |
 | --- | --- | --- | --- |
+| geosite-ai-alibaba | [Download](ruleset/geosite-ai-alibaba.list) | [Download](domainset/geosite-ai-alibaba.txt) | No |
+| geosite-ai-all | [Download](ruleset/geosite-ai-all.list) | — | SCRIPT |
+| geosite-ai-amazon | [Download](ruleset/geosite-ai-amazon.list) | [Download](domainset/geosite-ai-amazon.txt) | No |
+| geosite-ai-anthropic | [Download](ruleset/geosite-ai-anthropic.list) | — | No |
+| geosite-ai-baidu | [Download](ruleset/geosite-ai-baidu.list) | [Download](domainset/geosite-ai-baidu.txt) | No |
+| geosite-ai-bytedance | [Download](ruleset/geosite-ai-bytedance.list) | [Download](domainset/geosite-ai-bytedance.txt) | No |
+| geosite-ai-cn | [Download](ruleset/geosite-ai-cn.list) | [Download](domainset/geosite-ai-cn.txt) | No |
+| geosite-ai-cursor | [Download](ruleset/geosite-ai-cursor.list) | — | No |
+| geosite-ai-deepseek | [Download](ruleset/geosite-ai-deepseek.list) | [Download](domainset/geosite-ai-deepseek.txt) | No |
+| geosite-ai-google | [Download](ruleset/geosite-ai-google.list) | — | No |
+| geosite-ai-meta | [Download](ruleset/geosite-ai-meta.list) | [Download](domainset/geosite-ai-meta.txt) | No |
+| geosite-ai-microsoft | [Download](ruleset/geosite-ai-microsoft.list) | — | No |
+| geosite-ai-midjourney | [Download](ruleset/geosite-ai-midjourney.list) | [Download](domainset/geosite-ai-midjourney.txt) | No |
+| geosite-ai-minimax | [Download](ruleset/geosite-ai-minimax.list) | [Download](domainset/geosite-ai-minimax.txt) | No |
+| geosite-ai-mistral | [Download](ruleset/geosite-ai-mistral.list) | [Download](domainset/geosite-ai-mistral.txt) | No |
+| geosite-ai-moonshot | [Download](ruleset/geosite-ai-moonshot.list) | [Download](domainset/geosite-ai-moonshot.txt) | No |
+| geosite-ai-openai | [Download](ruleset/geosite-ai-openai.list) | — | SCRIPT |
+| geosite-ai-perplexity | [Download](ruleset/geosite-ai-perplexity.list) | [Download](domainset/geosite-ai-perplexity.txt) | No |
+| geosite-ai-tencent | [Download](ruleset/geosite-ai-tencent.list) | [Download](domainset/geosite-ai-tencent.txt) | No |
+| geosite-ai-windsurf | [Download](ruleset/geosite-ai-windsurf.list) | — | No |
+| geosite-ai-xiaomi | [Download](ruleset/geosite-ai-xiaomi.list) | [Download](domainset/geosite-ai-xiaomi.txt) | No |
+| geosite-ai-zhipu | [Download](ruleset/geosite-ai-zhipu.list) | [Download](domainset/geosite-ai-zhipu.txt) | No |
 | geosite-apple | [Download](ruleset/geosite-apple.list) | — | No |
 | geosite-apple@cn | [Download](ruleset/geosite-apple@cn.list) | [Download](domainset/geosite-apple@cn.txt) | No |
 | geosite-category-ai-!cn | [Download](ruleset/geosite-category-ai-!cn.list) | — | SCRIPT |
@@ -42,6 +64,31 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 
 | Category | Source | Entries | Added entries |
 | --- | --- | --- | --- |
+| geosite-ai-alibaba | vpsdance-ai | 11 | 11 |
+| geosite-ai-all | sagernet | 214 | 214 |
+| geosite-ai-all | loyalsoldier | 214 | 0 |
+| geosite-ai-all | metacubex | 214 | 0 |
+| geosite-ai-all | vpsdance-ai | 414 | 247 |
+| geosite-ai-amazon | vpsdance-ai | 16 | 16 |
+| geosite-ai-anthropic | vpsdance-ai | 52 | 52 |
+| geosite-ai-baidu | vpsdance-ai | 3 | 3 |
+| geosite-ai-bytedance | vpsdance-ai | 35 | 35 |
+| geosite-ai-cn | vpsdance-ai | 67 | 67 |
+| geosite-ai-cursor | vpsdance-ai | 8 | 8 |
+| geosite-ai-deepseek | vpsdance-ai | 2 | 2 |
+| geosite-ai-google | vpsdance-ai | 53 | 53 |
+| geosite-ai-meta | vpsdance-ai | 12 | 12 |
+| geosite-ai-microsoft | vpsdance-ai | 35 | 35 |
+| geosite-ai-midjourney | vpsdance-ai | 1 | 1 |
+| geosite-ai-minimax | vpsdance-ai | 4 | 4 |
+| geosite-ai-mistral | vpsdance-ai | 1 | 1 |
+| geosite-ai-moonshot | vpsdance-ai | 3 | 3 |
+| geosite-ai-openai | vpsdance-ai | 53 | 53 |
+| geosite-ai-perplexity | vpsdance-ai | 5 | 5 |
+| geosite-ai-tencent | vpsdance-ai | 5 | 5 |
+| geosite-ai-windsurf | vpsdance-ai | 7 | 7 |
+| geosite-ai-xiaomi | vpsdance-ai | 3 | 3 |
+| geosite-ai-zhipu | vpsdance-ai | 5 | 5 |
 | geosite-apple | sagernet | 1785 | 1785 |
 | geosite-apple | loyalsoldier | 1791 | 7 |
 | geosite-apple | metacubex | 1791 | 0 |
@@ -51,6 +98,7 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-category-ai-!cn | sagernet | 214 | 214 |
 | geosite-category-ai-!cn | loyalsoldier | 214 | 0 |
 | geosite-category-ai-!cn | metacubex | 214 | 0 |
+| geosite-category-ai-!cn | vpsdance-ai | 347 | 181 |
 | geosite-cn | sagernet | 9402 | 9402 |
 | geosite-cn | loyalsoldier | 110197 | 103713 |
 | geosite-cn | metacubex | 110177 | 2258 |
