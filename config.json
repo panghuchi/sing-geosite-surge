@@ -366,7 +366,7 @@
       ]
     }
   ],
-  "aliases": {
-    "geosite-ai-!cn": "geosite-category-ai-!cn"
+  "renames": {
+    "geosite-category-ai-!cn": "geosite-ai-!cn"
   }
 }

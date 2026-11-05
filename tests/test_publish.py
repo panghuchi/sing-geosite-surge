@@ -36,3 +36,23 @@ class PublishTests(unittest.TestCase):
             self.assertTrue((target / '.git').exists())
             self.assertFalse((target / 'obsolete.txt').exists())
             self.assertEqual(json.loads((target / 'status.json').read_text())['upstream_revision'], 'abc')
+
+
+class RenameTests(unittest.TestCase):
+    def test_only_identical_explicit_replacement_can_remove_target(self):
+        for same in (True, False):
+            with self.subTest(same=same), tempfile.TemporaryDirectory() as temp:
+                source, target = Path(temp) / 'source', Path(temp) / 'target'
+                source.mkdir(); target.mkdir(); (target / '.git').write_text('fixture')
+                (target / 'old.list').write_text('DOMAIN,example.com\n')
+                (target / 'manifest.json').write_text(json.dumps({'categories': {'old': {'status':'complete','ruleset':'old.list'}}}))
+                (source / 'new.list').write_text('DOMAIN,example.com\n' if same else 'DOMAIN,other.com\n')
+                current={'categories':{'new':{'status':'complete','ruleset':'new.list','replaces':'old'}},'upstream_revision':'fixture','complete':1,'unsupported':0}
+                (source / 'manifest.json').write_text(json.dumps(current))
+                if same:
+                    m.prepare(source,target)
+                    self.assertFalse((target / 'old.list').exists())
+                    self.assertTrue((target / 'new.list').exists())
+                else:
+                    with self.assertRaises(ValueError):m.prepare(source,target)
+                    self.assertTrue((target / 'old.list').exists())

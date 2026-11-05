@@ -122,7 +122,7 @@ def write_lines(path, lines):
 
 
 def build(loaded_sources, output, binary='sing-box', workers=4, strict=True, aliases=None,
-          base_url='https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules', output_paths=None):
+          base_url='https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules', output_paths=None, renames=None):
     """Merge normalized sources, then assemble exactly one output per target."""
     base_url = base_url.rstrip('/')
     output_paths = output_paths or {}
@@ -187,6 +187,20 @@ def build(loaded_sources, output, binary='sing-box', workers=4, strict=True, ali
                         shutil.copyfile(root / 'publish' / old, root / 'publish' / new)
                         entry[key] = new
             entries[alias] = entry
+        for original, renamed in (renames or {}).items():
+            if original not in entries or renamed in entries or not re.fullmatch(r'[a-z0-9@!_-]+', renamed):
+                raise ValueError('invalid target rename: ' + original + ' -> ' + renamed)
+            entry = entries.pop(original)
+            for key in ('ruleset', 'domainset'):
+                if key in entry:
+                    old = entry[key]
+                    new = old.replace(original, renamed)
+                    if old == new:
+                        raise ValueError('rename must change output path')
+                    (root / 'publish' / old).rename(root / 'publish' / new)
+                    entry[key] = new
+            entry['replaces'] = original
+            entries[renamed] = entry
         unsupported = {k: v['reason'] for k, v in entries.items() if v['status'] == 'unsupported'}
         complete = len(entries) - len(unsupported)
         if not complete or (strict and unsupported):
@@ -256,7 +270,7 @@ def main():
         sources = project_sources(sources, config.get('aggregations', []))
         build(sources, args.output, args.sing_box, args.workers,
               args.strict or config.get('strict', True), config.get('aliases'),
-              config.get('publish_base_url', 'https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules'), config.get('output_paths'))
+              config.get('publish_base_url', 'https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules'), config.get('output_paths'), config.get('renames'))
     except (ValueError, KeyError, OSError, subprocess.SubprocessError) as error:
         parser.exit(1, f'Build failed (no publication): {error}\n')
 

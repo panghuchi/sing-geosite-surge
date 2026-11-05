@@ -14,8 +14,16 @@ def prepare(source, target):
     old_path = target / 'manifest.json'
     if old_path.exists():
         previous = json.loads(old_path.read_text())
+        replacements = {}
+        for name, entry in current['categories'].items():
+            old_name = entry.get('replaces')
+            if old_name and entry['status'] == 'complete' and old_name in previous['categories']:
+                old_file = target / previous['categories'][old_name]['ruleset']
+                new_file = source / entry['ruleset']
+                if old_file.read_bytes() == new_file.read_bytes():
+                    replacements[old_name] = name
         regressions = [name for name, entry in previous['categories'].items()
-                       if entry['status'] == 'complete' and
+                       if entry['status'] == 'complete' and name not in replacements and
                        current['categories'].get(name, {}).get('status') != 'complete']
         if regressions:
             raise ValueError('previously published categories became unsupported or disappeared; keeping old publication: ' + ', '.join(regressions))
