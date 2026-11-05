@@ -2,7 +2,7 @@
 
 Source fingerprint: ac39b34a94cc0bf10b22f08773f6a9bae58cc72c54f46ef55958f96ccceffde8
 
-Complete: 45; unsupported (not published): 0.
+Complete: 44; unsupported (not published): 0.
 
 See manifest.json for category paths and reasons. Unsupported categories have no subscription file.
 
@@ -36,7 +36,6 @@ See manifest.json for category paths and reasons. Unsupported categories have no
 | geosite-ai-zhipu | [Download](ruleset/geosite-ai-zhipu.list) | [Download](domainset/geosite-ai-zhipu.txt) | No |
 | geosite-apple | [Download](ruleset/geosite-apple.list) | — | No |
 | geosite-apple@cn | [Download](ruleset/geosite-apple@cn.list) | [Download](domainset/geosite-apple@cn.txt) | No |
-| geosite-category-ai-!cn | [Download](ruleset/geosite-category-ai-!cn.list) | — | SCRIPT |
 | geosite-cn | [Download](ruleset/geosite-cn.list) | — | SCRIPT |
 | geosite-disney | [Download](ruleset/geosite-disney.list) | — | No |
 | geoip-cn | [Download](ruleset/geoip-cn.list) | — | No |
@@ -95,10 +94,6 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-apple@cn | sagernet | 297 | 297 |
 | geosite-apple@cn | loyalsoldier | 297 | 0 |
 | geosite-apple@cn | metacubex | 297 | 0 |
-| geosite-category-ai-!cn | sagernet | 214 | 214 |
-| geosite-category-ai-!cn | loyalsoldier | 214 | 0 |
-| geosite-category-ai-!cn | metacubex | 214 | 0 |
-| geosite-category-ai-!cn | vpsdance-ai | 347 | 181 |
 | geosite-cn | sagernet | 9402 | 9402 |
 | geosite-cn | loyalsoldier | 110197 | 103713 |
 | geosite-cn | metacubex | 110177 | 2258 |
@@ -152,3 +147,7 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-youtube | sagernet | 178 | 178 |
 | geosite-youtube | loyalsoldier | 178 | 1 |
 | geosite-youtube | metacubex | 178 | 0 |
+| geosite-ai-!cn | sagernet | 214 | 214 |
+| geosite-ai-!cn | loyalsoldier | 214 | 0 |
+| geosite-ai-!cn | metacubex | 214 | 0 |
+| geosite-ai-!cn | vpsdance-ai | 347 | 181 |

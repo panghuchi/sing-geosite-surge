@@ -2,7 +2,7 @@
   "upstream": "config.json",
   "upstream_revision": "ac39b34a94cc0bf10b22f08773f6a9bae58cc72c54f46ef55958f96ccceffde8",
   "decoder": "sing-box version 1.14.4",
-  "complete": 45,
+  "complete": 44,
   "unsupported": 0,
   "sources": [
     {
@@ -1933,135 +1933,6 @@
       "ruleset": "ruleset/geosite-apple@cn.list",
       "domainset": "domainset/geosite-apple@cn.txt"
     },
-    "geosite-category-ai-!cn": {
-      "contributions": [
-        {
-          "id": "sagernet",
-          "category": "category-ai-!cn",
-          "entries": 214,
-          "added_entries": 214,
-          "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ai-%21cn.srs",
-          "sha256": "e1ad68e7a7c10ba700bcf780a051496ff51bdd109aec0c70d3eb0b038549bfe3"
-        },
-        {
-          "id": "loyalsoldier",
-          "category": "category-ai-!cn",
-          "entries": 214,
-          "added_entries": 0
-        },
-        {
-          "id": "metacubex",
-          "category": "category-ai-!cn",
-          "entries": 214,
-          "added_entries": 0
-        },
-        {
-          "id": "vpsdance-ai",
-          "category": "category-ai-!cn",
-          "entries": 347,
-          "added_entries": 181,
-          "members": [
-            "adobe-firefly",
-            "amazon-q",
-            "anthropic",
-            "augment-code",
-            "black-forest-labs",
-            "bolt",
-            "bytedance-ai",
-            "cerebras",
-            "character-ai",
-            "chutes",
-            "civitai",
-            "cline",
-            "clipdrop",
-            "cloudflare-ai",
-            "coderabbit",
-            "cohere",
-            "comfyui",
-            "command-code",
-            "continue",
-            "copilot",
-            "crewai",
-            "cursor",
-            "deepinfra",
-            "descript",
-            "devin",
-            "dia-browser",
-            "dify",
-            "duck-ai",
-            "eigent",
-            "elevenlabs",
-            "factory",
-            "fireworks-ai",
-            "gamma",
-            "genspark",
-            "google-ai",
-            "grammarly",
-            "groq",
-            "h2o-ai",
-            "hermes-agent",
-            "heygen",
-            "huggingface",
-            "ideogram",
-            "inflection",
-            "jasper",
-            "jetbrains-ai",
-            "kilo",
-            "kiro",
-            "langchain",
-            "leonardo-ai",
-            "lmarena",
-            "lmstudio",
-            "lovable",
-            "lovart",
-            "luma-ai",
-            "manus",
-            "meta-ai",
-            "midjourney",
-            "mistral-ai",
-            "novita-ai",
-            "ollama",
-            "openai",
-            "openart",
-            "openclaw",
-            "opencode",
-            "openrouter",
-            "otter-ai",
-            "perplexity",
-            "phind",
-            "pika",
-            "poe",
-            "qoder",
-            "recraft",
-            "replicate",
-            "replit",
-            "runway",
-            "sourcegraph",
-            "stability-ai",
-            "suno",
-            "synthesia",
-            "tabnine",
-            "together-ai",
-            "udio",
-            "v0",
-            "windsurf",
-            "x-ai",
-            "you",
-            "youmind",
-            "zed"
-          ]
-        }
-      ],
-      "status": "complete",
-      "rules": 395,
-      "ruleset": "ruleset/geosite-category-ai-!cn.list",
-      "script": "scripts/srs-regex-5c16223b7bda31c8.js",
-      "script_name": "srs-regex-5c16223b7bda31c8",
-      "requires_module": "regex-support.sgmodule",
-      "regex_patterns": [
-        "^chatgpt-async-webps-prod-\\S+-\\d+\\.webpubsub\\.azure\\.com$"
-      ]
-    },
     "geosite-cn": {
       "contributions": [
         {
@@ -2726,7 +2597,7 @@
       "regex_patterns": [
         "^chatgpt-async-webps-prod-\\S+-\\d+\\.webpubsub\\.azure\\.com$"
       ],
-      "alias_of": "geosite-category-ai-!cn"
+      "replaces": "geosite-category-ai-!cn"
     }
   }
 }
