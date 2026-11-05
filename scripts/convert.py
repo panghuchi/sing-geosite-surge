@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Convert sing-geosite SRS files using the official sing-box decoder (stdlib only)."""
+"""Load configured sources, merge normalized rules, and assemble Surge outputs."""
 import argparse
 from concurrent.futures import ThreadPoolExecutor
 import hashlib
@@ -11,8 +11,8 @@ import shutil
 import subprocess
 import tempfile
 from regex_tools import native_rules, script_source, RegexUnsupported
-from sources import download, load_sources, merge_documents
-from urllib.parse import urlparse
+from sources import load_sources
+from merging import merge_category
 
 
 class Unsupported(ValueError):
@@ -114,39 +114,28 @@ def write_lines(path, lines):
     path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
 
-def build(source, output, binary, include=None, workers=4, revision='local', strict=False, extra_files=None, aliases=None, base_url="https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules", supplemental_sources=None):
-    base_url = base_url.rstrip("/")
-    source, output = Path(source).resolve(), Path(output).resolve()
-    if output == source or output in source.parents or source in output.parents:
-        raise ValueError('source and output must not contain each other')
+def build(loaded_sources, output, binary='sing-box', workers=4, strict=True, aliases=None,
+          base_url='https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules'):
+    """Merge normalized sources, then assemble exactly one output per target."""
+    base_url = base_url.rstrip('/')
+    output = Path(output).resolve()
     if output.exists():
         raise ValueError('output must be a new directory; existing output is never overwritten')
-    files = sorted(source.glob('geosite-*.srs'))
-    if include:
-        requested = {'geosite-' + name.removeprefix('geosite-').removesuffix('.srs') + '.srs' for name in include}
-        missing = requested - {p.name for p in files}
-        if missing:
-            raise ValueError('missing categories: ' + ', '.join(sorted(missing)))
-        files = [p for p in files if p.name in requested]
-    files.extend(Path(p) for p in (extra_files or {}))
-    if len({p.stem for p in files}) != len(files):
-        raise ValueError('duplicate source names')
-    if not files:
-        raise ValueError('no SRS files found')
+    targets = sorted({target for source in loaded_sources for target in source['category_map']})
+    if not targets:
+        raise ValueError('no configured targets')
+    source_metadata = [{key: value for key, value in source.items() if key not in ('documents', 'category_map')}
+                       for source in loaded_sources]
+    revision = hashlib.sha256(json.dumps(source_metadata, sort_keys=True).encode()).hexdigest()
     version = subprocess.run([binary, 'version'], check=True, capture_output=True, text=True).stdout.splitlines()[0]
     with tempfile.TemporaryDirectory(prefix='surge-build-') as temp:
         root = Path(temp)
-        def one(path):
-            decoded = root / (path.stem + '.json')
-            subprocess.run([binary, 'rule-set', 'decompile', str(path), '-o', str(decoded)],
-                           check=True, capture_output=True, text=True, timeout=120)
-            entry = {'source_sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
-                     'source_url': (extra_files or {}).get(path, 'https://raw.githubusercontent.com/SagerNet/sing-geosite/' + revision + '/' + path.name)}
-            document = json.loads(decoded.read_text(encoding='utf-8'))
-            if path.stem.startswith('geosite-'):
-                document, entry['contributions'] = merge_documents(document, path.stem.removeprefix('geosite-'), supplemental_sources or [])
+        def one(target):
+            tag = target if target.startswith(('geosite-', 'geoip-')) else 'geosite-' + target
+            document, contributions = merge_category(target, [source for source in loaded_sources if target in source['category_map']])
+            entry = {'contributions': contributions}
             fallback_patterns = []
-            script_name = 'srs-regex-' + hashlib.sha256(path.stem.encode()).hexdigest()[:16]
+            script_name = 'srs-regex-' + hashlib.sha256(tag.encode()).hexdigest()[:16]
             def handle_regex(pattern):
                 try:
                     script_source([pattern])
@@ -158,8 +147,8 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
                 lines, domains = convert(document, handle_regex)
             except Unsupported as error:
                 entry.update(status='unsupported', reason=str(error))
-                return path.stem, entry
-            rulepath = 'ruleset/' + path.stem + '.list'
+                return tag, entry
+            rulepath = 'ruleset/' + tag + '.list'
             write_lines(root / 'publish' / rulepath, lines)
             entry.update(status='complete', rules=len(lines), ruleset=rulepath)
             if fallback_patterns:
@@ -168,12 +157,12 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
                 entry.update(script=scriptpath, script_name=script_name,
                              requires_module='regex-support.sgmodule', regex_patterns=sorted(set(fallback_patterns)))
             if domains is not None:
-                domainpath = 'domainset/' + path.stem + '.txt'
+                domainpath = 'domainset/' + tag + '.txt'
                 write_lines(root / 'publish' / domainpath, domains)
                 entry['domainset'] = domainpath
-            return path.stem, entry
+            return tag, entry
         with ThreadPoolExecutor(max_workers=workers) as pool:
-            entries = dict(pool.map(one, files))
+            entries = dict(pool.map(one, targets))
         for alias, original in (aliases or {}).items():
             if not re.fullmatch(r'geosite-[a-z0-9@!_-]+', alias) or original not in entries or alias in entries:
                 raise ValueError('invalid category alias: ' + alias)
@@ -200,14 +189,14 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
                 module.append(entry['script_name'] + ' = type=rule,script-path=' + base_url + '/' + entry['script'] + ',script-update-interval=86400,engine=jsc')
         if registered:
             write_lines(root / 'publish' / 'regex-support.sgmodule', module)
-        manifest = {'upstream': 'https://github.com/SagerNet/sing-geosite/tree/rule-set',
+        manifest = {'upstream': 'config.json',
                     'upstream_revision': revision, 'decoder': version,
                     'complete': complete, 'unsupported': len(unsupported),
-                    'geosite_sources': [{key: value for key, value in item.items() if key not in ('documents', 'category_map')} for item in (supplemental_sources or [])],
+                    'sources': [{key: value for key, value in item.items() if key not in ('documents', 'category_map')} for item in loaded_sources],
                     'categories': entries}
         publish = root / 'publish'
         (publish / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-        report = ['# Conversion report', '', f'Upstream commit: {revision}', '',
+        report = ['# Conversion report', '', f'Source fingerprint: {revision}', '',
                   f'Complete: {complete}; unsupported (not published): {len(unsupported)}.', '',
                   'See manifest.json for category paths and reasons. Unsupported categories have no subscription file.', '',
                   '**For categories marked SCRIPT: install and enable [Regex Support](regex-support.sgmodule) and enable Surge scripting before using their RULE-SETs. Without the module these categories are incomplete.**' if registered else 'All published categories use native rules.', '']
@@ -217,7 +206,7 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
                 domain_link = f"[Download]({entry['domainset']})" if 'domainset' in entry else '—'
                 report.append(f"| {name} | [Download]({entry['ruleset']}) | {domain_link} | {'SCRIPT' if entry.get('script') else 'No'} |")
         report.extend(['', '## Source contributions', '',
-                       'Counts are deduplicated domain atoms, not guaranteed newly covered hostnames. Source order: SagerNet, then configured supplements.', '',
+                       'Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sources are processed in configuration order.', '',
                        '| Category | Source | Entries | Added entries |', '| --- | --- | --- | --- |'])
         for name, entry in entries.items():
             if entry.get('alias_of'):
@@ -236,41 +225,22 @@ def build(source, output, binary, include=None, workers=4, revision='local', str
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--source', required=True)
+    parser.add_argument('--config', default='config.json')
     parser.add_argument('--output', default='dist')
     parser.add_argument('--sing-box', default='sing-box')
-    parser.add_argument('--include', nargs='+', help='category names')
-    parser.add_argument('--config', help='JSON file containing a nonempty categories array')
-    parser.add_argument('--all', action='store_true', help='explicitly convert every category')
     parser.add_argument('--workers', type=int, default=4)
-    parser.add_argument('--revision', default='local')
-    parser.add_argument('--strict', action='store_true', help='block all publication if any category is unsupported')
+    parser.add_argument('--strict', action='store_true')
     args = parser.parse_args()
     try:
-        if sum(bool(x) for x in (args.include, args.config, args.all)) != 1:
-            raise ValueError('choose exactly one of --include, --config, or --all')
-        include = args.include
-        config = {}
-        if args.config:
-            config = json.loads(Path(args.config).read_text(encoding='utf-8'))
-            include = config.get('categories')
-            if not isinstance(include, list) or not include or not all(isinstance(x, str) and x for x in include):
-                raise ValueError('categories is empty or invalid; configure the requested scope first')
-        with tempfile.TemporaryDirectory(prefix='surge-extra-') as temp:
-            extra_files = {}
-            for entry in config.get('extra_sources', []):
-                tag, url = entry['tag'], entry['url']
-                if not re.fullmatch(r'geoip-[a-z0-9_-]+', tag) or urlparse(url).scheme != 'https':
-                    raise ValueError('invalid extra source')
-                path = Path(temp) / (tag + '.srs')
-                if path in extra_files:
-                    raise ValueError('duplicate extra source: ' + tag)
-                path.write_bytes(download(url))
-                extra_files[path] = url
-            supplements = load_sources(config.get('geosite_sources', []), include or [p.stem.removeprefix('geosite-') for p in Path(args.source).glob('geosite-*.srs')])
-            build(args.source, args.output, args.sing_box, include, args.workers, args.revision,
-                  args.strict or config.get('strict', False), extra_files, config.get('aliases'), config.get('publish_base_url', 'https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules'), supplements)
-    except (ValueError, OSError, subprocess.SubprocessError) as error:
+        config = json.loads(Path(args.config).read_text(encoding='utf-8'))
+        categories = config.get('categories')
+        if not isinstance(categories, list) or not categories or not all(isinstance(name, str) for name in categories):
+            raise ValueError('configure a nonempty categories array')
+        sources = load_sources(config['sources'], categories, binary=args.sing_box)
+        build(sources, args.output, args.sing_box, args.workers,
+              args.strict or config.get('strict', True), config.get('aliases'),
+              config.get('publish_base_url', 'https://raw.githubusercontent.com/panghuchi/sing-geosite-surge/rules'))
+    except (ValueError, KeyError, OSError, subprocess.SubprocessError) as error:
         parser.exit(1, f'Build failed (no publication): {error}\n')
 
 

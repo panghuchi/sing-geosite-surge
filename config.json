@@ -21,21 +21,16 @@
     "steam",
     "steam@cn"
   ],
-  "extra_sources": [
-    {
-      "tag": "geoip-telegram",
-      "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/srs/telegram.srs"
-    },
-    {
-      "tag": "geoip-cn",
-      "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
-    }
-  ],
   "aliases": {
     "geosite-ai-!cn": "geosite-category-ai-!cn"
   },
   "strict": true,
-  "geosite_sources": [
+  "sources": [
+    {
+      "id": "sagernet",
+      "format": "sing-box-srs",
+      "url_template": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-{category}.srs"
+    },
     {
       "id": "loyalsoldier",
       "format": "v2ray-geosite",
@@ -45,6 +40,22 @@
       "id": "metacubex",
       "format": "v2ray-geosite",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat"
+    },
+    {
+      "id": "geoip-telegram",
+      "format": "sing-box-srs",
+      "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/srs/telegram.srs",
+      "targets": {
+        "geoip-telegram": "telegram"
+      }
+    },
+    {
+      "id": "geoip-cn",
+      "format": "sing-box-srs",
+      "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
+      "targets": {
+        "geoip-cn": "cn"
+      }
     }
   ]
 }

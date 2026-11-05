@@ -4,7 +4,8 @@ import sys
 import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from geosite_dat import extract
-from sources import load_sources, merge_documents
+from sources import load_sources
+from merging import merge_category
 
 
 def vi(value):
@@ -66,7 +67,7 @@ class MergeTests(unittest.TestCase):
         configs = [{'id': 'first', 'format': 'v2ray-geosite', 'url': 'https://example.org/a'},
                    {'id': 'second', 'format': 'v2ray-geosite', 'url': 'https://example.org/b'}]
         sources = load_sources(configs, ['test'], lambda url: dat)
-        merged, contributions = merge_documents(base, 'test', sources)
+        merged, contributions = merge_category('test', [{'id': 'base', 'documents': {'test': base}, 'category_map': {'test': 'test'}}] + sources)
         self.assertEqual(merged['rules'], [{'domain_suffix': ['example.com', 'extra.com']}])
         self.assertEqual([x['added_entries'] for x in contributions], [1, 1, 0])
         self.assertTrue(all(s['sha256'] for s in sources))
@@ -77,7 +78,7 @@ class MergeTests(unittest.TestCase):
         loaded = load_sources(configs, ['target', 'missing'], lambda url: dat)
         self.assertEqual(loaded[0]['missing_categories'], ['missing'])
         base = {'version': 1, 'rules': [{'domain': ['a.com']}]}
-        merged, report = merge_documents(base, 'target', loaded)
+        merged, report = merge_category('target', [{'id': 'base', 'documents': {'target': base}, 'category_map': {'target': 'target'}}] + loaded)
         self.assertIn('cn.example', merged['rules'][0]['domain_suffix'])
         self.assertEqual(report[1]['category'], 'other@cn')
 
@@ -93,3 +94,48 @@ class MissingSourceTests(unittest.TestCase):
         config = [{'id': 'required', 'format': 'v2ray-geosite', 'url': 'https://example.org'}]
         with self.assertRaisesRegex(ValueError, 'missing categories'):
             load_sources(config, ['paypal@cn'], lambda url: site('paypal', [domain('paypal.com')]))
+
+
+class SrsAdapterTests(unittest.TestCase):
+    def test_srs_template_and_fixed_geoip_share_adapter(self):
+        from unittest.mock import patch
+        from types import SimpleNamespace
+        import sources
+        configs = [
+            {'id': 'domain-source', 'format': 'sing-box-srs', 'url_template': 'https://example.org/{category}.srs'},
+            {'id': 'ip-source', 'format': 'sing-box-srs', 'url': 'https://example.org/ip.srs', 'targets': {'geoip-telegram': 'telegram'}}]
+        def decode(command, **kwargs):
+            ip = Path(command[3]).stem == 'telegram'
+            rule = {'ip_cidr': ['1.2.3.0/24']} if ip else {'domain_suffix': ['example.cn']}
+            Path(command[-1]).write_text(json.dumps({'version':1,'rules':[rule]}))
+            return SimpleNamespace(stdout='')
+        urls = []
+        def fetch(url):
+            urls.append(url)
+            return b'fixture'
+        with patch.object(sources.subprocess, 'run', side_effect=decode):
+            loaded = load_sources(configs, ['apple@cn'], fetch, binary='fake')
+        self.assertIn('https://example.org/apple%40cn.srs', urls)
+        self.assertIn('apple@cn', loaded[0]['documents'])
+        self.assertIn('geoip-telegram', loaded[1]['documents'])
+        merged, report = merge_category('geoip-telegram', [loaded[1]])
+        self.assertEqual(merged['rules'], [{'ip_cidr': ['1.2.3.0/24']}])
+        self.assertTrue(report[0]['sha256'])
+
+
+class SourceBoundaryTests(unittest.TestCase):
+    def test_skip_missing_srs_category_does_not_swallow_other_errors(self):
+        from urllib.error import HTTPError
+        config = [{'id': 'optional', 'format': 'sing-box-srs', 'url': 'https://example.org/test.srs', 'on_missing': 'skip'}]
+        def missing(url):
+            raise HTTPError(url, 404, 'missing', None, None)
+        self.assertEqual(load_sources(config, ['test'], missing)[0]['missing_categories'], ['test'])
+        def failed(url):
+            raise HTTPError(url, 500, 'failed', None, None)
+        with self.assertRaises(HTTPError):
+            load_sources(config, ['test'], failed)
+
+    def test_empty_rule_cannot_disappear_during_union(self):
+        source = {'id': 'bad', 'documents': {'test': {'version':1, 'rules':[{}]}}, 'category_map': {'test':'test'}}
+        with self.assertRaisesRegex(ValueError, 'empty source rule'):
+            merge_category('test', [source])

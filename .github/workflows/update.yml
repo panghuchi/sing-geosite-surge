@@ -51,17 +51,9 @@ jobs:
           gh release download "v${SING_BOX_VERSION}" --repo SagerNet/sing-box --pattern "sing-box-${SING_BOX_VERSION}-linux-amd64.tar.gz" --dir .tools
           tar -xzf ".tools/sing-box-${SING_BOX_VERSION}-linux-amd64.tar.gz" -C .tools
           echo "$GITHUB_WORKSPACE/.tools/sing-box-${SING_BOX_VERSION}-linux-amd64" >> "$GITHUB_PATH"
-      - name: Fetch upstream snapshot
-        if: steps.scope.outputs.enabled == 'true'
-        uses: actions/checkout@v4
-        with:
-          repository: SagerNet/sing-geosite
-          ref: rule-set
-          path: upstream
-          persist-credentials: false
       - name: Convert selected categories
         if: steps.scope.outputs.enabled == 'true'
-        run: python scripts/convert.py --source upstream --output dist --config config.json --revision "$(git -C upstream rev-parse HEAD)"
+        run: python scripts/convert.py --output dist --config config.json
       - name: Attach report
         if: steps.scope.outputs.enabled == 'true'
         run: cat dist/README.md >> "$GITHUB_STEP_SUMMARY"
