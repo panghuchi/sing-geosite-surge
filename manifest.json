@@ -1,6 +1,6 @@
 {
   "upstream": "config.json",
-  "upstream_revision": "ac39b34a94cc0bf10b22f08773f6a9bae58cc72c54f46ef55958f96ccceffde8",
+  "upstream_revision": "c857ca0ed09ed622037469d61be170a73cf7bdafe4b424f6b6cad78785b3ff4a",
   "decoder": "sing-box version 1.14.4",
   "complete": 44,
   "unsupported": 0,
@@ -113,7 +113,7 @@
     {
       "id": "metacubex",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat",
-      "sha256": "da89d85fa3b6fc28f3878432f28e78c1e5bb9f603449fa2f0ec2deaddbb0b733",
+      "sha256": "b17c22dbe38b64631f5820d14c000ec1bb9db7636d0bf6599a166f36980e597d",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -151,7 +151,7 @@
     {
       "id": "vpsdance-ai",
       "url": "https://codeload.github.com/VPSDance/ai-proxy-rules/tar.gz/refs/heads/main",
-      "sha256": "de9cf84ed3cbaaa086df0fafac07c73eda39daeae57879c137651e0525d97a24",
+      "sha256": "189965e23b3bce4e1523bc9e248f4e16dfa571c9c48e8aa9fd4d7c0c87b0dddd",
       "labels": {
         "adobe-firefly": {
           "provider": "adobe-firefly",
@@ -2046,7 +2046,7 @@
         {
           "id": "metacubex",
           "category": "geolocation-!cn",
-          "entries": 27444,
+          "entries": 27449,
           "added_entries": 3
         }
       ],
