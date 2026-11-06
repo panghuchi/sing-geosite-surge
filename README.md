@@ -1,6 +1,6 @@
 # Conversion report
 
-Source fingerprint: c857ca0ed09ed622037469d61be170a73cf7bdafe4b424f6b6cad78785b3ff4a
+Source fingerprint: bb15973f0e9575f3aa63567858a5b920a701f12124f6463dd116e247a84276cb
 
 Complete: 44; unsupported (not published): 0.
 
@@ -102,8 +102,8 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-disney | metacubex | 225 | 0 |
 | geoip-cn | geoip-cn | 8113 | 8113 |
 | geoip-telegram | geoip-telegram | 12 | 12 |
-| geosite-geolocation-!cn | sagernet | 24080 | 24080 |
-| geosite-geolocation-!cn | loyalsoldier | 27492 | 3793 |
+| geosite-geolocation-!cn | sagernet | 24085 | 24085 |
+| geosite-geolocation-!cn | loyalsoldier | 27492 | 3788 |
 | geosite-geolocation-!cn | metacubex | 27449 | 3 |
 | geosite-geolocation-cn | sagernet | 9401 | 9401 |
 | geosite-geolocation-cn | loyalsoldier | 5424 | 9 |

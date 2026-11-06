@@ -1,6 +1,6 @@
 {
   "upstream": "config.json",
-  "upstream_revision": "c857ca0ed09ed622037469d61be170a73cf7bdafe4b424f6b6cad78785b3ff4a",
+  "upstream_revision": "bb15973f0e9575f3aa63567858a5b920a701f12124f6463dd116e247a84276cb",
   "decoder": "sing-box version 1.14.4",
   "complete": 44,
   "unsupported": 0,
@@ -23,7 +23,7 @@
         },
         "cn": {
           "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs",
-          "sha256": "ca67a4cfefe54da4cc0474966967537a9eaf0b38bc21859715c2b9f95983a94e"
+          "sha256": "ef8d2b4bec72c034f1c44beb56ba9fdaff014b42ff3a8355d34a09b9966f83fe"
         },
         "disney": {
           "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-disney.srs",
@@ -31,11 +31,11 @@
         },
         "geolocation-!cn": {
           "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-%21cn.srs",
-          "sha256": "836d68a4e206d597f0484d966d6082571a167f8af2aa99f115151e367407e9de"
+          "sha256": "f21bceab69afc758e9a375b399e26994f72c882be8b7fc6c6e3120e32b672ffe"
         },
         "geolocation-cn": {
           "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs",
-          "sha256": "ccded45d4d43136a9fce1722201759c540bfb295761b43a662eaf9487f8014ba"
+          "sha256": "3fa42afeaa0f487b277d5d49a678e1c0870ff61e39626eba2fe201010cd2ad3a"
         },
         "github": {
           "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-github.srs",
@@ -101,7 +101,7 @@
     {
       "id": "loyalsoldier",
       "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat",
-      "sha256": "916fea0cea925cc47f09001dfac652d5e8edb6db69ff13ad68e2b4ac9e8ecc1b",
+      "sha256": "eb694a0dd2afdc7b2a4467402d11cf2e95bc284c7eb8f20d18b25b8068a4c1c0",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -1941,7 +1941,7 @@
           "entries": 9402,
           "added_entries": 9402,
           "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs",
-          "sha256": "ca67a4cfefe54da4cc0474966967537a9eaf0b38bc21859715c2b9f95983a94e"
+          "sha256": "ef8d2b4bec72c034f1c44beb56ba9fdaff014b42ff3a8355d34a09b9966f83fe"
         },
         {
           "id": "loyalsoldier",
@@ -2032,16 +2032,16 @@
         {
           "id": "sagernet",
           "category": "geolocation-!cn",
-          "entries": 24080,
-          "added_entries": 24080,
+          "entries": 24085,
+          "added_entries": 24085,
           "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-%21cn.srs",
-          "sha256": "836d68a4e206d597f0484d966d6082571a167f8af2aa99f115151e367407e9de"
+          "sha256": "f21bceab69afc758e9a375b399e26994f72c882be8b7fc6c6e3120e32b672ffe"
         },
         {
           "id": "loyalsoldier",
           "category": "geolocation-!cn",
           "entries": 27492,
-          "added_entries": 3793
+          "added_entries": 3788
         },
         {
           "id": "metacubex",
@@ -2075,7 +2075,7 @@
           "entries": 9401,
           "added_entries": 9401,
           "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs",
-          "sha256": "ccded45d4d43136a9fce1722201759c540bfb295761b43a662eaf9487f8014ba"
+          "sha256": "3fa42afeaa0f487b277d5d49a678e1c0870ff61e39626eba2fe201010cd2ad3a"
         },
         {
           "id": "loyalsoldier",
