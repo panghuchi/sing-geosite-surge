@@ -1,6 +1,6 @@
 # Conversion report
 
-Source fingerprint: e0fcad6f80622c646418a6ee045191ece352a0deade734dadb76b9e05394a3cb
+Source fingerprint: 142a7845f7e41250f0ddf233313e3266a490685bc6ee264b0b6511f1ae7ca1ae
 
 Complete: 44; unsupported (not published): 0.
 
@@ -65,8 +65,8 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | --- | --- | --- | --- |
 | geosite-ai-alibaba | vpsdance-ai | 11 | 11 |
 | geosite-ai-all | sagernet | 214 | 214 |
-| geosite-ai-all | loyalsoldier | 214 | 0 |
-| geosite-ai-all | metacubex | 214 | 0 |
+| geosite-ai-all | loyalsoldier | 218 | 4 |
+| geosite-ai-all | metacubex | 218 | 0 |
 | geosite-ai-all | vpsdance-ai | 414 | 247 |
 | geosite-ai-amazon | vpsdance-ai | 16 | 16 |
 | geosite-ai-anthropic | vpsdance-ai | 52 | 52 |
@@ -88,29 +88,29 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-ai-windsurf | vpsdance-ai | 7 | 7 |
 | geosite-ai-xiaomi | vpsdance-ai | 3 | 3 |
 | geosite-ai-zhipu | vpsdance-ai | 5 | 5 |
-| geosite-apple | sagernet | 1785 | 1785 |
-| geosite-apple | loyalsoldier | 1792 | 8 |
+| geosite-apple | sagernet | 1786 | 1786 |
+| geosite-apple | loyalsoldier | 1792 | 7 |
 | geosite-apple | metacubex | 1792 | 0 |
-| geosite-apple@cn | sagernet | 297 | 297 |
-| geosite-apple@cn | loyalsoldier | 298 | 1 |
+| geosite-apple@cn | sagernet | 298 | 298 |
+| geosite-apple@cn | loyalsoldier | 298 | 0 |
 | geosite-apple@cn | metacubex | 298 | 0 |
-| geosite-cn | sagernet | 9403 | 9403 |
-| geosite-cn | loyalsoldier | 110196 | 103722 |
-| geosite-cn | metacubex | 110177 | 2258 |
+| geosite-cn | sagernet | 9510 | 9510 |
+| geosite-cn | loyalsoldier | 110196 | 103666 |
+| geosite-cn | metacubex | 110177 | 2260 |
 | geosite-disney | sagernet | 223 | 223 |
 | geosite-disney | loyalsoldier | 225 | 2 |
 | geosite-disney | metacubex | 225 | 0 |
 | geoip-cn | geoip-cn | 8113 | 8113 |
 | geoip-telegram | geoip-telegram | 12 | 12 |
 | geosite-geolocation-!cn | sagernet | 24085 | 24085 |
-| geosite-geolocation-!cn | loyalsoldier | 27492 | 3788 |
-| geosite-geolocation-!cn | metacubex | 27449 | 3 |
-| geosite-geolocation-cn | sagernet | 9402 | 9402 |
-| geosite-geolocation-cn | loyalsoldier | 5439 | 111 |
+| geosite-geolocation-!cn | loyalsoldier | 27496 | 3792 |
+| geosite-geolocation-!cn | metacubex | 27453 | 3 |
+| geosite-geolocation-cn | sagernet | 9509 | 9509 |
+| geosite-geolocation-cn | loyalsoldier | 5439 | 9 |
 | geosite-geolocation-cn | metacubex | 5439 | 0 |
 | geosite-github | sagernet | 63 | 63 |
-| geosite-github | loyalsoldier | 65 | 2 |
-| geosite-github | metacubex | 65 | 0 |
+| geosite-github | loyalsoldier | 66 | 3 |
+| geosite-github | metacubex | 66 | 0 |
 | geosite-google | sagernet | 940 | 940 |
 | geosite-google | loyalsoldier | 1080 | 154 |
 | geosite-google | metacubex | 1080 | 0 |
@@ -118,8 +118,8 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-hbo | loyalsoldier | 65 | 1 |
 | geosite-hbo | metacubex | 65 | 0 |
 | geosite-microsoft | sagernet | 712 | 712 |
-| geosite-microsoft | loyalsoldier | 756 | 52 |
-| geosite-microsoft | metacubex | 756 | 6 |
+| geosite-microsoft | loyalsoldier | 757 | 53 |
+| geosite-microsoft | metacubex | 757 | 6 |
 | geosite-microsoft@cn | sagernet | 189 | 189 |
 | geosite-microsoft@cn | loyalsoldier | 189 | 0 |
 | geosite-microsoft@cn | metacubex | 189 | 0 |
@@ -148,6 +148,6 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-youtube | loyalsoldier | 178 | 1 |
 | geosite-youtube | metacubex | 178 | 0 |
 | geosite-ai-!cn | sagernet | 214 | 214 |
-| geosite-ai-!cn | loyalsoldier | 214 | 0 |
-| geosite-ai-!cn | metacubex | 214 | 0 |
+| geosite-ai-!cn | loyalsoldier | 218 | 4 |
+| geosite-ai-!cn | metacubex | 218 | 0 |
 | geosite-ai-!cn | vpsdance-ai | 347 | 181 |

@@ -450,6 +450,7 @@ DOMAIN,prod.databe.floonet.goog
 DOMAIN,publicassets.cdn-apple.com
 DOMAIN,qiao-cn.com
 DOMAIN,qpx.googleflights.net
+DOMAIN,radio.itunes.apple.com
 DOMAIN,recaptcha-cn.net
 DOMAIN,recaptcha.net
 DOMAIN,redirector.bdn.dev
@@ -1190,6 +1191,9 @@ DOMAIN-SUFFIX,adobedc.cn
 DOMAIN-SUFFIX,adosmo.com
 DOMAIN-SUFFIX,adping.qq.com
 DOMAIN-SUFFIX,adpm.app.qq.com
+DOMAIN-SUFFIX,ads-api-o.api.leiniao.com
+DOMAIN-SUFFIX,ads-api-t.my7v.com
+DOMAIN-SUFFIX,ads-o.res.leiniao.com
 DOMAIN-SUFFIX,ads-union.jd.com
 DOMAIN-SUFFIX,ads-uo.api.leiniao.com
 DOMAIN-SUFFIX,ads-ut.api.leiniao.com
@@ -2608,7 +2612,6 @@ DOMAIN-SUFFIX,chunyu.mobi
 DOMAIN-SUFFIX,chunyuyisheng.com
 DOMAIN-SUFFIX,chushi.cool
 DOMAIN-SUFFIX,chushou.tv
-DOMAIN-SUFFIX,chuyu.me
 DOMAIN-SUFFIX,cib-fund.com.cn
 DOMAIN-SUFFIX,cib.com.cn
 DOMAIN-SUFFIX,cibn.cc
@@ -4379,7 +4382,6 @@ DOMAIN-SUFFIX,hisilicon.com
 DOMAIN-SUFFIX,hisilicon.com.cn
 DOMAIN-SUFFIX,hismarttv.com
 DOMAIN-SUFFIX,hitevision-solutions.com
-DOMAIN-SUFFIX,hitokoto.cn
 DOMAIN-SUFFIX,hitv.com
 DOMAIN-SUFFIX,hiu58.cn
 DOMAIN-SUFFIX,hiyd.com
@@ -4797,7 +4799,6 @@ DOMAIN-SUFFIX,imp.go.sohu.com
 DOMAIN-SUFFIX,imqq.com
 DOMAIN-SUFFIX,imsyy.com
 DOMAIN-SUFFIX,imweb.io
-DOMAIN-SUFFIX,in.th
 DOMAIN-SUFFIX,inanguapi.cn
 DOMAIN-SUFFIX,inanguapi.com
 DOMAIN-SUFFIX,incopat.com
@@ -4896,6 +4897,7 @@ DOMAIN-SUFFIX,ishumei.com
 DOMAIN-SUFFIX,ishuqi.com
 DOMAIN-SUFFIX,isigning.cn
 DOMAIN-SUFFIX,isigning.com
+DOMAIN-SUFFIX,isms-o.api.my7v.com
 DOMAIN-SUFFIX,ispqcloud.com
 DOMAIN-SUFFIX,istoreos.com
 DOMAIN-SUFFIX,istv.cn
@@ -6504,6 +6506,7 @@ DOMAIN-SUFFIX,oppomobile.com
 DOMAIN-SUFFIX,oppopay.com
 DOMAIN-SUFFIX,opposhop.cn
 DOMAIN-SUFFIX,oppowork.com
+DOMAIN-SUFFIX,opsai.cn
 DOMAIN-SUFFIX,opstatics.com
 DOMAIN-SUFFIX,optimus-ads.amap.com
 DOMAIN-SUFFIX,oracle-tencent.cn
@@ -6943,6 +6946,7 @@ DOMAIN-SUFFIX,qugame.com
 DOMAIN-SUFFIX,quickapp.cn
 DOMAIN-SUFFIX,quickconnect.cn
 DOMAIN-SUFFIX,quklive.com
+DOMAIN-SUFFIX,qunaer.com
 DOMAIN-SUFFIX,qunar.com
 DOMAIN-SUFFIX,qunarcdn.com
 DOMAIN-SUFFIX,qunarzz.com
@@ -8978,6 +8982,7 @@ DOMAIN-SUFFIX,yctdyy.com
 DOMAIN-SUFFIX,ycwb.com
 DOMAIN-SUFFIX,ydamc.com
 DOMAIN-SUFFIX,ydsc.com.cn
+DOMAIN-SUFFIX,ydshengxue.com
 DOMAIN-SUFFIX,ydstatic.com
 DOMAIN-SUFFIX,ydsys.cn
 DOMAIN-SUFFIX,yeah.net
