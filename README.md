@@ -1,6 +1,6 @@
 # Conversion report
 
-Source fingerprint: 142a7845f7e41250f0ddf233313e3266a490685bc6ee264b0b6511f1ae7ca1ae
+Source fingerprint: e924a9569fa4434ede4eb91d985a534afd175967cae85eb968273249f63f4422
 
 Complete: 44; unsupported (not published): 0.
 
@@ -64,8 +64,8 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | Category | Source | Entries | Added entries |
 | --- | --- | --- | --- |
 | geosite-ai-alibaba | vpsdance-ai | 11 | 11 |
-| geosite-ai-all | sagernet | 214 | 214 |
-| geosite-ai-all | loyalsoldier | 218 | 4 |
+| geosite-ai-all | sagernet | 218 | 218 |
+| geosite-ai-all | loyalsoldier | 218 | 0 |
 | geosite-ai-all | metacubex | 218 | 0 |
 | geosite-ai-all | vpsdance-ai | 414 | 247 |
 | geosite-ai-amazon | vpsdance-ai | 16 | 16 |
@@ -102,14 +102,14 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-disney | metacubex | 225 | 0 |
 | geoip-cn | geoip-cn | 8113 | 8113 |
 | geoip-telegram | geoip-telegram | 12 | 12 |
-| geosite-geolocation-!cn | sagernet | 24085 | 24085 |
-| geosite-geolocation-!cn | loyalsoldier | 27496 | 3792 |
+| geosite-geolocation-!cn | sagernet | 24088 | 24088 |
+| geosite-geolocation-!cn | loyalsoldier | 27496 | 3789 |
 | geosite-geolocation-!cn | metacubex | 27453 | 3 |
 | geosite-geolocation-cn | sagernet | 9509 | 9509 |
 | geosite-geolocation-cn | loyalsoldier | 5439 | 9 |
 | geosite-geolocation-cn | metacubex | 5439 | 0 |
-| geosite-github | sagernet | 63 | 63 |
-| geosite-github | loyalsoldier | 66 | 3 |
+| geosite-github | sagernet | 64 | 64 |
+| geosite-github | loyalsoldier | 66 | 2 |
 | geosite-github | metacubex | 66 | 0 |
 | geosite-google | sagernet | 940 | 940 |
 | geosite-google | loyalsoldier | 1080 | 154 |
@@ -147,7 +147,7 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-youtube | sagernet | 178 | 178 |
 | geosite-youtube | loyalsoldier | 178 | 1 |
 | geosite-youtube | metacubex | 178 | 0 |
-| geosite-ai-!cn | sagernet | 214 | 214 |
-| geosite-ai-!cn | loyalsoldier | 218 | 4 |
+| geosite-ai-!cn | sagernet | 218 | 218 |
+| geosite-ai-!cn | loyalsoldier | 218 | 0 |
 | geosite-ai-!cn | metacubex | 218 | 0 |
 | geosite-ai-!cn | vpsdance-ai | 347 | 181 |
