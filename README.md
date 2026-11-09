@@ -1,6 +1,6 @@
 # Conversion report
 
-Source fingerprint: e924a9569fa4434ede4eb91d985a534afd175967cae85eb968273249f63f4422
+Source fingerprint: a1257bf7ba748e23fd939f48b0aedff775fd7f0ba36fa8588000744fe00b7742
 
 Complete: 44; unsupported (not published): 0.
 
@@ -67,7 +67,7 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-ai-all | sagernet | 218 | 218 |
 | geosite-ai-all | loyalsoldier | 218 | 0 |
 | geosite-ai-all | metacubex | 218 | 0 |
-| geosite-ai-all | vpsdance-ai | 414 | 247 |
+| geosite-ai-all | vpsdance-ai | 416 | 247 |
 | geosite-ai-amazon | vpsdance-ai | 16 | 16 |
 | geosite-ai-anthropic | vpsdance-ai | 52 | 52 |
 | geosite-ai-baidu | vpsdance-ai | 3 | 3 |
@@ -77,7 +77,7 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-ai-deepseek | vpsdance-ai | 2 | 2 |
 | geosite-ai-google | vpsdance-ai | 53 | 53 |
 | geosite-ai-meta | vpsdance-ai | 12 | 12 |
-| geosite-ai-microsoft | vpsdance-ai | 35 | 35 |
+| geosite-ai-microsoft | vpsdance-ai | 36 | 36 |
 | geosite-ai-midjourney | vpsdance-ai | 1 | 1 |
 | geosite-ai-minimax | vpsdance-ai | 4 | 4 |
 | geosite-ai-mistral | vpsdance-ai | 1 | 1 |
@@ -150,4 +150,4 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-ai-!cn | sagernet | 218 | 218 |
 | geosite-ai-!cn | loyalsoldier | 218 | 0 |
 | geosite-ai-!cn | metacubex | 218 | 0 |
-| geosite-ai-!cn | vpsdance-ai | 347 | 181 |
+| geosite-ai-!cn | vpsdance-ai | 349 | 181 |

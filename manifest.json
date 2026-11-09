@@ -1,6 +1,6 @@
 {
   "upstream": "config.json",
-  "upstream_revision": "e924a9569fa4434ede4eb91d985a534afd175967cae85eb968273249f63f4422",
+  "upstream_revision": "a1257bf7ba748e23fd939f48b0aedff775fd7f0ba36fa8588000744fe00b7742",
   "decoder": "sing-box version 1.14.4",
   "complete": 44,
   "unsupported": 0,
@@ -151,7 +151,7 @@
     {
       "id": "vpsdance-ai",
       "url": "https://codeload.github.com/VPSDance/ai-proxy-rules/tar.gz/refs/heads/main",
-      "sha256": "aaa2693081ca7f340f6d9a24cc8e7f3b8c018358756c3ea3a55c3e0b8d15273c",
+      "sha256": "eda10ff0b231e45aad8a88161ac13a355fe316698ea7578c799782ec568cac95",
       "labels": {
         "adobe-firefly": {
           "provider": "adobe-firefly",
@@ -755,7 +755,7 @@
         },
         "copilot": {
           "archive_member": "data/providers/copilot.yaml",
-          "sha256": "ff9232707d77b81648d9a1d166f52efe5818f279048dc2289e735cd7aef80606"
+          "sha256": "66402b192c8f467ca06d6aba0232757c82956eff1812f5c5d7e20b09a508d616"
         },
         "crewai": {
           "archive_member": "data/providers/crewai.yaml",
@@ -1051,7 +1051,7 @@
         },
         "x-ai": {
           "archive_member": "data/providers/x-ai.yaml",
-          "sha256": "09cc2462b6f223ba751fc30ed485ac6c23ae0740ed4b951d887d5b73821eb959"
+          "sha256": "90b63ad9cae8995ef4191d679cffde25ad67d47d7f4e8be0e88aa3510dbf8d5b"
         },
         "xiaomi-ai": {
           "archive_member": "data/providers/xiaomi-ai.yaml",
@@ -1405,7 +1405,7 @@
         {
           "id": "vpsdance-ai",
           "category": "ai-all",
-          "entries": 414,
+          "entries": 416,
           "added_entries": 247,
           "members": [
             "adobe-firefly",
@@ -1693,15 +1693,15 @@
         {
           "id": "vpsdance-ai",
           "category": "ai-microsoft",
-          "entries": 35,
-          "added_entries": 35,
+          "entries": 36,
+          "added_entries": 36,
           "members": [
             "copilot"
           ]
         }
       ],
       "status": "complete",
-      "rules": 35,
+      "rules": 36,
       "ruleset": "ruleset/geosite-ai-microsoft.list"
     },
     "geosite-ai-midjourney": {
@@ -2494,7 +2494,7 @@
         {
           "id": "vpsdance-ai",
           "category": "category-ai-!cn",
-          "entries": 347,
+          "entries": 349,
           "added_entries": 181,
           "members": [
             "adobe-firefly",
