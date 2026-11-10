@@ -1,6 +1,6 @@
 {
   "upstream": "config.json",
-  "upstream_revision": "a1257bf7ba748e23fd939f48b0aedff775fd7f0ba36fa8588000744fe00b7742",
+  "upstream_revision": "541770664299513f6d530558f71f55d86caee869b1fcb6583fa110acc8f2fc39",
   "decoder": "sing-box version 1.14.4",
   "complete": 44,
   "unsupported": 0,
@@ -101,7 +101,7 @@
     {
       "id": "loyalsoldier",
       "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat",
-      "sha256": "97ef2a060a3ab60840f75a135c26872c4e1fbaa2847d0f4de57a927460f71e88",
+      "sha256": "bd2b6303c4ad7cef801744d2ecb03323a665605834c2b6f8f6348bd18df448e5",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -113,7 +113,7 @@
     {
       "id": "metacubex",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat",
-      "sha256": "85073a00a3c3eb80ac76b97df2f97f7dab00cb36c8b5e7ed2354cbd016f8b088",
+      "sha256": "6dc3c32192511451a8eb706e224b00197d748a2d0a05a7c6b750536098b5daf7",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -151,7 +151,7 @@
     {
       "id": "vpsdance-ai",
       "url": "https://codeload.github.com/VPSDance/ai-proxy-rules/tar.gz/refs/heads/main",
-      "sha256": "eda10ff0b231e45aad8a88161ac13a355fe316698ea7578c799782ec568cac95",
+      "sha256": "59ea6db40c5c6bdf44b9227ba6d20eccd617d0f2001226d1f04915c0b7dedf79",
       "labels": {
         "adobe-firefly": {
           "provider": "adobe-firefly",
@@ -2086,12 +2086,12 @@
         {
           "id": "metacubex",
           "category": "geolocation-cn",
-          "entries": 5439,
-          "added_entries": 0
+          "entries": 5440,
+          "added_entries": 1
         }
       ],
       "status": "complete",
-      "rules": 9518,
+      "rules": 9519,
       "ruleset": "ruleset/geosite-geolocation-cn.list",
       "script": "scripts/srs-regex-7bdbc02ad7a4e3a2.js",
       "script_name": "srs-regex-7bdbc02ad7a4e3a2",

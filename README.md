@@ -1,6 +1,6 @@
 # Conversion report
 
-Source fingerprint: a1257bf7ba748e23fd939f48b0aedff775fd7f0ba36fa8588000744fe00b7742
+Source fingerprint: 541770664299513f6d530558f71f55d86caee869b1fcb6583fa110acc8f2fc39
 
 Complete: 44; unsupported (not published): 0.
 
@@ -107,7 +107,7 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-geolocation-!cn | metacubex | 27453 | 3 |
 | geosite-geolocation-cn | sagernet | 9509 | 9509 |
 | geosite-geolocation-cn | loyalsoldier | 5439 | 9 |
-| geosite-geolocation-cn | metacubex | 5439 | 0 |
+| geosite-geolocation-cn | metacubex | 5440 | 1 |
 | geosite-github | sagernet | 64 | 64 |
 | geosite-github | loyalsoldier | 66 | 2 |
 | geosite-github | metacubex | 66 | 0 |
