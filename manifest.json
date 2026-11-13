@@ -1,6 +1,6 @@
 {
   "upstream": "config.json",
-  "upstream_revision": "0f1adaf0b3d84d836cb0b6b01e86c693656d0b3d0d85a8dcfe987298cc56af0a",
+  "upstream_revision": "6d6953b73eaaf8758536c5895d06e4ed5696c20ae7e017a0f2e58e142d157923",
   "decoder": "sing-box version 1.14.4",
   "complete": 44,
   "unsupported": 0,
@@ -101,7 +101,7 @@
     {
       "id": "loyalsoldier",
       "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat",
-      "sha256": "8c3cd1740067622985b0182d63ee1ab78f433fa42884b845c6b652a23c4a6318",
+      "sha256": "f5bf5d977840be4b9e73856b20f8d6dc7ef72285330c5f270d1d64cc2bf7982f",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -113,7 +113,7 @@
     {
       "id": "metacubex",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat",
-      "sha256": "aaf8ba4aeabebdffdccf2d4b4a0a4a50e62f2aaca27586c4e9f6525a878b3d9e",
+      "sha256": "ccbe14013543dcfa91fe4654218552a876fbe4399d8a16e411570d69ada700c0",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -141,7 +141,7 @@
       "files": {
         "cn": {
           "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
-          "sha256": "81ada5cafd9d831adc48776f29cdfe55c9713d9287caeef9de925ef30f66cce4"
+          "sha256": "29ed29ad2fee7a60dc1a94d73d6812a277e02aff46822689c8368be9caf45ed8"
         }
       },
       "missing_categories": [],
@@ -151,7 +151,7 @@
     {
       "id": "vpsdance-ai",
       "url": "https://codeload.github.com/VPSDance/ai-proxy-rules/tar.gz/refs/heads/main",
-      "sha256": "83b6361dfccb0948f1f79e720906aaff136fb673f392b4eff7f7d558b4a1161a",
+      "sha256": "0c7afab684b1cde8d51ddf4e9543b1a094020d0eba3bd3095970fc8a9a3776ec",
       "labels": {
         "adobe-firefly": {
           "provider": "adobe-firefly",
@@ -2002,14 +2002,14 @@
         {
           "id": "geoip-cn",
           "category": "cn",
-          "entries": 8113,
-          "added_entries": 8113,
+          "entries": 8101,
+          "added_entries": 8101,
           "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
-          "sha256": "81ada5cafd9d831adc48776f29cdfe55c9713d9287caeef9de925ef30f66cce4"
+          "sha256": "29ed29ad2fee7a60dc1a94d73d6812a277e02aff46822689c8368be9caf45ed8"
         }
       ],
       "status": "complete",
-      "rules": 8113,
+      "rules": 8101,
       "ruleset": "ruleset/geoip-cn.list"
     },
     "geoip-telegram": {
