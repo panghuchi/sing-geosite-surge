@@ -1,6 +1,6 @@
 # Conversion report
 
-Source fingerprint: 6d6953b73eaaf8758536c5895d06e4ed5696c20ae7e017a0f2e58e142d157923
+Source fingerprint: 806ac55555ced50b57bcec88a7747fb57ec4e7d85d275b935299e7f4009f661e
 
 Complete: 44; unsupported (not published): 0.
 
@@ -95,16 +95,16 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-apple@cn | loyalsoldier | 298 | 0 |
 | geosite-apple@cn | metacubex | 298 | 0 |
 | geosite-cn | sagernet | 9511 | 9511 |
-| geosite-cn | loyalsoldier | 110197 | 103666 |
+| geosite-cn | loyalsoldier | 110296 | 103765 |
 | geosite-cn | metacubex | 110177 | 2260 |
 | geosite-disney | sagernet | 223 | 223 |
 | geosite-disney | loyalsoldier | 225 | 2 |
 | geosite-disney | metacubex | 225 | 0 |
 | geoip-cn | geoip-cn | 8101 | 8101 |
 | geoip-telegram | geoip-telegram | 12 | 12 |
-| geosite-geolocation-!cn | sagernet | 24093 | 24093 |
-| geosite-geolocation-!cn | loyalsoldier | 27501 | 3789 |
-| geosite-geolocation-!cn | metacubex | 27458 | 3 |
+| geosite-geolocation-!cn | sagernet | 24094 | 24094 |
+| geosite-geolocation-!cn | loyalsoldier | 27502 | 3789 |
+| geosite-geolocation-!cn | metacubex | 27459 | 3 |
 | geosite-geolocation-cn | sagernet | 9510 | 9510 |
 | geosite-geolocation-cn | loyalsoldier | 5440 | 9 |
 | geosite-geolocation-cn | metacubex | 5440 | 0 |
