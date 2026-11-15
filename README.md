@@ -1,6 +1,6 @@
 # Conversion report
 
-Source fingerprint: 806ac55555ced50b57bcec88a7747fb57ec4e7d85d275b935299e7f4009f661e
+Source fingerprint: 9defd5686d261b80949b46302240d76bebc4d14d810794ce21efb2d81910cb82
 
 Complete: 44; unsupported (not published): 0.
 
@@ -95,8 +95,8 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-apple@cn | loyalsoldier | 298 | 0 |
 | geosite-apple@cn | metacubex | 298 | 0 |
 | geosite-cn | sagernet | 9511 | 9511 |
-| geosite-cn | loyalsoldier | 110296 | 103765 |
-| geosite-cn | metacubex | 110177 | 2260 |
+| geosite-cn | loyalsoldier | 110247 | 103716 |
+| geosite-cn | metacubex | 110177 | 2307 |
 | geosite-disney | sagernet | 223 | 223 |
 | geosite-disney | loyalsoldier | 225 | 2 |
 | geosite-disney | metacubex | 225 | 0 |

@@ -1,6 +1,6 @@
 {
   "upstream": "config.json",
-  "upstream_revision": "806ac55555ced50b57bcec88a7747fb57ec4e7d85d275b935299e7f4009f661e",
+  "upstream_revision": "9defd5686d261b80949b46302240d76bebc4d14d810794ce21efb2d81910cb82",
   "decoder": "sing-box version 1.14.4",
   "complete": 44,
   "unsupported": 0,
@@ -101,7 +101,7 @@
     {
       "id": "loyalsoldier",
       "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat",
-      "sha256": "6206c215d45f1acb663336b17a77ad5be62709680dc1ac2b2194121d6a1680f5",
+      "sha256": "0eb5e3cc3ced44a4dd36eb198b4ad4252a4017971979d7faa16d5c5e184c7462",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -113,7 +113,7 @@
     {
       "id": "metacubex",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat",
-      "sha256": "3642ffb0dd8b9d820b000420dd2d6c5b8e3989f4e7055e1b55978294f6d62b50",
+      "sha256": "acb166b2846dc86a89d85c5cf78ca96c001a411531cdf146244a5f5a15d3736f",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -151,7 +151,7 @@
     {
       "id": "vpsdance-ai",
       "url": "https://codeload.github.com/VPSDance/ai-proxy-rules/tar.gz/refs/heads/main",
-      "sha256": "13cb870475666b6e020f45db43156730a60bff93f555ab3ff9f5a3fcbcff17f7",
+      "sha256": "37b5478436d1d4033786f1ea6fdc30f07d2f922c9a9e098cf5dc3a4ac1dff4c7",
       "labels": {
         "adobe-firefly": {
           "provider": "adobe-firefly",
@@ -1946,18 +1946,18 @@
         {
           "id": "loyalsoldier",
           "category": "cn",
-          "entries": 110296,
-          "added_entries": 103765
+          "entries": 110247,
+          "added_entries": 103716
         },
         {
           "id": "metacubex",
           "category": "cn",
           "entries": 110177,
-          "added_entries": 2260
+          "added_entries": 2307
         }
       ],
       "status": "complete",
-      "rules": 115535,
+      "rules": 115533,
       "ruleset": "ruleset/geosite-cn.list",
       "script": "scripts/srs-regex-37d00eb58f97e30b.js",
       "script_name": "srs-regex-37d00eb58f97e30b",
