@@ -1,6 +1,6 @@
 # Conversion report
 
-Source fingerprint: 9defd5686d261b80949b46302240d76bebc4d14d810794ce21efb2d81910cb82
+Source fingerprint: b4b53a29b68c77844b1a3c6649ec1c78a2e98efb74ba993879316528f17ef9d4
 
 Complete: 44; unsupported (not published): 0.
 
@@ -89,13 +89,13 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-ai-xiaomi | vpsdance-ai | 3 | 3 |
 | geosite-ai-zhipu | vpsdance-ai | 5 | 5 |
 | geosite-apple | sagernet | 1786 | 1786 |
-| geosite-apple | loyalsoldier | 1792 | 7 |
-| geosite-apple | metacubex | 1792 | 0 |
+| geosite-apple | loyalsoldier | 1796 | 11 |
+| geosite-apple | metacubex | 1796 | 0 |
 | geosite-apple@cn | sagernet | 298 | 298 |
-| geosite-apple@cn | loyalsoldier | 298 | 0 |
-| geosite-apple@cn | metacubex | 298 | 0 |
+| geosite-apple@cn | loyalsoldier | 302 | 4 |
+| geosite-apple@cn | metacubex | 302 | 0 |
 | geosite-cn | sagernet | 9511 | 9511 |
-| geosite-cn | loyalsoldier | 110247 | 103716 |
+| geosite-cn | loyalsoldier | 110251 | 103720 |
 | geosite-cn | metacubex | 110177 | 2307 |
 | geosite-disney | sagernet | 223 | 223 |
 | geosite-disney | loyalsoldier | 225 | 2 |
@@ -103,8 +103,8 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geoip-cn | geoip-cn | 8101 | 8101 |
 | geoip-telegram | geoip-telegram | 12 | 12 |
 | geosite-geolocation-!cn | sagernet | 24094 | 24094 |
-| geosite-geolocation-!cn | loyalsoldier | 27502 | 3789 |
-| geosite-geolocation-!cn | metacubex | 27459 | 3 |
+| geosite-geolocation-!cn | loyalsoldier | 27507 | 3794 |
+| geosite-geolocation-!cn | metacubex | 27464 | 3 |
 | geosite-geolocation-cn | sagernet | 9510 | 9510 |
 | geosite-geolocation-cn | loyalsoldier | 5440 | 9 |
 | geosite-geolocation-cn | metacubex | 5440 | 0 |
@@ -118,8 +118,8 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-hbo | loyalsoldier | 65 | 1 |
 | geosite-hbo | metacubex | 65 | 0 |
 | geosite-microsoft | sagernet | 712 | 712 |
-| geosite-microsoft | loyalsoldier | 757 | 53 |
-| geosite-microsoft | metacubex | 757 | 6 |
+| geosite-microsoft | loyalsoldier | 760 | 56 |
+| geosite-microsoft | metacubex | 760 | 6 |
 | geosite-microsoft@cn | sagernet | 189 | 189 |
 | geosite-microsoft@cn | loyalsoldier | 189 | 0 |
 | geosite-microsoft@cn | metacubex | 189 | 0 |
