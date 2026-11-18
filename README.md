@@ -1,6 +1,6 @@
 # Conversion report
 
-Source fingerprint: c080808e5c8605eb7a45625b6a293f371d3169ad2cdfbcde04f35ad88d5465f8
+Source fingerprint: 0d8d1bb6f99688bbfa65b0a1ba54ad9e69bbe8feb68783a482bfdb6bb41190ab
 
 Complete: 44; unsupported (not published): 0.
 
@@ -66,8 +66,8 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-ai-alibaba | vpsdance-ai | 11 | 11 |
 | geosite-ai-all | sagernet | 218 | 218 |
 | geosite-ai-all | loyalsoldier | 218 | 0 |
-| geosite-ai-all | metacubex | 218 | 0 |
-| geosite-ai-all | vpsdance-ai | 416 | 247 |
+| geosite-ai-all | metacubex | 219 | 1 |
+| geosite-ai-all | vpsdance-ai | 417 | 247 |
 | geosite-ai-amazon | vpsdance-ai | 16 | 16 |
 | geosite-ai-anthropic | vpsdance-ai | 52 | 52 |
 | geosite-ai-baidu | vpsdance-ai | 3 | 3 |
@@ -149,5 +149,5 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-youtube | metacubex | 178 | 0 |
 | geosite-ai-!cn | sagernet | 218 | 218 |
 | geosite-ai-!cn | loyalsoldier | 218 | 0 |
-| geosite-ai-!cn | metacubex | 218 | 0 |
-| geosite-ai-!cn | vpsdance-ai | 349 | 181 |
+| geosite-ai-!cn | metacubex | 219 | 1 |
+| geosite-ai-!cn | vpsdance-ai | 350 | 181 |

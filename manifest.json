@@ -1,6 +1,6 @@
 {
   "upstream": "config.json",
-  "upstream_revision": "c080808e5c8605eb7a45625b6a293f371d3169ad2cdfbcde04f35ad88d5465f8",
+  "upstream_revision": "0d8d1bb6f99688bbfa65b0a1ba54ad9e69bbe8feb68783a482bfdb6bb41190ab",
   "decoder": "sing-box version 1.14.4",
   "complete": 44,
   "unsupported": 0,
@@ -101,7 +101,7 @@
     {
       "id": "loyalsoldier",
       "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat",
-      "sha256": "0a254319dfa52f8ac7ec4475a310657b06fd6e2d7dca69d47a1c443664f6e04f",
+      "sha256": "118d2e1358b892129be6aaf47e1f0c19d48944cf8f979980c65c7de423947883",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -113,7 +113,7 @@
     {
       "id": "metacubex",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat",
-      "sha256": "da31a791c71a9b5fd27e5f9ae060e6e07b37e324394098127c5ebda62c895654",
+      "sha256": "db0c704c3d2d4705729d49d09ec7347c0ec6304c45c856d5456063d4ac5ef1d7",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -151,7 +151,7 @@
     {
       "id": "vpsdance-ai",
       "url": "https://codeload.github.com/VPSDance/ai-proxy-rules/tar.gz/refs/heads/main",
-      "sha256": "87b054b5245b80865ea1f08cd988e8ebe6900a1d3051c39bb2512cb1d85d9115",
+      "sha256": "1b5490010a9121c925b8a5f05bb46d8cde24c7100b83186b323d6a1dfd3d88e5",
       "labels": {
         "adobe-firefly": {
           "provider": "adobe-firefly",
@@ -799,7 +799,7 @@
         },
         "elevenlabs": {
           "archive_member": "data/providers/elevenlabs.yaml",
-          "sha256": "dbf118bacd8b1d154289474fca414244f7ced91fd52cf9d65b0acd202d502c29"
+          "sha256": "97c5e7cce4d643b187a150cc8f881f21ad04699e7593269a2c2b7557946a40ea"
         },
         "factory": {
           "archive_member": "data/providers/factory.yaml",
@@ -1396,8 +1396,8 @@
         {
           "id": "metacubex",
           "category": "ai-all",
-          "entries": 218,
-          "added_entries": 0,
+          "entries": 219,
+          "added_entries": 1,
           "members": [
             "category-ai-!cn"
           ]
@@ -1405,7 +1405,7 @@
         {
           "id": "vpsdance-ai",
           "category": "ai-all",
-          "entries": 416,
+          "entries": 417,
           "added_entries": 247,
           "members": [
             "adobe-firefly",
@@ -1514,7 +1514,7 @@
         }
       ],
       "status": "complete",
-      "rules": 465,
+      "rules": 466,
       "ruleset": "ruleset/geosite-ai-all.list",
       "script": "scripts/srs-regex-4755eea1712abbf7.js",
       "script_name": "srs-regex-4755eea1712abbf7",
@@ -2488,13 +2488,13 @@
         {
           "id": "metacubex",
           "category": "category-ai-!cn",
-          "entries": 218,
-          "added_entries": 0
+          "entries": 219,
+          "added_entries": 1
         },
         {
           "id": "vpsdance-ai",
           "category": "category-ai-!cn",
-          "entries": 349,
+          "entries": 350,
           "added_entries": 181,
           "members": [
             "adobe-firefly",
@@ -2589,7 +2589,7 @@
         }
       ],
       "status": "complete",
-      "rules": 399,
+      "rules": 400,
       "ruleset": "ruleset/geosite-ai-!cn.list",
       "script": "scripts/srs-regex-5c16223b7bda31c8.js",
       "script_name": "srs-regex-5c16223b7bda31c8",
