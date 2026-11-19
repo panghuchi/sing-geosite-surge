@@ -1,6 +1,6 @@
 {
   "upstream": "config.json",
-  "upstream_revision": "0d8d1bb6f99688bbfa65b0a1ba54ad9e69bbe8feb68783a482bfdb6bb41190ab",
+  "upstream_revision": "e16b9c6e44dffe428b1ed30ba73d15851e9ff755f256c84bfb9ab78306f50b81",
   "decoder": "sing-box version 1.14.4",
   "complete": 44,
   "unsupported": 0,
@@ -101,7 +101,7 @@
     {
       "id": "loyalsoldier",
       "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat",
-      "sha256": "118d2e1358b892129be6aaf47e1f0c19d48944cf8f979980c65c7de423947883",
+      "sha256": "268f30619cfe5db5a925766bf966045f23b58b9a57bbc00c00396eb548011814",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -113,7 +113,7 @@
     {
       "id": "metacubex",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat",
-      "sha256": "db0c704c3d2d4705729d49d09ec7347c0ec6304c45c856d5456063d4ac5ef1d7",
+      "sha256": "3ad532e6b868af69bc00fdefac28296acca13c151b2aaf90058b9f41795ae5d7",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -151,7 +151,7 @@
     {
       "id": "vpsdance-ai",
       "url": "https://codeload.github.com/VPSDance/ai-proxy-rules/tar.gz/refs/heads/main",
-      "sha256": "1b5490010a9121c925b8a5f05bb46d8cde24c7100b83186b323d6a1dfd3d88e5",
+      "sha256": "a3fddb8eb75e5480218fb65aeae334c951a3c3608ce2b5354b85e70fc69618d6",
       "labels": {
         "adobe-firefly": {
           "provider": "adobe-firefly",
@@ -1387,8 +1387,8 @@
         {
           "id": "loyalsoldier",
           "category": "ai-all",
-          "entries": 218,
-          "added_entries": 0,
+          "entries": 219,
+          "added_entries": 1,
           "members": [
             "category-ai-!cn"
           ]
@@ -1397,7 +1397,7 @@
           "id": "metacubex",
           "category": "ai-all",
           "entries": 219,
-          "added_entries": 1,
+          "added_entries": 0,
           "members": [
             "category-ai-!cn"
           ]
@@ -1946,18 +1946,18 @@
         {
           "id": "loyalsoldier",
           "category": "cn",
-          "entries": 110251,
-          "added_entries": 103711
+          "entries": 110255,
+          "added_entries": 103715
         },
         {
           "id": "metacubex",
           "category": "cn",
           "entries": 110177,
-          "added_entries": 2307
+          "added_entries": 2306
         }
       ],
       "status": "complete",
-      "rules": 115544,
+      "rules": 115547,
       "ruleset": "ruleset/geosite-cn.list",
       "script": "scripts/srs-regex-37d00eb58f97e30b.js",
       "script_name": "srs-regex-37d00eb58f97e30b",
@@ -2041,7 +2041,7 @@
           "id": "loyalsoldier",
           "category": "geolocation-!cn",
           "entries": 27509,
-          "added_entries": 3792
+          "added_entries": 3793
         },
         {
           "id": "metacubex",
@@ -2051,7 +2051,7 @@
         }
       ],
       "status": "complete",
-      "rules": 28302,
+      "rules": 28303,
       "ruleset": "ruleset/geosite-geolocation-!cn.list",
       "script": "scripts/srs-regex-e8071294e76010b8.js",
       "script_name": "srs-regex-e8071294e76010b8",
@@ -2080,18 +2080,18 @@
         {
           "id": "loyalsoldier",
           "category": "geolocation-cn",
-          "entries": 5440,
-          "added_entries": 9
+          "entries": 5452,
+          "added_entries": 23
         },
         {
           "id": "metacubex",
           "category": "geolocation-cn",
-          "entries": 5440,
+          "entries": 5452,
           "added_entries": 0
         }
       ],
       "status": "complete",
-      "rules": 9535,
+      "rules": 9549,
       "ruleset": "ruleset/geosite-geolocation-cn.list",
       "script": "scripts/srs-regex-7bdbc02ad7a4e3a2.js",
       "script_name": "srs-regex-7bdbc02ad7a4e3a2",
@@ -2482,14 +2482,14 @@
         {
           "id": "loyalsoldier",
           "category": "category-ai-!cn",
-          "entries": 218,
-          "added_entries": 0
+          "entries": 219,
+          "added_entries": 1
         },
         {
           "id": "metacubex",
           "category": "category-ai-!cn",
           "entries": 219,
-          "added_entries": 1
+          "added_entries": 0
         },
         {
           "id": "vpsdance-ai",
