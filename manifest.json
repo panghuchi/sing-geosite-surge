@@ -1,6 +1,6 @@
 {
   "upstream": "config.json",
-  "upstream_revision": "f053465ac51ee16bcedac4595acf787c76ade9d75da8490958f95267f98804f6",
+  "upstream_revision": "91499a715952c288119e0c9c9dfd64daac24ff400427c078c754ae9a7dad748d",
   "decoder": "sing-box version 1.14.4",
   "complete": 44,
   "unsupported": 0,
@@ -101,7 +101,7 @@
     {
       "id": "loyalsoldier",
       "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat",
-      "sha256": "e0fa5edd4b078d23c8b04c4e36bd1edda0f2ad32be4ea3312457ee8515f6fce4",
+      "sha256": "f0320d0cf22431eace345946a5fb196a6654e3e24441dffa3ea38ef28cd44289",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -113,7 +113,7 @@
     {
       "id": "metacubex",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat",
-      "sha256": "05383cf8d1086234116d0cff2af6dc595370b6a8c1197814168dc8a527a781d1",
+      "sha256": "55c0ff0bb7a75de661de7a30984ece344d9c7840a37a92893b59af9f4baed280",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -151,7 +151,7 @@
     {
       "id": "vpsdance-ai",
       "url": "https://codeload.github.com/VPSDance/ai-proxy-rules/tar.gz/refs/heads/main",
-      "sha256": "e2586cc55aeb41e8c4a1f7350a4649849ee77991582ee801f27e6775fc8256ac",
+      "sha256": "acae5eef866e77e33964b0985aeb495b09921f3be8a1015b34fc157dbfc2a26f",
       "labels": {
         "adobe-firefly": {
           "provider": "adobe-firefly",
@@ -1891,13 +1891,13 @@
         {
           "id": "loyalsoldier",
           "category": "apple",
-          "entries": 1796,
+          "entries": 1666,
           "added_entries": 7
         },
         {
           "id": "metacubex",
           "category": "apple",
-          "entries": 1796,
+          "entries": 1666,
           "added_entries": 0
         }
       ],
@@ -1946,8 +1946,8 @@
         {
           "id": "loyalsoldier",
           "category": "cn",
-          "entries": 110255,
-          "added_entries": 103698
+          "entries": 110258,
+          "added_entries": 103701
         },
         {
           "id": "metacubex",
@@ -1957,7 +1957,7 @@
         }
       ],
       "status": "complete",
-      "rules": 115558,
+      "rules": 115561,
       "ruleset": "ruleset/geosite-cn.list",
       "script": "scripts/srs-regex-37d00eb58f97e30b.js",
       "script_name": "srs-regex-37d00eb58f97e30b",
@@ -2040,18 +2040,18 @@
         {
           "id": "loyalsoldier",
           "category": "geolocation-!cn",
-          "entries": 27509,
-          "added_entries": 3792
+          "entries": 27398,
+          "added_entries": 3811
         },
         {
           "id": "metacubex",
           "category": "geolocation-!cn",
-          "entries": 27466,
+          "entries": 27355,
           "added_entries": 3
         }
       ],
       "status": "complete",
-      "rules": 28302,
+      "rules": 28321,
       "ruleset": "ruleset/geosite-geolocation-!cn.list",
       "script": "scripts/srs-regex-e8071294e76010b8.js",
       "script_name": "srs-regex-e8071294e76010b8",
@@ -2080,18 +2080,18 @@
         {
           "id": "loyalsoldier",
           "category": "geolocation-cn",
-          "entries": 5452,
-          "added_entries": 9
+          "entries": 5456,
+          "added_entries": 13
         },
         {
           "id": "metacubex",
           "category": "geolocation-cn",
-          "entries": 5452,
+          "entries": 5456,
           "added_entries": 0
         }
       ],
       "status": "complete",
-      "rules": 9563,
+      "rules": 9567,
       "ruleset": "ruleset/geosite-geolocation-cn.list",
       "script": "scripts/srs-regex-7bdbc02ad7a4e3a2.js",
       "script_name": "srs-regex-7bdbc02ad7a4e3a2",
