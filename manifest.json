@@ -1,6 +1,6 @@
 {
   "upstream": "config.json",
-  "upstream_revision": "91499a715952c288119e0c9c9dfd64daac24ff400427c078c754ae9a7dad748d",
+  "upstream_revision": "d6746c0ab604dba813278e4bdb21ee4cc42e87f19b87d750eb8085267d5f3691",
   "decoder": "sing-box version 1.14.4",
   "complete": 44,
   "unsupported": 0,
@@ -101,7 +101,7 @@
     {
       "id": "loyalsoldier",
       "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat",
-      "sha256": "f0320d0cf22431eace345946a5fb196a6654e3e24441dffa3ea38ef28cd44289",
+      "sha256": "95f47f3b6a848db9979e8bd8daff9b213b7b159b803519c86038ac30aab2b5c2",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -113,7 +113,7 @@
     {
       "id": "metacubex",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat",
-      "sha256": "55c0ff0bb7a75de661de7a30984ece344d9c7840a37a92893b59af9f4baed280",
+      "sha256": "7772be22495e316b22bec388b3ae4b3f3869fcb09cc1912c4bedc4095ca1572c",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -151,7 +151,7 @@
     {
       "id": "vpsdance-ai",
       "url": "https://codeload.github.com/VPSDance/ai-proxy-rules/tar.gz/refs/heads/main",
-      "sha256": "acae5eef866e77e33964b0985aeb495b09921f3be8a1015b34fc157dbfc2a26f",
+      "sha256": "51b88e53ff738876c00ca617c4ba0562ba9e26e4caf51db0f995958a70f48587",
       "labels": {
         "adobe-firefly": {
           "provider": "adobe-firefly",
@@ -2040,18 +2040,18 @@
         {
           "id": "loyalsoldier",
           "category": "geolocation-!cn",
-          "entries": 27398,
-          "added_entries": 3811
+          "entries": 27421,
+          "added_entries": 3835
         },
         {
           "id": "metacubex",
           "category": "geolocation-!cn",
-          "entries": 27355,
+          "entries": 27378,
           "added_entries": 3
         }
       ],
       "status": "complete",
-      "rules": 28321,
+      "rules": 28345,
       "ruleset": "ruleset/geosite-geolocation-!cn.list",
       "script": "scripts/srs-regex-e8071294e76010b8.js",
       "script_name": "srs-regex-e8071294e76010b8",
