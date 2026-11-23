@@ -1,6 +1,6 @@
 {
   "upstream": "config.json",
-  "upstream_revision": "d6746c0ab604dba813278e4bdb21ee4cc42e87f19b87d750eb8085267d5f3691",
+  "upstream_revision": "89ca74fa3162712b592f03b77da5acb84a94ba0c4476cd13455ac0fa601c9a45",
   "decoder": "sing-box version 1.14.4",
   "complete": 44,
   "unsupported": 0,
@@ -101,7 +101,7 @@
     {
       "id": "loyalsoldier",
       "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat",
-      "sha256": "95f47f3b6a848db9979e8bd8daff9b213b7b159b803519c86038ac30aab2b5c2",
+      "sha256": "94e6f902cfa9d4d70ebf3c0138d9cc24175b51885c490cb673ee54f5e1b6ce6f",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -113,7 +113,7 @@
     {
       "id": "metacubex",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat",
-      "sha256": "7772be22495e316b22bec388b3ae4b3f3869fcb09cc1912c4bedc4095ca1572c",
+      "sha256": "06ca12228fbea293e003c68ab71e5071d3af7e491f972266fbc5466e531c4f70",
       "missing_categories": [],
       "publish": true,
       "members": {
@@ -151,7 +151,7 @@
     {
       "id": "vpsdance-ai",
       "url": "https://codeload.github.com/VPSDance/ai-proxy-rules/tar.gz/refs/heads/main",
-      "sha256": "51b88e53ff738876c00ca617c4ba0562ba9e26e4caf51db0f995958a70f48587",
+      "sha256": "c51ab57372f57391f74e1a20ba4fb8ada2615cc373dc195c8eb637317f13f01a",
       "labels": {
         "adobe-firefly": {
           "provider": "adobe-firefly",
@@ -2080,18 +2080,18 @@
         {
           "id": "loyalsoldier",
           "category": "geolocation-cn",
-          "entries": 5456,
-          "added_entries": 13
+          "entries": 5457,
+          "added_entries": 14
         },
         {
           "id": "metacubex",
           "category": "geolocation-cn",
-          "entries": 5456,
+          "entries": 5457,
           "added_entries": 0
         }
       ],
       "status": "complete",
-      "rules": 9567,
+      "rules": 9568,
       "ruleset": "ruleset/geosite-geolocation-cn.list",
       "script": "scripts/srs-regex-7bdbc02ad7a4e3a2.js",
       "script_name": "srs-regex-7bdbc02ad7a4e3a2",
