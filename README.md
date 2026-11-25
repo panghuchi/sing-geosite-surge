@@ -1,6 +1,6 @@
 # Conversion report
 
-Source fingerprint: 74151da9561a2b8afa867b596d10ef2caedeafb8350e2fa504339adf0c026b0f
+Source fingerprint: d97775a3bfa6654e200ac8aabaf985340ce89ce6ed45b26cc54f2f3cbcc9e61e
 
 Complete: 44; unsupported (not published): 0.
 
@@ -64,8 +64,8 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | Category | Source | Entries | Added entries |
 | --- | --- | --- | --- |
 | geosite-ai-alibaba | vpsdance-ai | 11 | 11 |
-| geosite-ai-all | sagernet | 219 | 219 |
-| geosite-ai-all | loyalsoldier | 220 | 1 |
+| geosite-ai-all | sagernet | 220 | 220 |
+| geosite-ai-all | loyalsoldier | 220 | 0 |
 | geosite-ai-all | metacubex | 220 | 0 |
 | geosite-ai-all | vpsdance-ai | 418 | 247 |
 | geosite-ai-amazon | vpsdance-ai | 16 | 16 |
@@ -94,25 +94,25 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-apple@cn | sagernet | 302 | 302 |
 | geosite-apple@cn | loyalsoldier | 302 | 0 |
 | geosite-apple@cn | metacubex | 302 | 0 |
-| geosite-cn | sagernet | 9560 | 9560 |
-| geosite-cn | loyalsoldier | 110258 | 103696 |
+| geosite-cn | sagernet | 9564 | 9564 |
+| geosite-cn | loyalsoldier | 110258 | 103695 |
 | geosite-cn | metacubex | 110177 | 2306 |
 | geosite-disney | sagernet | 223 | 223 |
 | geosite-disney | loyalsoldier | 225 | 2 |
 | geosite-disney | metacubex | 225 | 0 |
 | geoip-cn | geoip-cn | 8101 | 8101 |
 | geoip-telegram | geoip-telegram | 12 | 12 |
-| geosite-geolocation-!cn | sagernet | 23992 | 23992 |
-| geosite-geolocation-!cn | loyalsoldier | 27422 | 3813 |
-| geosite-geolocation-!cn | metacubex | 27379 | 3 |
-| geosite-geolocation-cn | sagernet | 9559 | 9559 |
-| geosite-geolocation-cn | loyalsoldier | 5461 | 13 |
+| geosite-geolocation-!cn | sagernet | 23998 | 23998 |
+| geosite-geolocation-!cn | loyalsoldier | 27427 | 3812 |
+| geosite-geolocation-!cn | metacubex | 27384 | 3 |
+| geosite-geolocation-cn | sagernet | 9563 | 9563 |
+| geosite-geolocation-cn | loyalsoldier | 5461 | 9 |
 | geosite-geolocation-cn | metacubex | 5461 | 0 |
 | geosite-github | sagernet | 64 | 64 |
 | geosite-github | loyalsoldier | 66 | 2 |
 | geosite-github | metacubex | 66 | 0 |
-| geosite-google | sagernet | 940 | 940 |
-| geosite-google | loyalsoldier | 1081 | 155 |
+| geosite-google | sagernet | 941 | 941 |
+| geosite-google | loyalsoldier | 1081 | 154 |
 | geosite-google | metacubex | 1081 | 0 |
 | geosite-hbo | sagernet | 65 | 65 |
 | geosite-hbo | loyalsoldier | 65 | 1 |
@@ -147,7 +147,7 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-youtube | sagernet | 178 | 178 |
 | geosite-youtube | loyalsoldier | 178 | 1 |
 | geosite-youtube | metacubex | 178 | 0 |
-| geosite-ai-!cn | sagernet | 219 | 219 |
-| geosite-ai-!cn | loyalsoldier | 220 | 1 |
+| geosite-ai-!cn | sagernet | 220 | 220 |
+| geosite-ai-!cn | loyalsoldier | 220 | 0 |
 | geosite-ai-!cn | metacubex | 220 | 0 |
 | geosite-ai-!cn | vpsdance-ai | 351 | 181 |
