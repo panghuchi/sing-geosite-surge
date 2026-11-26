@@ -1,6 +1,6 @@
 # Conversion report
 
-Source fingerprint: d97775a3bfa6654e200ac8aabaf985340ce89ce6ed45b26cc54f2f3cbcc9e61e
+Source fingerprint: 4f4bd21514ae977baec1d4154ec0e4a436d4a2a749ae6157a5a50e9d0e601a8a
 
 Complete: 44; unsupported (not published): 0.
 
@@ -103,8 +103,8 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geoip-cn | geoip-cn | 8101 | 8101 |
 | geoip-telegram | geoip-telegram | 12 | 12 |
 | geosite-geolocation-!cn | sagernet | 23998 | 23998 |
-| geosite-geolocation-!cn | loyalsoldier | 27427 | 3812 |
-| geosite-geolocation-!cn | metacubex | 27384 | 3 |
+| geosite-geolocation-!cn | loyalsoldier | 27438 | 3823 |
+| geosite-geolocation-!cn | metacubex | 27395 | 3 |
 | geosite-geolocation-cn | sagernet | 9563 | 9563 |
 | geosite-geolocation-cn | loyalsoldier | 5461 | 9 |
 | geosite-geolocation-cn | metacubex | 5461 | 0 |
