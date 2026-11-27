@@ -1,6 +1,6 @@
 # Conversion report
 
-Source fingerprint: 4f4bd21514ae977baec1d4154ec0e4a436d4a2a749ae6157a5a50e9d0e601a8a
+Source fingerprint: df3ecf0c70b335adddd5f51d512a277b865de50486860f833d4a1cde2a91f4e0
 
 Complete: 44; unsupported (not published): 0.
 
@@ -102,8 +102,8 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-disney | metacubex | 225 | 0 |
 | geoip-cn | geoip-cn | 8101 | 8101 |
 | geoip-telegram | geoip-telegram | 12 | 12 |
-| geosite-geolocation-!cn | sagernet | 23998 | 23998 |
-| geosite-geolocation-!cn | loyalsoldier | 27438 | 3823 |
+| geosite-geolocation-!cn | sagernet | 24009 | 24009 |
+| geosite-geolocation-!cn | loyalsoldier | 27438 | 3812 |
 | geosite-geolocation-!cn | metacubex | 27395 | 3 |
 | geosite-geolocation-cn | sagernet | 9563 | 9563 |
 | geosite-geolocation-cn | loyalsoldier | 5461 | 9 |
@@ -119,7 +119,7 @@ Counts are deduplicated rule atoms, not guaranteed newly covered hostnames. Sour
 | geosite-hbo | metacubex | 65 | 0 |
 | geosite-microsoft | sagernet | 712 | 712 |
 | geosite-microsoft | loyalsoldier | 760 | 56 |
-| geosite-microsoft | metacubex | 760 | 6 |
+| geosite-microsoft | metacubex | 761 | 7 |
 | geosite-microsoft@cn | sagernet | 189 | 189 |
 | geosite-microsoft@cn | loyalsoldier | 189 | 0 |
 | geosite-microsoft@cn | metacubex | 189 | 0 |
